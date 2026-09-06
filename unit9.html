@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essential Grammar in Use - Unit 9</title>
+<style>
+  :root {
+    --primary: #b83b26;
+    --primary-dark: #962d22;
+    --nav-dark: #263849;
+    --btn-inactive: #34495e;
+    --text-main: #2c3e50;
+    --text-muted: #555555;
+    --bg-page: #f0f3f4;
+    --border-color: #e2e8f0;
+    --pill-bg: #f8f9fa;
+    --correct-bg: #eafaf1;
+    --correct-border: #27ae60;
+    --wrong-bg: #fdedec;
+    --wrong-border: #e74c3c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-page);
+    margin: 0;
+    padding: 20px 10px 40px;
+  }
+
+  .app-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #dcdde1;
+  }
+
+  header {
+    background: var(--primary);
+    color: #ffffff;
+    text-align: center;
+    padding: 22px 15px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  header p {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    opacity: 0.95;
+  }
+
+  .tab-nav {
+    display: flex;
+    background: #ecf0f1;
+    border-bottom: 2px solid #bdc3c7;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 13px 8px;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 14.5px;
+    font-weight: bold;
+    color: #7f8c8d;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { color: var(--primary); background: #e5e8e8; }
+  .tab-btn.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+    background: #ffffff;
+  }
+
+  .main-content { padding: 24px; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .content-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .content-title {
+    color: var(--primary);
+    font-size: 16.5px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 14px;
+    border-bottom: 1.5px solid #fadbd8;
+    padding-bottom: 6px;
+  }
+
+  .example-pill {
+    background: var(--pill-bg);
+    border-radius: 6px;
+    padding: 9px 14px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+  }
+  .example-pill b { color: var(--primary-dark); }
+  .example-pill span.trans {
+    color: var(--text-muted);
+    font-style: italic;
+    margin-left: 6px;
+  }
+
+  .table-box {
+    overflow-x: auto;
+    margin: 14px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+  }
+  th {
+    background-color: #fbf0ee;
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+
+  .q-row {
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+  }
+  input[type="text"] {
+    padding: 7px 11px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14.5px;
+    outline: none;
+    transition: all 0.2s;
+    background: #fff;
+  }
+  input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184, 59, 38, 0.12);
+  }
+  input.correct {
+    border-color: var(--correct-border) !important;
+    background-color: var(--correct-bg) !important;
+  }
+  input.wrong {
+    border-color: var(--wrong-border) !important;
+    background-color: var(--wrong-bg) !important;
+  }
+  .ans-feedback {
+    display: none;
+    font-size: 12.5px;
+    color: var(--wrong-border);
+    font-weight: 600;
+  }
+
+  .btn-bar {
+    position: sticky;
+    bottom: 15px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    display: flex;
+    gap: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-top: 25px;
+  }
+  .btn-check {
+    flex: 2;
+    background: #27ae60;
+    color: #fff;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn-check:hover { background: #219653; }
+  .btn-reset {
+    flex: 1;
+    background: #7f8c8d;
+    color: #fff;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn-reset:hover { background: #636e72; }
+
+  #score-panel {
+    display: none;
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16.5px;
+    font-weight: 800;
+  }
+
+  .key-item {
+    border-left: 4px solid var(--primary);
+    background: #fdfefe;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid var(--border-color);
+    border-left-width: 4px;
+    border-left-color: var(--primary);
+  }
+  .key-item h4 { margin: 0 0 6px 0; color: var(--primary); font-size: 15px; }
+
+  @media (max-width: 650px) {
+    .app-container { border-radius: 0; margin: 0; }
+    body { padding: 0; }
+    input[type="text"] { width: 100% !important; }
+    .q-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  
+  <header>
+    <h1>Essential Grammar in Use</h1>
+    <p>UNIT 9: I have ... and I've got ... (Цогц сургалтын систем)</p>
+  </header>
+
+  <!-- БҮЛЭГ СОНГОХ (Unit 9 нь УЛААН) -->
+  <div style="background: #263849; padding: 10px; text-align: center; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+    <a href="index.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">🏠 Нүүр</a>
+    <a href="unit1.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 1</a>
+    <a href="unit2.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 2</a>
+    <a href="unit3.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 3</a>
+    <a href="unit4.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 4</a>
+    <a href="unit5.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 5</a>
+    <a href="unit6.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 6</a>
+    <a href="unit7.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 7</a>
+    <a href="unit8.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 8</a>
+    <a href="unit9.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #b83b26;">Unit 9</a>
+    <a href="unit10.html" style="color: white; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; background: #34495e;">Unit 10</a>
+  </div>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('theory')">📖 1. Онол ба Тайлбар</button>
+    <button class="tab-btn" onclick="switchTab('practice')">✍️ 2. Дасгал ажиллах</button>
+    <button class="tab-btn" onclick="switchTab('answers')">🔑 3. Хариуны тайлбар</button>
+  </nav>
+
+  <div class="main-content">
+
+    <!-- ==================== 1. ОНОЛ БА ТАЙЛБАР ==================== -->
+    <section id="tab-theory" class="tab-content active">
+      
+      <div class="content-card">
+        <h3 class="content-title">A. I have / I've got хэрэглээ ба хураангуйлал</h3>
+        <p>Ямар нэгэн зүйлийг эзэмших, харилцаа (эгч, дүүтэй байх), эсвэл өвчин зовуурийг илэрхийлэхэд <b>have</b> болон <b>have got</b>-ийг утга ижил хэрэглэж болно.</p>
+
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Бүтэн хэлбэр</th>
+                <th>Хураангуй хэлбэр</th>
+                <th>Жишээ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>I / we / you / they <b>have got</b></td>
+                <td>I<b>'ve got</b> / we<b>'ve got</b> / you<b>'ve got</b> / they<b>'ve got</b></td>
+                <td>I've got a new car.</td>
+              </tr>
+              <tr>
+                <td>he / she / it <b>has got</b></td>
+                <td>he<b>'s got</b> / she<b>'s got</b> / it<b>'s got</b></td>
+                <td>She's got two brothers.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="example-pill">
+          <b>I have blue eyes.</b> = <b>I've got blue eyes.</b> <span class="trans">&rarr; Би цэнхэр нүдтэй.</span>
+        </div>
+        <div class="example-pill">
+          <b>Tim has two sisters.</b> = <b>Tim has got two sisters.</b> <span class="trans">&rarr; Тим хоёр эгчтэй.</span>
+        </div>
+        <div class="example-pill">
+          <b>Our car has four doors.</b> = <b>Our car has got four doors.</b> <span class="trans">&rarr; Манай машин 4 хаалгатай.</span>
+        </div>
+        <div class="example-pill">
+          <b>I have a headache.</b> = <b>I've got a headache.</b> <span class="trans">&rarr; Миний толгой өвдөж байна.</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">B. Үгүйсгэх ба Асуух хэлбэрийн 2 хувилбар</h3>
+        <p>Үгүйсгэх болон асуухдаа <b>have got / haven't got</b> гэж ашиглаж болохоос гадна <b>do / does</b> туслах үйл үгээр илэрхийлж болно:</p>
+
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Хэлбэр</th>
+                <th>Have got хэрэглэх</th>
+                <th>Do / Does (Present simple) хэрэглэх</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Үгүйсгэх (-)</b></td>
+                <td>I <b>haven't got</b> a car.<br>She <b>hasn't got</b> a key.</td>
+                <td>I <b>don't have</b> a car.<br>She <b>doesn't have</b> a key.</td>
+              </tr>
+              <tr>
+                <td><b>Асуух (?)</b></td>
+                <td><b>Have you got</b> a camera?<br><b>Has he got</b> a car?</td>
+                <td><b>Do you have</b> a camera?<br><b>Does he have</b> a car?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">C. Богино хариулт (Short Answers)</h3>
+        <div class="example-pill">
+          • 'Have you got an umbrella?' &rarr; <b>'Yes, I have.' / 'No, I haven't.'</b><br>
+          • 'Has Ann got a car?' &rarr; <b>'Yes, she has.' / 'No, she hasn't.'</b><br>
+          • 'Do you have a camera?' &rarr; <b>'Yes, I do.' / 'No, I don't.'</b>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== 2. ДАСГАЛ АЖИЛЛАХ ==================== -->
+    <section id="tab-practice" class="tab-content">
+      
+      <!-- 9.1 -->
+      <div class="content-card">
+        <h3 class="content-title">9.1 Хураангуйлан бичнэ үү (Write the short forms with got: we've got, he hasn't got гэх мэт)</h3>
+        <div class="q-row">1. we have got &rarr; <input type="text" value="we've got" disabled style="background:#eaeded; width:120px;"></div>
+        <div class="q-row">2. he has got &rarr; <input type="text" data-ans="he's got" style="width:120px;"><span class="ans-feedback">he's got</span></div>
+        <div class="q-row">3. they have got &rarr; <input type="text" data-ans="they've got" style="width:120px;"><span class="ans-feedback">they've got</span></div>
+        <div class="q-row">4. she has not got &rarr; <input type="text" data-ans="she hasn't got" style="width:140px;"><span class="ans-feedback">she hasn't got</span></div>
+        <div class="q-row">5. it has got &rarr; <input type="text" data-ans="it's got" style="width:120px;"><span class="ans-feedback">it's got</span></div>
+        <div class="q-row">6. I have not got &rarr; <input type="text" data-ans="i haven't got" style="width:140px;"><span class="ans-feedback">I haven't got</span></div>
+      </div>
+
+      <!-- 9.2 -->
+      <div class="content-card">
+        <h3 class="content-title">9.2 've got, 's got, haven't got эсвэл hasn't got ашиглан бичнэ үү</h3>
+        <div class="q-row">1. Sarah goes everywhere by bicycle. She <input type="text" value="hasn't got" disabled style="background:#eaeded; width:110px;"> a car.</div>
+        <div class="q-row">2. They like animals. They <input type="text" data-ans="'ve got|have got" style="width:110px;"> three dogs and two cats.<span class="ans-feedback">'ve got</span></div>
+        <div class="q-row">3. Charles isn't happy. He <input type="text" data-ans="has got|'s got" style="width:110px;"> a lot of problems.<span class="ans-feedback">has got</span></div>
+        <div class="q-row">4. They don't read much. They <input type="text" data-ans="haven't got" style="width:120px;"> many books.<span class="ans-feedback">haven't got</span></div>
+        <div class="q-row">5. 'What's wrong?' 'I <input type="text" data-ans="'ve got|have got" style="width:110px;"> something in my eye.'<span class="ans-feedback">'ve got</span></div>
+        <div class="q-row">6. 'Where's my pen?' 'I don't know. I <input type="text" data-ans="haven't got" style="width:120px;"> it.'<span class="ans-feedback">haven't got</span></div>
+        <div class="q-row">7. Julia wants to go to the concert, but she <input type="text" data-ans="hasn't got" style="width:120px;"> a ticket.<span class="ans-feedback">hasn't got</span></div>
+      </div>
+
+      <!-- 9.3 -->
+      <div class="content-card">
+        <h3 class="content-title">9.3 Have got ашиглан асуулт зохионо уу (Have you got...? / Has he got...?)</h3>
+        <div class="q-row">1. (you / a camera?) &rarr; <input type="text" value="Have you got a camera?" disabled style="background:#eaeded; flex:1;"></div>
+        <div class="q-row">2. (you / a passport?) &rarr; <input type="text" data-ans="have you got a passport?|have you got a passport" style="flex:1;"><span class="ans-feedback">Have you got a passport?</span></div>
+        <div class="q-row">3. (your father / a car?) &rarr; <input type="text" data-ans="has your father got a car?|has your father got a car" style="flex:1;"><span class="ans-feedback">Has your father got a car?</span></div>
+        <div class="q-row">4. (Carol / many friends?) &rarr; <input type="text" data-ans="has carol got many friends?|has carol got many friends" style="flex:1;"><span class="ans-feedback">Has Carol got many friends?</span></div>
+        <div class="q-row">5. (how much money / you?) &rarr; <input type="text" data-ans="how much money have you got?|how much money have you got" style="flex:1;"><span class="ans-feedback">How much money have you got?</span></div>
+        <div class="q-row">6. (what kind of car / Julia?) &rarr; <input type="text" data-ans="what kind of car has julia got?|what kind of car has julia got" style="flex:1;"><span class="ans-feedback">What kind of car has Julia got?</span></div>
+      </div>
+
+      <!-- 9.4 -->
+      <div class="content-card">
+        <h3 class="content-title">9.4 Богино хариултуудыг гүйцээнэ үү (Yes, I have. / No, she hasn't. гэх мэт)</h3>
+        <div class="q-row">1. 'Have you got a car?' — 'No, <input type="text" data-ans="i haven't" style="width:120px;">.'<span class="ans-feedback">I haven't</span></div>
+        <div class="q-row">2. 'Has your brother got a job?' — 'Yes, <input type="text" data-ans="he has" style="width:120px;">.'<span class="ans-feedback">he has</span></div>
+        <div class="q-row">3. 'Have your parents got a house?' — 'Yes, <input type="text" data-ans="they have" style="width:120px;">.'<span class="ans-feedback">they have</span></div>
+        <div class="q-row">4. 'Have you got a headache?' — 'No, <input type="text" data-ans="i haven't" style="width:120px;">.'<span class="ans-feedback">I haven't</span></div>
+      </div>
+
+      <div class="btn-bar">
+        <button class="btn-check" onclick="checkAnswers()">Шалгах (Check)</button>
+        <button class="btn-reset" onclick="resetAnswers()">Цэвэрлэх (Reset)</button>
+      </div>
+
+      <div id="score-panel"></div>
+
+    </section>
+
+    <!-- ==================== 3. ХАРИУНЫ ТАЙЛБАР ==================== -->
+    <section id="tab-answers" class="tab-content">
+      
+      <div class="content-card">
+        <h3 class="content-title">Дасгалуудын зөв хариу ба дүрмийн тайлбар</h3>
+
+        <div class="key-item">
+          <h4>Exercise 9.1 Түлхүүр:</h4>
+          • 2. <b>he's got:</b> he + has got хураангуйлагдаж he's got болно.<br>
+          • 3. <b>they've got:</b> they + have got &rarr; they've got.<br>
+          • 4. <b>she hasn't got:</b> she + has not got &rarr; she hasn't got.<br>
+          • 5. <b>it's got:</b> it + has got &rarr; it's got.<br>
+          • 6. <b>I haven't got:</b> I + have not got &rarr; I haven't got.
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 9.2 Түлхүүр:</h4>
+          • 2. <b>'ve got:</b> They эзэн бие тул 've got (have got) авна.<br>
+          • 3. <b>has got / 's got:</b> Чарльз баяр жаргалгүй байгаа шалтгаан нь асуудлууд түүнд байгаа учраас.<br>
+          • 4. <b>haven't got:</b> Ном их уншдаггүй тул олон ном байхгүй (haven't got).<br>
+          • 5. <b>'ve got:</b> Нүдэнд ямар нэг зүйл орчихсон байгааг заана.<br>
+          • 6. <b>haven't got:</b> Надад үзэг чинь алга байна.<br>
+          • 7. <b>hasn't got:</b> Гэхдээ (but) тасалбар байхгүй.
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 9.3 Түлхүүр:</h4>
+          • 2. <b>Have you got a passport?</b> &rarr; You тул Have урд гарна.<br>
+          • 3. <b>Has your father got a car?</b> &rarr; Your father = he тул Has урд гарна.<br>
+          • 4. <b>Has Carol got many friends?</b> &rarr; Carol = she тул Has асууна.<br>
+          • 5. <b>How much money have you got?</b> &rarr; How much money + have + you + got?<br>
+          • 6. <b>What kind of car has Julia got?</b> &rarr; What kind of car + has + Julia + got?
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 9.4 Түлхүүр:</h4>
+          • Богино хариултанд "got" үгийг оруулахгүй, зөвхөн have / haven't / has / hasn't-оор дуусгана. (Жишээ нь: <i>Yes, I have.</i> Зөв | <i>Yes, I have got.</i> Буруу).
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>
+
+<script>
+function switchTab(tabKey) {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(t => t.classList.remove('active'));
+  contents.forEach(c => c.classList.remove('active'));
+
+  if (tabKey === 'theory') {
+    tabs[0].classList.add('active');
+    document.getElementById('tab-theory').classList.add('active');
+  } else if (tabKey === 'practice') {
+    tabs[1].classList.add('active');
+    document.getElementById('tab-practice').classList.add('active');
+  } else if (tabKey === 'answers') {
+    tabs[2].classList.add('active');
+    document.getElementById('tab-answers').classList.add('active');
+  }
+}
+
+function clean(str) {
+  return str.trim().toLowerCase().replace(/[.,!?'"]/g, "").replace(/\s+/g, " ");
+}
+
+function checkAnswers() {
+  const inputs = document.querySelectorAll("input[data-ans]");
+  let correctCount = 0;
+  const total = inputs.length;
+
+  inputs.forEach(input => {
+    const val = clean(input.value);
+    const answers = input.getAttribute("data-ans").split("|").map(a => clean(a));
+    const feedback = input.parentElement.querySelector(".ans-feedback");
+
+    if (answers.includes(val)) {
+      input.className = "correct";
+      correctCount++;
+      if (feedback) feedback.style.display = "none";
+    } else {
+      input.className = "wrong";
+      if (feedback) feedback.style.display = "inline";
+    }
+  });
+
+  const percent = Math.round((correctCount / total) * 100);
+  const panel = document.getElementById("score-panel");
+  panel.style.display = "block";
+  panel.style.backgroundColor = percent >= 75 ? "var(--correct-bg)" : "var(--wrong-bg)";
+  panel.style.color = percent >= 75 ? "var(--correct-border)" : "var(--wrong-border)";
+  panel.style.border = `1.5px solid ${percent >= 75 ? 'var(--correct-border)' : 'var(--wrong-border)'}`;
+  panel.innerHTML = `Таны нийт оноо: ${correctCount} / ${total} (${percent}%)`;
+  panel.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAnswers() {
+  const inputs = document.querySelectorAll("input[data-ans]");
+  inputs.forEach(input => {
+    input.value = "";
+    input.className = "";
+    const feedback = input.parentElement.querySelector(".ans-feedback");
+    if (feedback) feedback.style.display = "none";
+  });
+  const panel = document.getElementById("score-panel");
+  panel.style.display = "none";
+}
+</script>
+
+</body>
+</html>
