@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Нийт нээгдсэн бүлгийн тоо (Шинэ unit нэмэх бүртээ энэ тоог л ихэсгэнэ)
-  const TOTAL_UNITS = 10; 
+  const TOTAL_UNITS = 115; 
 
   // Одоогийн байгаа хуудсыг тодорхойлох
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
