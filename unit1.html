@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit1: am / is / are</title>
+<style>
+  :root {
+    --primary: #c0392b;
+    --primary-dark: #962d22;
+    --primary-light: #fadbd8;
+    --dark: #2c3e50;
+    --gray-bg: #f8f9fa;
+    --card-border: #e2e8f0;
+    --success: #27ae60;
+    --error: #e74c3c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: #f1f2f6;
+    margin: 0;
+    padding: 12px;
+  }
+  .app-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  header {
+    background: var(--primary);
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+  }
+  header h1 { margin: 0; font-size: 22px; }
+  header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
+
+  /* Navigation Tabs */
+  .tab-nav {
+    display: flex;
+    background: #ecf0f1;
+    border-bottom: 2px solid #bdc3c7;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 14px 10px;
+    border: none;
+    background: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #7f8c8d;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .tab-btn:hover { background: #e2e6ea; }
+  .tab-btn.active {
+    color: var(--primary);
+    background: #ffffff;
+    border-bottom: 3px solid var(--primary);
+  }
+
+  .tab-content { display: none; padding: 24px; }
+  .tab-content.active { display: block; }
+
+  /* Theory Section Styles */
+  .theory-card {
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 20px;
+    background: #ffffff;
+  }
+  .theory-card h3 {
+    margin-top: 0;
+    color: var(--primary);
+    border-bottom: 1.5px solid var(--primary-light);
+    padding-bottom: 6px;
+    font-size: 17px;
+  }
+  .trans-list { list-style: none; padding-left: 0; }
+  .trans-list li {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    background: var(--gray-bg);
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .trans-list b { color: var(--primary-dark); }
+  .trans-list i { color: #555; }
+  table.grammar-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  table.grammar-table th, table.grammar-table td {
+    border: 1px solid #dfe4ea;
+    padding: 8px 10px;
+    text-align: left;
+  }
+  table.grammar-table th { background: var(--primary-light); color: var(--primary-dark); }
+
+  /* Exercise Styles */
+  .ex-box {
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    background: #fff;
+  }
+  .ex-header {
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .q-line {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+  }
+  input[type="text"] {
+    padding: 6px 10px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+  }
+  input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 5px rgba(192, 57, 43, 0.25);
+  }
+  input.correct {
+    border-color: var(--success) !important;
+    background-color: #eafaf1 !important;
+  }
+  input.wrong {
+    border-color: var(--error) !important;
+    background-color: #fdedec !important;
+  }
+  .inline-hint {
+    display: none;
+    font-size: 12px;
+    color: var(--error);
+    font-weight: 500;
+  }
+
+  .ctrl-bar {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+  }
+  button.action-btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .btn-check { background: var(--success); color: white; }
+  .btn-reset { background: #7f8c8d; color: white; }
+  .score-alert {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Answer Key Styles */
+  .key-group {
+    background: var(--gray-bg);
+    border-left: 4px solid var(--primary);
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+  .key-group h4 { margin: 0 0 6px 0; color: var(--primary-dark); }
+  .key-group p { margin: 4px 0; font-size: 14px; }
+  .key-item { margin-bottom: 4px; }
+  .key-ans { font-weight: bold; color: var(--success); }
+  .key-expl { font-size: 13px; color: #636e72; }
+
+  @media (max-width: 600px) {
+    .tab-btn { font-size: 13px; padding: 10px 4px; }
+    .q-line { flex-direction: column; align-items: flex-start; }
+    input[type="text"] { width: 100% !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  <header>
+    <h1>Essential Grammar in Use</h1>
+    <p>UNIT 1: am / is / are (Цогц сургалтын систем)</p>
+  </header>
+ <!-- Бүлэг хооронд шилжих товчнууд (Unit 1 дээр) -->
+<div style="background: #263849; padding: 10px; text-align: center; display: flex; justify-content: center; gap: 12px;">
+  <a href="index.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">🏠 Нүүр</a>
+  <a href="unit1.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #b83b26;">Unit 1</a>
+  <a href="unit2.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 2</a>
+  <a href="unit3.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 3</a>
+  <a href="unit4.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 4</a>
+  <a href="unit5.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 5</a>
+  <a href="unit6.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 6</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 7</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 8</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 9</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 10</a>
+
+</div>
+
+  <!-- Цэс солих товчнууд -->
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('theory')">📖 1. Онол ба Тайлбар</button>
+    <button class="tab-btn" onclick="switchTab('exercise')">✍️ 2. Дасгал ажиллах</button>
+    <button class="tab-btn" onclick="switchTab('answers')">🗝️ 3. Хариуны тайлбар</button>
+  </div>
+
+  <!-- 1-Р ТАБ: ОНОЛЫН ДЭЛГЭРЭНГҮЙ ХЭСЭГ -->
+  <div id="tab-theory" class="tab-content active">
+    <div class="theory-card">
+      <h3>A. Танилцуулга ба to be үйл үгийн үүрэг</h3>
+      <p><b>To be (am, is, are)</b> нь аливаа үйл хөдлөл заахгүй, харин субъектийн нэр, нас, мэргэжил, үндэс угсаа, мэдрэмж, байршлыг илэрхийлдэг[].</p>
+      <ul class="trans-list">
+        <li><b>My name is Lisa.</b> &rarr; <i>Миний нэр Лиза[].</i></li>
+        <li><b>I'm 22.</b> &rarr; <i>Би 22 настай[].</i> (Англи хэлэнд насыг 'have' биш 'to be'-ээр хэлнэ)</li>
+        <li><b>I'm American. I'm from Chicago.</b> &rarr; <i>Би америк хүн. Би Чикагогоос ирсэн[].</i></li>
+        <li><b>I'm a student.</b> &rarr; <i>Би оюутан[].</i></li>
+        <li><b>My father is a doctor and my mother is a journalist.</b> &rarr; <i>Манай аав эмч, ээж маань сэтгүүлч[].</i></li>
+        <li><b>My favourite colour is blue.</b> &rarr; <i>Миний дуртай өнгө цэнхэр[].</i></li>
+        <li><b>My favourite sports are football and swimming.</b> &rarr; <i>Миний дуртай спорт хөлбөмбөг, усанд сэлэлт[].</i></li>
+        <li><b>I'm interested in art.</b> &rarr; <i>Би урлаг сонирхдог[].</i> (be interested in = сонирхдог байх)</li>
+        <li><b>I'm not interested in politics.</b> &rarr; <i>Би улс төр сонирхдоггүй[].</i></li>
+      </ul>
+    </div>
+
+    <div class="theory-card">
+      <h3>B. Хувирал ба хураангуйлал (Positive & Negative)</h3>
+      <table class="grammar-table">
+        <thead>
+          <tr>
+            <th>Эзэн бие</th>
+            <th>Батлах хэлбэр[]</th>
+            <th>Батлах хураангуй[]</th>
+            <th>Үгүйсгэх хэлбэр[]</th>
+            <th>Үгүйсгэх хураангуй[]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>I</b></td>
+            <td>I am</td>
+            <td><b>I'm</b></td>
+            <td>I am not</td>
+            <td><b>I'm not</b></td>
+          </tr>
+          <tr>
+            <td><b>He / She / It</b></td>
+            <td>he is<br>she is<br>it is</td>
+            <td><b>he's<br>she's<br>it's</b></td>
+            <td>he is not<br>she is not<br>it is not</td>
+            <td><b>he's not</b> эсвэл <b>he isn't<br>she's not</b> эсвэл <b>she isn't<br>it's not</b> эсвэл <b>it isn't</b></td>
+          </tr>
+          <tr>
+            <td><b>We / You / They</b></td>
+            <td>we are<br>you are<br>they are</td>
+            <td><b>we're<br>you're<br>they're</b></td>
+            <td>we are not<br>you are not<br>they are not</td>
+            <td><b>we're not</b> эсвэл <b>we aren't<br>you're not</b> эсвэл <b>you aren't<br>they're not</b> эсвэл <b>they aren't</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="theory-card">
+      <h3>C. Бодит ярианы жишээ ба тусгай хэллэгүүд</h3>
+      <ul class="trans-list">
+        <li><b>I'm cold. Can you close the window, please?</b> &rarr; <i>Миний даарч байна. Цонхоо хаагаад өгөөч?[]</i></li>
+        <li><b>I'm 32 years old. My sister is 29.</b> &rarr; <i>Би 32 настай. Дүү маань 29-тэй[].</i></li>
+        <li><b>Steve is ill. He's in bed.</b> &rarr; <i>Стив өвчтэй байгаа. Тэр орондоо хэвтэж байна[].</i></li>
+        <li><b>My brother is scared of dogs.</b> &rarr; <i>Манай ах нохойноос айдаг[].</i> (be scared of = айдаг байх)</li>
+        <li><b>It's ten o'clock. You're late again.</b> &rarr; <i>10 цаг болж байна. Чи дахиад л хоцорчихлоо[].</i></li>
+        <li><b>Ann and I are good friends.</b> &rarr; <i>Анна бид хоёр сайн найзууд[].</i> (Ann and I = We тул are авна)</li>
+        <li><b>Your keys are on the table.</b> &rarr; <i>Түлхүүрүүд чинь ширээн дээр байна[].</i></li>
+        <li><b>Those people aren't English. They're Australian.</b> &rarr; <i>Тэр хүмүүс англи биш. Австрали хүмүүс[].</i></li>
+      </ul>
+      <p><b>Заах үгсийн хураангуйлал[]:</b></p>
+      <ul class="trans-list">
+        <li><b>that's = that is</b> &rarr; <i>Thank you. That's very kind of you. (Баярлалаа. Маш сэтгэлтэй юм аа.)[]</i></li>
+        <li><b>there's = there is</b> &rarr; <i>Look! There's Chris. (Хараач! Тэнд Крис байна.)[]</i></li>
+        <li><b>here's = here is</b> &rarr; <i>'Here's your key.' 'Thank you.' ('Энэ таны түлхүүр.' 'Баярлалаа.')[]</i></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2-Р ТАБ: ДАСГАЛ БӨГЛӨХ ХЭСЭГ -->
+  <div id="tab-exercise" class="tab-content">
+    
+    <!-- 1.1 -->
+    <div class="ex-box">
+      <div class="ex-header">1.1 Write the short form (she's / we aren't etc.)[]</div>
+      <div class="q-line">1. she is &rarr; <input type="text" value="she's" disabled style="width:70px; background:#eee;"></div>
+      <div class="q-line">2. they are &rarr; <input type="text" data-ans="they're" style="width:100px;"><span class="inline-hint">they're</span></div>
+      <div class="q-line">3. it is not &rarr; <input type="text" data-ans="it's not|it isn't" style="width:130px;"><span class="inline-hint">it's not / it isn't</span></div>
+      <div class="q-line">4. that is &rarr; <input type="text" data-ans="that's" style="width:100px;"><span class="inline-hint">that's</span></div>
+      <div class="q-line">5. I am not &rarr; <input type="text" data-ans="i'm not" style="width:100px;"><span class="inline-hint">I'm not</span></div>
+      <div class="q-line">6. you are not &rarr; <input type="text" data-ans="you're not|you aren't" style="width:130px;"><span class="inline-hint">you're not / you aren't</span></div>
+    </div>
+
+    <!-- 1.2 -->
+    <div class="ex-box">
+      <div class="ex-header">1.2 Write am, is or are.[]</div>
+      <div class="q-line">1. The weather <input type="text" value="is" disabled style="width:45px; background:#eee;"> nice today.</div>
+      <div class="q-line">2. I <input type="text" data-ans="am" style="width:50px;"> not rich.<span class="inline-hint">am</span></div>
+      <div class="q-line">3. This bag <input type="text" data-ans="is" style="width:50px;"> heavy.<span class="inline-hint">is</span></div>
+      <div class="q-line">4. These bags <input type="text" data-ans="are" style="width:50px;"> heavy.<span class="inline-hint">are</span></div>
+      <div class="q-line">5. Look! There <input type="text" data-ans="is" style="width:50px;"> Helen.<span class="inline-hint">is</span></div>
+      <div class="q-line">6. My brother and I <input type="text" data-ans="are" style="width:50px;"> good tennis players.<span class="inline-hint">are</span></div>
+      <div class="q-line">7. Emily <input type="text" data-ans="is" style="width:50px;"> at home. Her children <input type="text" data-ans="are" style="width:50px;"> at school.<span class="inline-hint">is ... are</span></div>
+      <div class="q-line">8. I <input type="text" data-ans="am" style="width:50px;"> a taxi driver. My sister <input type="text" data-ans="is" style="width:50px;"> a nurse.<span class="inline-hint">am ... is</span></div>
+    </div>
+
+    <!-- 1.3 -->
+    <div class="ex-box">
+      <div class="ex-header">1.3 Complete the sentences.[]</div>
+      <div class="q-line">1. Steve is ill. <input type="text" value="He's" disabled style="width:65px; background:#eee;"> in bed.</div>
+      <div class="q-line">2. I'm not hungry, but <input type="text" data-ans="i'm" style="width:65px;"> thirsty.<span class="inline-hint">I'm</span></div>
+      <div class="q-line">3. Mr Thomas is a very old man. <input type="text" data-ans="he's" style="width:65px;"> 98.<span class="inline-hint">He's</span></div>
+      <div class="q-line">4. These chairs aren't beautiful, but <input type="text" data-ans="they're" style="width:75px;"> comfortable.<span class="inline-hint">they're</span></div>
+      <div class="q-line">5. The weather is nice today. <input type="text" data-ans="it's" style="width:65px;"> warm and sunny.<span class="inline-hint">It's</span></div>
+      <div class="q-line">6. "<input type="text" data-ans="you're" style="width:75px;"> late." — "No, I'm not. I'm early!"<span class="inline-hint">You're</span></div>
+      <div class="q-line">7. Catherine isn't at home. <input type="text" data-ans="she's" style="width:65px;"> at work.<span class="inline-hint">She's</span></div>
+      <div class="q-line">8. "<input type="text" data-ans="here's" style="width:75px;"> your coat." — "Oh, thank you very much."<span class="inline-hint">Here's</span></div>
+    </div>
+
+    <!-- 1.5 -->
+    <div class="ex-box">
+      <div class="ex-header">1.5 Write sentences for the pictures (angry, cold, hot, hungry, scared, thirsty)[]</div>
+      <div class="q-line">1. (Зураг 1) &rarr; <input type="text" value="She's thirsty." disabled style="width:160px; background:#eee;"></div>
+      <div class="q-line">2. (Зураг 2 - даарсан 2 хүн) &rarr; <input type="text" data-ans="they're cold|they are cold" style="width:200px;"><span class="inline-hint">They're cold.</span></div>
+      <div class="q-line">3. (Зураг 3 - халууцсан хүн) &rarr; <input type="text" data-ans="he's hot|he is hot" style="width:200px;"><span class="inline-hint">He's hot.</span></div>
+      <div class="q-line">4. (Зураг 4 - могойноос айсан) &rarr; <input type="text" data-ans="he's scared|he is scared" style="width:200px;"><span class="inline-hint">He's scared.</span></div>
+      <div class="q-line">5. (Зураг 5 - өлссөн гэр бүл) &rarr; <input type="text" data-ans="they're hungry|they are hungry" style="width:200px;"><span class="inline-hint">They're hungry.</span></div>
+      <div class="q-line">6. (Зураг 6 - уурласан эмэгтэй) &rarr; <input type="text" data-ans="she's angry|she is angry" style="width:200px;"><span class="inline-hint">She's angry.</span></div>
+    </div>
+
+    <!-- 1.6 -->
+    <div class="ex-box">
+      <div class="ex-header">1.6 Write true sentences (Use is/isn't or are/aren't)[]</div>
+      <div class="q-line">1. (it / windy today) &rarr; <input type="text" data-ans="it's windy today|it is windy today|it isn't windy today|it's not windy today" style="width:280px;"><span class="inline-hint">It's windy today. / It isn't windy today.</span></div>
+      <div class="q-line">2. (my hands / cold) &rarr; <input type="text" data-ans="my hands are cold|my hands aren't cold|my hands are not cold" style="width:280px;"><span class="inline-hint">My hands are cold. / My hands aren't cold.</span></div>
+      <div class="q-line">3. (Brazil / a very big country) &rarr; <input type="text" data-ans="brazil is a very big country" style="width:280px;"><span class="inline-hint">Brazil is a very big country.</span></div>
+      <div class="q-line">4. (diamonds / cheap) &rarr; <input type="text" data-ans="diamonds aren't cheap|diamonds are not cheap" style="width:280px;"><span class="inline-hint">Diamonds aren't cheap.</span></div>
+      <div class="q-line">5. (Toronto / in the US) &rarr; <input type="text" data-ans="toronto isn't in the us|toronto is not in the us" style="width:280px;"><span class="inline-hint">Toronto isn't in the US.</span></div>
+    </div>
+
+    <div class="ctrl-bar">
+      <button class="action-btn btn-check" onclick="evaluateExercises()">Шалгах (Check Answers)</button>
+      <button class="action-btn btn-reset" onclick="clearExercises()">Цэвэрлэх (Reset)</button>
+    </div>
+
+    <div id="score-box" class="score-alert"></div>
+  </div>
+
+  <!-- 3-Р ТАБ: ХАРИУНЫ НАРИЙВЧИЛСАН ТАЙЛБАР -->
+  <div id="tab-answers" class="tab-content">
+    
+    <div class="key-group">
+      <h4>1.1 Хураангуйлах дасгалын тайлбар[]</h4>
+      <p class="key-item">2. <span class="key-ans">they're</span> — <i>they are үгийн are-аас 'a' үсгийг хасаж апостроф авна[].</i></p>
+      <p class="key-item">3. <span class="key-ans">it's not / it isn't</span> — <i>it is not нь 2 янзаар хураагдана[].</i></p>
+      <p class="key-item">4. <span class="key-ans">that's</span> — <i>that is нь нийлж that's болно[].</i></p>
+      <p class="key-item">5. <span class="key-ans">I'm not</span> — <i>I am not нь зөвхөн I'm not гэж хураагдана (amn't гэсэн үг байхгүй)[].</i></p>
+      <p class="key-item">6. <span class="key-ans">you're not / you aren't</span> — <i>you are not-ийг 2 янзаар хураана[].</i></p>
+    </div>
+
+    <div class="key-group">
+      <h4>1.2 am, is, are тохируулах дасгалын тайлбар[]</h4>
+      <p class="key-item">2. I <span class="key-ans">am</span> not rich. — <i>I бие дээр заавал am ирнэ[].</i></p>
+      <p class="key-item">3. This bag <span class="key-ans">is</span> heavy. — <i>This bag нь ганц тооны эд юмс (it) тул is[].</i></p>
+      <p class="key-item">4. These bags <span class="key-ans">are</span> heavy. — <i>These bags нь олон тоо (they) тул are[].</i></p>
+      <p class="key-item">5. Look! There <span class="key-ans">is</span> Helen. — <i>Хэлэн нь 3-р биеийн ганц тоо (she) тул There is[].</i></p>
+      <p class="key-item">6. My brother and I <span class="key-ans">are</span> good tennis players. — <i>Ах бид 2 нийлээд Бид (We) болох тул are авна[].</i></p>
+      <p class="key-item">7. Emily <span class="key-ans">is</span> at home. Her children <span class="key-ans">are</span> at school. — <i>Emily (she) &rarr; is, children (олон тоо) &rarr; are[].</i></p>
+      <p class="key-item">8. I <span class="key-ans">am</span> a taxi driver. My sister <span class="key-ans">is</span> a nurse. — <i>I &rarr; am, sister (she) &rarr; is[].</i></p>
+    </div>
+
+    <div class="key-group">
+      <h4>1.3 Өгүүлбэр гүйцээх дасгалын тайлбар[]</h4>
+      <p class="key-item">2. <span class="key-ans">I'm</span> thirsty. — <i>Би цангаж байна[].</i></p>
+      <p class="key-item">3. <span class="key-ans">He's</span> 98. — <i>Ноён Томас (he) 98 настай[].</i></p>
+      <p class="key-item">4. <span class="key-ans">they're</span> comfortable. — <i>Эдгээр сандлууд (they) эвтэйхэн[].</i></p>
+      <p class="key-item">5. <span class="key-ans">It's</span> warm and sunny. — <i>Цаг агаарыг It төлөөний үгээр заана[].</i></p>
+      <p class="key-item">6. <span class="key-ans">You're</span> late. — <i>Чи хоцорлоо[].</i></p>
+      <p class="key-item">7. <span class="key-ans">She's</span> at work. — <i>Кэтрин (she) ажил дээрээ байна[].</i></p>
+      <p class="key-item">8. <span class="key-ans">Here's</span> your coat. — <i>Энэ таны хүрэм[].</i></p>
+    </div>
+
+    <div class="key-group">
+      <h4>1.5 Зургийн дагуу бичих дасгалын тайлбар[]</h4>
+      <p class="key-item">2. <span class="key-ans">They're cold.</span> — <i>Тэдний даарч байна (олон тоо тул they're)[].</i></p>
+      <p class="key-item">3. <span class="key-ans">He's hot.</span> — <i>Тэр халууцаж байна (эрэгтэй тул he's)[].</i></p>
+      <p class="key-item">4. <span class="key-ans">He's scared.</span> — <i>Тэр айж байна[].</i></p>
+      <p class="key-item">5. <span class="key-ans">They're hungry.</span> — <i>Тэд өлсөж байна[].</i></p>
+      <p class="key-item">6. <span class="key-ans">She's angry.</span> — <i>Тэр эмэгтэй уурлаж байна[].</i></p>
+    </div>
+
+    <div class="key-group">
+      <h4>1.6 Бодит баримт ба үгүйсгэлийн тайлбар[]</h4>
+      <p class="key-item">1. <span class="key-ans">It's windy today. / It isn't windy today.</span>[]</p>
+      <p class="key-item">2. <span class="key-ans">My hands are cold. / My hands aren't cold.</span> — <i>Гарууд олон тоо тул are/aren't[].</i></p>
+      <p class="key-item">3. <span class="key-ans">Brazil is a very big country.</span> — <i>Бразил том орон тул зөвхөн батлах хэлбэр[].</i></p>
+      <p class="key-item">4. <span class="key-ans">Diamonds aren't cheap.</span> — <i>Алмааз хямд биш тул үгүйсгэнэ[].</i></p>
+      <p class="key-item">5. <span class="key-ans">Toronto isn't in the US.</span> — <i>Торонто Канадад байдаг тул АНУ-д биш гэж үгүйсгэнэ[].</i></p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+  document.getElementById('tab-' + tabId).classList.add('active');
+  const index = tabId === 'theory' ? 0 : (tabId === 'exercise' ? 1 : 2);
+  document.querySelectorAll('.tab-btn')[index].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function cleanInput(val) {
+  return val.trim().toLowerCase().replace(/[.,!?'"]/g, "").replace(/\s+/g, " ");
+}
+
+function evaluateExercises() {
+  const inputs = document.querySelectorAll("#tab-exercise input[data-ans]");
+  let right = 0;
+  let total = inputs.length;
+
+  inputs.forEach(input => {
+    const userVal = cleanInput(input.value);
+    const targetAnswers = input.getAttribute("data-ans").split("|").map(a => cleanInput(a));
+    const hint = input.parentElement.querySelector(".inline-hint");
+
+    if (targetAnswers.includes(userVal)) {
+      input.className = "correct";
+      right++;
+      if (hint) hint.style.display = "none";
+    } else {
+      input.className = "wrong";
+      if (hint) hint.style.display = "inline";
+    }
+  });
+
+  const percentage = Math.round((right / total) * 100);
+  const scoreBox = document.getElementById("score-box");
+  scoreBox.style.display = "block";
+  scoreBox.style.backgroundColor = percentage >= 75 ? "#eafaf1" : "#fdedec";
+  scoreBox.style.color = percentage >= 75 ? "#27ae60" : "#e74c3c";
+  scoreBox.innerHTML = `Үр дүн: ${right} / ${total} (${percentage}%)`;
+  scoreBox.scrollIntoView({ behavior: 'smooth' });
+}
+
+function clearExercises() {
+  const inputs = document.querySelectorAll("#tab-exercise input[data-ans]");
+  inputs.forEach(input => {
+    input.value = "";
+    input.className = "";
+    const hint = input.parentElement.querySelector(".inline-hint");
+    if (hint) hint.style.display = "none";
+  });
+  document.getElementById("score-box").style.display = "none";
+}
+</script>
+
+</body>
+</html>

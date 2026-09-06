@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit2 - am/is/are (questions)</title>
+<style>
+  :root {
+    --primary: #b83b26;
+    --primary-dark: #962d22;
+    --nav-dark: #263849;
+    --btn-inactive: #34495e;
+    --text-main: #2c3e50;
+    --text-muted: #555555;
+    --bg-page: #f0f3f4;
+    --border-color: #e2e8f0;
+    --pill-bg: #f8f9fa;
+    --correct-bg: #eafaf1;
+    --correct-border: #27ae60;
+    --wrong-bg: #fdedec;
+    --wrong-border: #e74c3c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-page);
+    margin: 0;
+    padding: 20px 10px 40px;
+  }
+
+  /* Unit 1 шиг төвдөө байрлах үндсэн карт */
+  .app-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #dcdde1;
+  }
+
+  /* Улаан толгой хэсэг */
+  header {
+    background: var(--primary);
+    color: #ffffff;
+    text-align: center;
+    padding: 22px 15px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  header p {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    opacity: 0.95;
+  }
+
+  /* Unit 1 ба Unit 2 шилжих бараан хэсэг */
+  .unit-nav {
+    background: var(--nav-dark);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .unit-btn {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    background: var(--btn-inactive);
+    transition: all 0.2s ease;
+  }
+  .unit-btn:hover {
+    background: #415b76;
+  }
+  /* Идэвхтэй (сонгогдсон) нь УЛААН болно */
+  .unit-btn.active {
+    background: var(--primary) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  }
+
+  /* Навигаци табууд (1. Онол, 2. Дасгал, 3. Хариу) */
+  .tab-nav {
+    display: flex;
+    background: #ecf0f1;
+    border-bottom: 2px solid #bdc3c7;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 13px 8px;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 14.5px;
+    font-weight: bold;
+    color: #7f8c8d;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover {
+    color: var(--primary);
+    background: #e5e8e8;
+  }
+  .tab-btn.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+    background: #ffffff;
+  }
+
+  /* Доторх агуулгын хэсэг */
+  .main-content {
+    padding: 24px;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Хүрээтэй картууд */
+  .content-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .content-title {
+    color: var(--primary);
+    font-size: 16.5px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 14px;
+    border-bottom: 1.5px solid #fadbd8;
+    padding-bottom: 6px;
+  }
+
+  /* Саарал дэвсгэртэй жишээ өгүүлбэрүүд */
+  .example-pill {
+    background: var(--pill-bg);
+    border-radius: 6px;
+    padding: 9px 14px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+  }
+  .example-pill b {
+    color: var(--primary-dark);
+  }
+  .example-pill span.trans {
+    color: var(--text-muted);
+    font-style: italic;
+    margin-left: 6px;
+  }
+
+  /* Хүснэгт */
+  .table-box {
+    overflow-x: auto;
+    margin: 14px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+  }
+  th {
+    background-color: #fbf0ee;
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+
+  /* Дасгалын талбарууд */
+  .q-row {
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+  }
+  input[type="text"] {
+    padding: 7px 11px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14.5px;
+    outline: none;
+    transition: all 0.2s;
+    background: #fff;
+  }
+  input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184, 59, 38, 0.12);
+  }
+  input.correct {
+    border-color: var(--correct-border) !important;
+    background-color: var(--correct-bg) !important;
+  }
+  input.wrong {
+    border-color: var(--wrong-border) !important;
+    background-color: var(--wrong-bg) !important;
+  }
+  .ans-feedback {
+    display: none;
+    font-size: 12.5px;
+    color: var(--wrong-border);
+    font-weight: 600;
+  }
+
+  /* Товчлуурууд */
+  .btn-bar {
+    position: sticky;
+    bottom: 15px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    display: flex;
+    gap: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-top: 25px;
+  }
+  .btn-check {
+    flex: 2;
+    background: #27ae60;
+    color: #fff;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn-check:hover { background: #219653; }
+  .btn-reset {
+    flex: 1;
+    background: #7f8c8d;
+    color: #fff;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn-reset:hover { background: #636e72; }
+
+  #score-panel {
+    display: none;
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16.5px;
+    font-weight: 800;
+  }
+
+  /* Хариуны тайлбар картууд */
+  .key-item {
+    border-left: 4px solid var(--primary);
+    background: #fdfefe;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid var(--border-color);
+    border-left-width: 4px;
+    border-left-color: var(--primary);
+  }
+  .key-item h4 { margin: 0 0 6px 0; color: var(--primary); font-size: 15px; }
+
+  @media (max-width: 650px) {
+    .app-container { border-radius: 0; margin: 0; }
+    body { padding: 0; }
+    input[type="text"] { width: 100% !important; }
+    .q-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  
+  <!-- ДЭЭД ТОЛГОЙ -->
+  <header>
+    <h1>Essential Grammar in Use</h1>
+    <p>UNIT 2: am / is / are (questions) (Цогц сургалтын систем)</p>
+  </header>
+
+ <!-- Бүлэг хооронд шилжих товчнууд (Unit 2 дээр) -->
+<div style="background: #263849; padding: 10px; text-align: center; display: flex; justify-content: center; gap: 12px;">
+  <a href="index.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">🏠 Нүүр</a>
+  <a href="unit1.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 1</a>
+  <a href="unit2.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #b83b26;">Unit 2</a>
+  <a href="unit3.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 3</a>
+  <a href="unit4.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 4</a>
+  <a href="unit5.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 5</a>
+  <a href="unit6.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 6</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 7</a>
+ <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 8</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 9</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 10</a>
+</div>
+
+  <!-- ТАБ НАВИГАЦИ -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('theory')">📖 1. Онол ба Тайлбар</button>
+    <button class="tab-btn" onclick="switchTab('practice')">✍️ 2. Дасгал ажиллах</button>
+    <button class="tab-btn" onclick="switchTab('answers')">🔑 3. Хариуны тайлбар</button>
+  </nav>
+
+  <div class="main-content">
+
+    <!-- ==================== 1. ОНОЛ БА ТАЙЛБАР ==================== -->
+    <section id="tab-theory" class="tab-content active">
+      
+      <div class="content-card">
+        <h3 class="content-title">A. Асуулт тавих зарчим ба to be үйл үгийн үүрэг</h3>
+        <p>Ердийн өгүүлбэрт эзэн биеийн (subject) ард ордог <b>am / is / are</b> үйл үг нь асуух өгүүлбэр болоход эзэн биеийнхээ <b>урд</b> гарч ирдэг[].</p>
+
+        <div class="example-pill">
+          <b>'Am I late?' 'No, you're on time.'</b> <span class="trans">&rarr; "Би хоцорчихсон уу?" "Үгүй ээ, та цагтаа ирлээ."[]</span>
+        </div>
+        <div class="example-pill">
+          <b>'Is your mother at home?' 'No, she's out.'</b> <span class="trans">&rarr; "Ээж тань гэртээ байна уу?" "Үгүй ээ, гадагшаа гарсан."[]</span>
+        </div>
+        <div class="example-pill">
+          <b>'Are your parents at home?' 'No, they're out.'</b> <span class="trans">&rarr; "Аав ээж хоёр тань гэртээ байгаа юу?" "Үгүй ээ, тэд гарсан."[]</span>
+        </div>
+        <div class="example-pill">
+          <b>'Is it cold in your room?' 'Yes, a little.'</b> <span class="trans">&rarr; "Өрөөнд тань хүйтэн байна уу?" "Тийм ээ, бага зэрэг."[]</span>
+        </div>
+        <div class="example-pill">
+          <b>Your shoes are nice. Are they new?</b> <span class="trans">&rarr; "Гутал тань гоё юм аа. Шинэ юм уу?"[]</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">B. Үгийн дараалал (Word Order)</h3>
+        <p>Асуултад эзэн бие болон нэр үгийг үйл үгийнхээ (am/is/are) ард заавал тавих дүрмийг анхаарна уу[]:</p>
+        <div class="example-pill">
+          <b>Is she at home? / Is your mother at home?</b> <span class="trans">(Зөв)[] &nbsp;|&nbsp; <i>Is at home your mother?</i> (БУРУУ)[]</span>
+        </div>
+        <div class="example-pill">
+          <b>Are they new? / Are your shoes new?</b> <span class="trans">(Зөв)[] &nbsp;|&nbsp; <i>Are new your shoes?</i> (БУРУУ)[]</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">C. Асуух үгтэй асуултууд (Where / What / Who / How / Why)</h3>
+        <p>Тусгай асуух үгс өгүүлбэрийн хамгийн эхэнд байрлаж, араас нь <b>am / is / are + Эзэн бие</b> орно[].</p>
+        
+        <div class="example-pill">
+          <b>Where is your mother? Is she at home?</b> <span class="trans">&rarr; Таны ээж хаана байна? Гэртээ байгаа юу?[]</span>
+        </div>
+        <div class="example-pill">
+          <b>'Where are you from?' 'Canada.'</b> <span class="trans">&rarr; "Та хаанаас ирсэн бэ?" "Канадаас."[]</span>
+        </div>
+        <div class="example-pill">
+          <b>'What colour is your car?' 'It's red.'</b> <span class="trans">&rarr; "Таны машин ямар өнгөтэй вэ?" "Улаан."[]</span>
+        </div>
+        <div class="example-pill">
+          <b>'How old is Joe?' 'He's 24.'</b> <span class="trans">&rarr; "Жо хэдэн настай вэ?" "Тэр 24-тэй."[]</span>
+        </div>
+        <div class="example-pill">
+          <b>How are your parents? Are they well?</b> <span class="trans">&rarr; Аав ээжийн тань бие сайн уу?[]</span>
+        </div>
+        <div class="example-pill">
+          <b>These shoes are nice. How much are they?</b> <span class="trans">&rarr; Энэ гутал гоё юм. Ямар үнэтэй вэ?[]</span>
+        </div>
+        <div class="example-pill">
+          <b>This hotel isn't very good. Why is it so expensive?</b> <span class="trans">&rarr; Энэ зочид буудал нэг их сайн биш юм. Яагаад ийм үнэтэй байгаа юм бэ?[]</span>
+        </div>
+
+        <p style="margin-top:14px; font-weight:600;">Хураангуй хэлбэрүүд (Short forms)[]:</p>
+        <div class="example-pill">
+          • <b>what's = what is</b> &nbsp;|&nbsp; • <b>who's = who is</b> &nbsp;|&nbsp; • <b>how's = how is</b> &nbsp;|&nbsp; • <b>where's = where is</b>[]
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">D. Хувирал ба бүтцийн хүснэгт (Positive & Question)</h3>
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Эзэн бие</th>
+                <th>Батлах өгүүлбэр[]</th>
+                <th>Асуух өгүүлбэр[]</th>
+                <th>Монгол утга</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>I</b></td>
+                <td>I <b>am</b>[]</td>
+                <td><b>Am</b> I?[]</td>
+                <td>Би ... мөн үү? / Би ... байна уу?</td>
+              </tr>
+              <tr>
+                <td><b>he / she / it</b></td>
+                <td>he / she / it <b>is</b>[]</td>
+                <td><b>Is</b> he / she / it?[]</td>
+                <td>Тэр ... мөн үү? / ... байна уу?</td>
+              </tr>
+              <tr>
+                <td><b>we / you / they</b></td>
+                <td>we / you / they <b>are</b>[]</td>
+                <td><b>Are</b> we / you / they?[]</td>
+                <td>Бид / Та нар / Тэд ... мөн үү?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">E. Богино хариулт (Short Answers)</h3>
+        <p>Асуултад зөвхөн тийм/үгүй гэхээс илүү тогтсон богино хэлбэрээр хариулдаг[]:</p>
+
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Батлах богино хариу (Yes)[]</th>
+                <th>Үгүйсгэсэн богино хариу (No)[]</th>
+                <th>Хувилбар 2[]</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Yes, <b>I am.</b>[]</td>
+                <td>No, <b>I'm not.</b>[]</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Yes, <b>he / she / it is.</b>[]</td>
+                <td>No, <b>he's / she's / it's not.</b>[]</td>
+                <td>No, <b>he / she / it isn't.</b>[]</td>
+              </tr>
+              <tr>
+                <td>Yes, <b>we / you / they are.</b>[]</td>
+                <td>No, <b>we're / you're / they're not.</b>[]</td>
+                <td>No, <b>we / you / they aren't.</b>[]</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="example-pill" style="border-left: 4px solid #e67e22; background: #fffbf5;">
+          <b>⚠️ Анхаарах алтан дүрэм:</b> Батлах хариултад үгийг хэзээ ч хураангуйлахгүй! <i>Yes, I'm</i> эсвэл <i>Yes, he's</i> гэж <b>бичихгүй</b>. Заавал <b>Yes, I am.</b> / <b>Yes, he is.</b> гэж бүтнээр нь хэлнэ[].
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== 2. ДАСГАЛ АЖИЛЛАХ ==================== -->
+    <section id="tab-practice" class="tab-content">
+      
+      <!-- 2.1 -->
+      <div class="content-card">
+        <h3 class="content-title">2.1 Асуултуудад тохирох зөв хариуг сонгож үсгийг бичнэ үү (A - I)[]</h3>
+        <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 14px; font-size: 14px;">
+          <b>Хариултууд:</b><br>
+          A. London. &nbsp;|&nbsp; B. No, I'm not. &nbsp;|&nbsp; C. Yes, you are.<br>
+          D. My sister. &nbsp;|&nbsp; E. Black. &nbsp;|&nbsp; F. No, it's black.<br>
+          G. In your bag. &nbsp;|&nbsp; H. No, she's American. &nbsp;|&nbsp; I. Very well.[]
+        </div>
+        <div class="q-row">1. Where's the camera? &rarr; <input type="text" value="G" disabled style="background:#eaeded; width:45px; text-align:center;"></div>
+        <div class="q-row">2. Is your car blue? &rarr; <input type="text" data-ans="F" style="width:45px; text-align:center;"><span class="ans-feedback">Зөв: F</span></div>
+        <div class="q-row">3. Is Kate from London? &rarr; <input type="text" data-ans="H" style="width:45px; text-align:center;"><span class="ans-feedback">Зөв: H</span></div>
+        <div class="q-row">4. Am I late? &rarr; <input type="text" data-ans="C" style="width:45px; text-align:center;"><span class="ans-feedback">Зөв: C</span></div>
+        <div class="q-row">5. Where's Amy from? &rarr; <input type="text" data-ans="A" style="width:45px; text-align:center;"><span class="ans-feedback">Зөв: A</span></div>
+        <div class="q-row">6. What colour is your bag? &rarr; <input type="text" data-ans="E" style="width:45px; text-align:center;"><span class="ans-feedback">Зөв: E</span></div>
+        <div class="q-row">7. Are you hungry? &rarr; <input type="text" data-ans="B" style="width:45px; text-align:center;"><span class="ans-feedback">Зөв: B</span></div>
+        <div class="q-row">8. How is George? &rarr; <input type="text" data-ans="I" style="width:45px; text-align:center;"><span class="ans-feedback">Зөв: I</span></div>
+        <div class="q-row">9. Who's that woman? &rarr; <input type="text" data-ans="D" style="width:45px; text-align:center;"><span class="ans-feedback">Зөв: D</span></div>
+      </div>
+
+      <!-- 2.2 -->
+      <div class="content-card">
+        <h3 class="content-title">2.2 Үгсийг зөв дараалалд оруулан асуулт зохионо уу[]</h3>
+        <div class="q-row">1. (is / at home / your mother) &rarr; <input type="text" value="Is your mother at home?" disabled style="background:#eaeded; flex:1;"></div>
+        <div class="q-row">2. (your parents / are / well) &rarr; <input type="text" data-ans="Are your parents well?|Are your parents well" style="flex:1;"><span class="ans-feedback">Are your parents well?</span></div>
+        <div class="q-row">3. (interesting / is / your job) &rarr; <input type="text" data-ans="Is your job interesting?|Is your job interesting" style="flex:1;"><span class="ans-feedback">Is your job interesting?</span></div>
+        <div class="q-row">4. (the shops / are / open today) &rarr; <input type="text" data-ans="Are the shops open today?|Are the shops open today" style="flex:1;"><span class="ans-feedback">Are the shops open today?</span></div>
+        <div class="q-row">5. (from / where / you / are) &rarr; <input type="text" data-ans="Where are you from?|Where are you from" style="flex:1;"><span class="ans-feedback">Where are you from?</span></div>
+        <div class="q-row">6. (interested in sport / you / are) &rarr; <input type="text" data-ans="Are you interested in sport?|Are you interested in sport" style="flex:1;"><span class="ans-feedback">Are you interested in sport?</span></div>
+        <div class="q-row">7. (is / near here / the station) &rarr; <input type="text" data-ans="Is the station near here?|Is the station near here" style="flex:1;"><span class="ans-feedback">Is the station near here?</span></div>
+        <div class="q-row">8. (at school / are / your children) &rarr; <input type="text" data-ans="Are your children at school?|Are your children at school" style="flex:1;"><span class="ans-feedback">Are your children at school?</span></div>
+        <div class="q-row">9. (you / are / late / why) &rarr; <input type="text" data-ans="Why are you late?|Why are you late" style="flex:1;"><span class="ans-feedback">Why are you late?</span></div>
+      </div>
+
+      <!-- 2.3 -->
+      <div class="content-card">
+        <h3 class="content-title">2.3 Асуултыг гүйцээнэ үү (What... / Who... / Where... / How...)[]</h3>
+        <div class="q-row">1. <input type="text" value="How are your parents?" disabled style="background:#eaeded; width:220px;"> — They're very well.[]</div>
+        <div class="q-row">2. <input type="text" data-ans="Where is|Where's" style="width:130px;"> the bus stop? — At the end of the street.[]<span class="ans-feedback">Where is / Where's</span></div>
+        <div class="q-row">3. <input type="text" data-ans="How old are" style="width:130px;"> your children? — Five, six and ten.[]<span class="ans-feedback">How old are</span></div>
+        <div class="q-row">4. <input type="text" data-ans="How much are" style="width:130px;"> these oranges? — £1.50 a kilo.[]<span class="ans-feedback">How much are</span></div>
+        <div class="q-row">5. <input type="text" data-ans="What is|What's" style="width:130px;"> your favourite sport? — Skiing.[]<span class="ans-feedback">What is / What's</span></div>
+        <div class="q-row">6. <input type="text" data-ans="Who is|Who's" style="width:130px;"> the man in this photo? — That's my father.[]<span class="ans-feedback">Who is / Who's</span></div>
+        <div class="q-row">7. <input type="text" data-ans="What colour are|What color are" style="width:160px;"> your new shoes? — Black.[]<span class="ans-feedback">What colour are</span></div>
+      </div>
+
+      <!-- 2.4 -->
+      <div class="content-card">
+        <h3 class="content-title">2.4 Paul-аас асуух асуултуудыг гүйцээнэ үү[]</h3>
+        <div class="q-row">1. (name?) &rarr; <input type="text" value="What's your name?" disabled style="background:#eaeded; flex:1;"> — Paul.[]</div>
+        <div class="q-row">2. (American?) &rarr; <input type="text" data-ans="Are you American?|Are you American" style="flex:1;"> — No, I'm Australian.[]<span class="ans-feedback">Are you American?</span></div>
+        <div class="q-row">3. (how old?) &rarr; <input type="text" data-ans="How old are you?|How old are you" style="flex:1;"> — I'm 30.[]<span class="ans-feedback">How old are you?</span></div>
+        <div class="q-row">4. (a teacher?) &rarr; <input type="text" data-ans="Are you a teacher?|Are you a teacher" style="flex:1;"> — No, I'm a lawyer.[]<span class="ans-feedback">Are you a teacher?</span></div>
+        <div class="q-row">5. (married?) &rarr; <input type="text" data-ans="Are you married?|Are you married" style="flex:1;"> — Yes, I am.[]<span class="ans-feedback">Are you married?</span></div>
+        <div class="q-row">6. (wife a lawyer?) &rarr; <input type="text" data-ans="Is your wife a lawyer?|Is your wife a lawyer" style="flex:1;"> — No, she's a designer.[]<span class="ans-feedback">Is your wife a lawyer?</span></div>
+        <div class="q-row">7. (from?) &rarr; <input type="text" data-ans="Where is she from?|Where is she from|Where's she from?|Where's she from" style="flex:1;"> — She's Italian.[]<span class="ans-feedback">Where is she from? / Where's she from?</span></div>
+        <div class="q-row">8. (her name?) &rarr; <input type="text" data-ans="What's her name?|What's her name|What is her name?|What is her name" style="flex:1;"> — Anna.[]<span class="ans-feedback">What's her name?</span></div>
+        <div class="q-row">9. (how old?) &rarr; <input type="text" data-ans="How old is she?|How old is she" style="flex:1;"> — She's 27.[]<span class="ans-feedback">How old is she?</span></div>
+      </div>
+
+      <!-- 2.5 -->
+      <div class="content-card">
+        <h3 class="content-title">2.5 Богино хариулт бичнэ үү (Yes, I am. / No, it isn't. гэх мэт)[]</h3>
+        <div class="q-row">1. Are you married? &rarr; <input type="text" data-ans="yes, i am.|yes, i am|no, i'm not.|no, i'm not" placeholder="Yes, I am. / No, I'm not." style="flex:1;"><span class="ans-feedback">Yes, I am. / No, I'm not.</span></div>
+        <div class="q-row">2. Are you thirsty? &rarr; <input type="text" data-ans="yes, i am.|yes, i am|no, i'm not.|no, i'm not" placeholder="Yes, I am. / No, I'm not." style="flex:1;"><span class="ans-feedback">Yes, I am. / No, I'm not.</span></div>
+        <div class="q-row">3. Is it cold today? &rarr; <input type="text" data-ans="yes, it is.|yes, it is|no, it isn't.|no, it isn't|no, it's not.|no, it's not" placeholder="Yes, it is. / No, it isn't." style="flex:1;"><span class="ans-feedback">Yes, it is. / No, it isn't.</span></div>
+        <div class="q-row">4. Are your hands cold? &rarr; <input type="text" data-ans="yes, they are.|yes, they are|no, they aren't.|no, they aren't|no, they're not.|no, they're not" placeholder="Yes, they are. / No, they aren't." style="flex:1;"><span class="ans-feedback">Yes, they are. / No, they aren't.</span></div>
+        <div class="q-row">5. Is it dark now? &rarr; <input type="text" data-ans="yes, it is.|yes, it is|no, it isn't.|no, it isn't|no, it's not.|no, it's not" placeholder="Yes, it is. / No, it isn't." style="flex:1;"><span class="ans-feedback">Yes, it is. / No, it isn't.</span></div>
+        <div class="q-row">6. Are you a teacher? &rarr; <input type="text" data-ans="yes, i am.|yes, i am|no, i'm not.|no, i'm not" placeholder="Yes, I am. / No, I'm not." style="flex:1;"><span class="ans-feedback">Yes, I am. / No, I'm not.</span></div>
+      </div>
+
+      <div class="btn-bar">
+        <button class="btn-check" onclick="checkAnswers()">Шалгах (Check)</button>
+        <button class="btn-reset" onclick="resetAnswers()">Цэвэрлэх (Reset)</button>
+      </div>
+
+      <div id="score-panel"></div>
+
+    </section>
+
+    <!-- ==================== 3. ХАРИУНЫ ТАЙЛБАР ==================== -->
+    <section id="tab-answers" class="tab-content">
+      
+      <div class="content-card">
+        <h3 class="content-title">Дасгалуудын зөв хариу ба дүрмийн задлан тайлбар</h3>
+
+        <div class="key-item">
+          <h4>Exercise 2.1 Түлхүүр ба Тайлбар:</h4>
+          • <b>2 (F):</b> Машины өнгийг асуусан тул 'No, it's black' тохирно[].<br>
+          • <b>3 (H):</b> Кейтийг Лондоноос ирсэн эсэхийг асуусан тул 'No, she's American' гэж хариулна[].<br>
+          • <b>4 (C):</b> Намайг хоцорсон уу гэхэд 'Yes, you are' (Тийм ээ, чи хоцорлоо) гэж хариулна[].<br>
+          • <b>5 (A):</b> Where's Amy from? асуултад 'London' хот тохирно[].<br>
+          • <b>6 (E):</b> Цүнхний өнгө асуусан учир 'Black' гэж тодорхойлно[].<br>
+          • <b>7 (B):</b> Та өлсөж байна уу гэхэд 'No, I'm not' гэж өөрийн өмнөөс богино хариу өгнө[].<br>
+          • <b>8 (I):</b> Жоржийн бие ямар байна вэ гэсэн тул 'Very well' (Маш сайн) гэж хариулна[].<br>
+          • <b>9 (D):</b> Тэр эмэгтэй хэн бэ гэсэн тул 'My sister' (Миний эгч/дүү) гэж хариулна[].
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 2.2 Түлхүүр ба Үгийн дараалал:</h4>
+          • <b>2. Are your parents well?</b> &rarr; Parents (аав ээж хоёр) нь олон тоо тул <b>Are</b> урд гарна[].<br>
+          • <b>3. Is your job interesting?</b> &rarr; Your job нь ганц тооны эзэн бие тул <b>Is</b> урд гарна[].<br>
+          • <b>4. Are the shops open today?</b> &rarr; Дэлгүүрүүд (the shops) олон тоо тул <b>Are</b> эхэнд орно[].<br>
+          • <b>5. Where are you from?</b> &rarr; Тусгай асуух үг (Where) эхэнд, дараа нь үйл үг (are), дараа нь эзэн бие (you)[].<br>
+          • <b>6. Are you interested in sport?</b> &rarr; Be interested in бүтцийн асуух хэлбэр[].<br>
+          • <b>7. Is the station near here?</b> &rarr; Вокзал/буудал нь ганц тоо тул <b>Is</b> эхэнд гарна[].<br>
+          • <b>8. Are your children at school?</b> &rarr; Хүүхдүүд (children) олон тоо тул <b>Are</b> авна[].<br>
+          • <b>9. Why are you late?</b> &rarr; Why + are + you + late бүтцээр бичигдэнэ[].
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 2.3 Түлхүүр ба Тайлбар:</h4>
+          • <b>2. Where is (Where's):</b> Гудамжны төгсгөлд гэсэн байршил заасан тул 'Where' сонгоно[].<br>
+          • <b>3. How old are:</b> 5, 6, 10 настай гэж хариулсан тул насыг асуух 'How old' сонгоно[].<br>
+          • <b>4. How much are:</b> Үнэ (£1.50) хэлсэн тул үнэ асуух 'How much' бүтэц орно[].<br>
+          • <b>5. What is (What's):</b> Спортын нэрийг асуусан тул 'What' хэрэглэнэ[].<br>
+          • <b>6. Who is (Who's):</b> Аав маань гэж хүний тухай хариулсан учир 'Who' орно[].<br>
+          • <b>7. What colour are:</b> Хар өнгө гэсэн тул өнгө асуух 'What colour/color' орно[].
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 2.4 Түлхүүр:</h4>
+          • 2. <b>Are you American?</b>[]<br>
+          • 3. <b>How old are you?</b>[]<br>
+          • 4. <b>Are you a teacher?</b>[]<br>
+          • 5. <b>Are you married?</b>[]<br>
+          • 6. <b>Is your wife a lawyer?</b>[]<br>
+          • 7. <b>Where is she from?</b> (эсвэл <i>Where's she from?</i>)[]<br>
+          • 8. <b>What's her name?</b> (эсвэл <i>What is her name?</i>)[]<br>
+          • 9. <b>How old is she?</b>[]
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 2.5 Богино хариултын дүрэм:</h4>
+          • Асуулт нь таны хувийн бодит байдлаас хамаарах ч зөв хэлбэр нь заавал <b>Yes, I am.</b> / <b>No, I'm not.</b> эсвэл олон тоон дээр <b>Yes, they are.</b> / <b>No, they aren't.</b> хэлбэртэй байна[].
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>
+
+<script>
+function switchTab(tabKey) {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(t => t.classList.remove('active'));
+  contents.forEach(c => c.classList.remove('active'));
+
+  if (tabKey === 'theory') {
+    tabs[0].classList.add('active');
+    document.getElementById('tab-theory').classList.add('active');
+  } else if (tabKey === 'practice') {
+    tabs[1].classList.add('active');
+    document.getElementById('tab-practice').classList.add('active');
+  } else if (tabKey === 'answers') {
+    tabs[2].classList.add('active');
+    document.getElementById('tab-answers').classList.add('active');
+  }
+}
+
+function clean(str) {
+  return str.trim().toLowerCase().replace(/[.,!?'"]/g, "").replace(/\s+/g, " ");
+}
+
+function checkAnswers() {
+  const inputs = document.querySelectorAll("input[data-ans]");
+  let correctCount = 0;
+  const total = inputs.length;
+
+  inputs.forEach(input => {
+    const val = clean(input.value);
+    const answers = input.getAttribute("data-ans").split("|").map(a => clean(a));
+    const feedback = input.parentElement.querySelector(".ans-feedback");
+
+    if (answers.includes(val)) {
+      input.className = "correct";
+      correctCount++;
+      if (feedback) feedback.style.display = "none";
+    } else {
+      input.className = "wrong";
+      if (feedback) feedback.style.display = "inline";
+    }
+  });
+
+  const percent = Math.round((correctCount / total) * 100);
+  const panel = document.getElementById("score-panel");
+  panel.style.display = "block";
+  panel.style.backgroundColor = percent >= 75 ? "var(--correct-bg)" : "var(--wrong-bg)";
+  panel.style.color = percent >= 75 ? "var(--correct-border)" : "var(--wrong-border)";
+  panel.style.border = `1.5px solid ${percent >= 75 ? 'var(--correct-border)' : 'var(--wrong-border)'}`;
+  panel.innerHTML = `Таны нийт оноо: ${correctCount} / ${total} (${percent}%)`;
+  panel.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAnswers() {
+  const inputs = document.querySelectorAll("input[data-ans]");
+  inputs.forEach(input => {
+    input.value = "";
+    input.className = "";
+    const feedback = input.parentElement.querySelector(".ans-feedback");
+    if (feedback) feedback.style.display = "none";
+  });
+  const panel = document.getElementById("score-panel");
+  panel.style.display = "none";
+}
+</script>
+
+</body>
+</html>

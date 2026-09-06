@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit -4 Essential Grammar in Use</title>
+<style>
+  :root {
+    --primary: #b83b26;
+    --primary-dark: #962d22;
+    --nav-dark: #263849;
+    --btn-inactive: #34495e;
+    --text-main: #2c3e50;
+    --text-muted: #555555;
+    --bg-page: #f0f3f4;
+    --border-color: #e2e8f0;
+    --pill-bg: #f8f9fa;
+    --correct-bg: #eafaf1;
+    --correct-border: #27ae60;
+    --wrong-bg: #fdedec;
+    --wrong-border: #e74c3c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-page);
+    margin: 0;
+    padding: 20px 10px 40px;
+  }
+
+  .app-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #dcdde1;
+  }
+
+  header {
+    background: var(--primary);
+    color: #ffffff;
+    text-align: center;
+    padding: 22px 15px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  header p {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    opacity: 0.95;
+  }
+
+  /* Бүлэг солих навигаци (Unit 4 нь УЛААН) */
+  .unit-nav {
+    background: var(--nav-dark);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .unit-btn {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    background: var(--btn-inactive);
+    transition: all 0.2s ease;
+  }
+  .unit-btn:hover { background: #415b76; }
+  .unit-btn.active {
+    background: var(--primary) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  }
+
+  /* Таб навигаци */
+  .tab-nav {
+    display: flex;
+    background: #ecf0f1;
+    border-bottom: 2px solid #bdc3c7;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 13px 8px;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 14.5px;
+    font-weight: bold;
+    color: #7f8c8d;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover {
+    color: var(--primary);
+    background: #e5e8e8;
+  }
+  .tab-btn.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+    background: #ffffff;
+  }
+
+  .main-content { padding: 24px; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .content-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .content-title {
+    color: var(--primary);
+    font-size: 16.5px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 14px;
+    border-bottom: 1.5px solid #fadbd8;
+    padding-bottom: 6px;
+  }
+
+  .example-pill {
+    background: var(--pill-bg);
+    border-radius: 6px;
+    padding: 9px 14px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+  }
+  .example-pill b { color: var(--primary-dark); }
+  .example-pill span.trans {
+    color: var(--text-muted);
+    font-style: italic;
+    margin-left: 6px;
+  }
+
+  .table-box {
+    overflow-x: auto;
+    margin: 14px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+  }
+  th {
+    background-color: #fbf0ee;
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+
+  .q-row {
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+  }
+  input[type="text"] {
+    padding: 7px 11px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14.5px;
+    outline: none;
+    transition: all 0.2s;
+    background: #fff;
+  }
+  input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184, 59, 38, 0.12);
+  }
+  input.correct {
+    border-color: var(--correct-border) !important;
+    background-color: var(--correct-bg) !important;
+  }
+  input.wrong {
+    border-color: var(--wrong-border) !important;
+    background-color: var(--wrong-bg) !important;
+  }
+  .ans-feedback {
+    display: none;
+    font-size: 12.5px;
+    color: var(--wrong-border);
+    font-weight: 600;
+  }
+
+  .btn-bar {
+    position: sticky;
+    bottom: 15px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    display: flex;
+    gap: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-top: 25px;
+  }
+  .btn-check {
+    flex: 2;
+    background: #27ae60;
+    color: #fff;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn-check:hover { background: #219653; }
+  .btn-reset {
+    flex: 1;
+    background: #7f8c8d;
+    color: #fff;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn-reset:hover { background: #636e72; }
+
+  #score-panel {
+    display: none;
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16.5px;
+    font-weight: 800;
+  }
+
+  .key-item {
+    border-left: 4px solid var(--primary);
+    background: #fdfefe;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid var(--border-color);
+    border-left-width: 4px;
+    border-left-color: var(--primary);
+  }
+  .key-item h4 { margin: 0 0 6px 0; color: var(--primary); font-size: 15px; }
+
+  @media (max-width: 650px) {
+    .app-container { border-radius: 0; margin: 0; }
+    body { padding: 0; }
+    input[type="text"] { width: 100% !important; }
+    .q-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  
+  <header>
+    <h1>Essential Grammar in Use</h1>
+    <p>UNIT 4: Are you doing? (present continuous questions)</p>
+  </header>
+
+  <!-- БҮЛЭГ СОНГОХ (Unit 4 дээр байгаа тул Unit 4 нь УЛААН) -->
+  <div style="background: #263849; padding: 10px; text-align: center; display: flex; justify-content: center; gap: 12px;">
+  <a href="index.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">🏠 Нүүр</a>
+  <a href="unit1.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 1</a>
+  <a href="unit2.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 2</a>
+  <a href="unit3.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 3</a>
+  <a href="unit4.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #b83b26;">Unit 4</a>
+  <a href="unit5.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 5</a>
+  <a href="unit6.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 6</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 7</a>
+ <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 8</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 9</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 10</a>
+</div>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('theory')">📖 1. Онол ба Тайлбар</button>
+    <button class="tab-btn" onclick="switchTab('practice')">✍️ 2. Дасгал ажиллах</button>
+    <button class="tab-btn" onclick="switchTab('answers')">🔑 3. Хариуны тайлбар</button>
+  </nav>
+
+  <div class="main-content">
+
+    <!-- ==================== 1. ОНОЛ БА ТАЙЛБАР ==================== -->
+    <section id="tab-theory" class="tab-content active">
+      
+      <div class="content-card">
+        <h3 class="content-title">A. Present Continuous цагийн асуух хэлбэрийн бүтэц</h3>
+        <p>Асуулт зохиохдоо туслах үйл үг болох <b>am / is / are</b>-ийг эзэн биеийн (subject) <b>урд</b> гаргана.</p>
+
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Батлах (Positive)</th>
+                <th>Асуух (Question)</th>
+                <th>Монгол тайлбар</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>I <b>am doing</b></td>
+                <td><b>Am I doing?</b></td>
+                <td>Би хийж байна уу?</td>
+              </tr>
+              <tr>
+                <td>he / she / it <b>is doing</b></td>
+                <td><b>Is he / she / it doing?</b></td>
+                <td>Тэр хийж байна уу?</td>
+              </tr>
+              <tr>
+                <td>we / you / they <b>are doing</b></td>
+                <td><b>Are we / you / they doing?</b></td>
+                <td>Бид / Та / Тэд хийж байна уу?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="example-pill">
+          <b>'Are you feeling OK?' 'Yes, I'm fine, thanks.'</b> <span class="trans">&rarr; "Бие тань гайгүй юу?" "Тийм ээ, зүгээр, баярлалаа."</span>
+        </div>
+        <div class="example-pill">
+          <b>'Is it raining?' 'Yes, take an umbrella.'</b> <span class="trans">&rarr; "Бороо орж байна уу?" "Тийм ээ, шүхрээ аваарай."</span>
+        </div>
+        <div class="example-pill">
+          <b>Why are you wearing a coat? It's not cold.</b> <span class="trans">&rarr; Та яагаад хүрэм өмссөн байгаа юм бэ? Хүйтэн биш байна шүү дээ.</span>
+        </div>
+        <div class="example-pill">
+          <b>'What's Paul doing?' 'He's studying for his exams.'</b> <span class="trans">&rarr; "Пол юу хийж байна?" "Тэр шалгалтдаа бэлдэж байна."</span>
+        </div>
+        <div class="example-pill">
+          <b>'What are the children doing?' 'They're watching TV.'</b> <span class="trans">&rarr; "Хүүхдүүд юу хийж байна?" "Тэд зурагт үзэж байна."</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">B. Үгийн дараалал (Word Order)</h3>
+        <p>Асуултад эзэн бие нь <b>is/are</b> болон <b>-ing үйл үгийн дунд</b> заавал байрлах ёстойг анхаарна уу:</p>
+        
+        <div class="example-pill">
+          <b>Is Paul working today?</b> <span class="trans">(Зөв) &nbsp;|&nbsp; <i>Is working Paul today?</i> (БУРУУ)</span>
+        </div>
+        <div class="example-pill">
+          <b>Where are those people going?</b> <span class="trans">(Зөв) &nbsp;|&nbsp; <i>Where are going those people?</i> (БУРУУ)</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">C. Богино хариулт (Short Answers)</h3>
+        <p>Асуултад тийм/үгүй гэж хариулахдаа дараах товч бүтцийг хэрэглэнэ:</p>
+
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Батлах богино хариу (Yes)</th>
+                <th>Үгүйсгэсэн богино хариу (No)</th>
+                <th>Хувилбар 2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Yes, <b>I am.</b></td>
+                <td>No, <b>I'm not.</b></td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Yes, <b>he / she / it is.</b></td>
+                <td>No, <b>he's / she's / it's not.</b></td>
+                <td>No, <b>he / she / it isn't.</b></td>
+              </tr>
+              <tr>
+                <td>Yes, <b>we / you / they are.</b></td>
+                <td>No, <b>we're / you're / they're not.</b></td>
+                <td>No, <b>we / you / they aren't.</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="example-pill">
+          <b>'Are you going now?' 'Yes, I am.'</b> <span class="trans">&rarr; "Та одоо явах гэж байна уу?" "Тийм ээ." (Yes, I'm биш!)</span>
+        </div>
+        <div class="example-pill">
+          <b>'Is Paul working today?' 'Yes, he is.'</b> <span class="trans">&rarr; "Пол өнөөдөр ажиллаж байгаа юу?" "Тийм ээ."</span>
+        </div>
+        <div class="example-pill">
+          <b>'Is it raining?' 'No, it isn't.'</b> <span class="trans">&rarr; "Бороо орж байна уу?" "Үгүй, ороогүй байна."</span>
+        </div>
+        <div class="example-pill">
+          <b>'Are your friends staying at a hotel?' 'No, they aren't.'</b> <span class="trans">&rarr; "Найзууд тань зочид буудалд байрлаж байгаа юу?" "Үгүй."</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== 2. ДАСГАЛ АЖИЛЛАХ ==================== -->
+    <section id="tab-practice" class="tab-content">
+      
+      <!-- 4.1 -->
+      <div class="content-card">
+        <h3 class="content-title">4.1 Зургийн дагуу асуулт зохионо уу (Use is/are ... -ing)</h3>
+        <div class="q-row">1. (you / watch / it?) &rarr; <input type="text" value="Are you watching it?" disabled style="background:#eaeded; flex:1;"> — No, you can turn it off.</div>
+        <div class="q-row">2. (you / go / now?) &rarr; <input type="text" data-ans="are you going now?|are you going now" style="flex:1;"><span class="ans-feedback">Are you going now?</span> — Yes, see you tomorrow.</div>
+        <div class="q-row">3. (it / rain?) &rarr; <input type="text" data-ans="is it raining?|is it raining" style="flex:1;"><span class="ans-feedback">Is it raining?</span> — No, not at the moment.</div>
+        <div class="q-row">4. (you / enjoy / the film?) &rarr; <input type="text" data-ans="are you enjoying the film?|are you enjoying the film" style="flex:1;"><span class="ans-feedback">Are you enjoying the film?</span> — Yes, it's very funny.</div>
+        <div class="q-row">5. (that clock / work?) &rarr; <input type="text" data-ans="is that clock working?|is that clock working" style="flex:1;"><span class="ans-feedback">Is that clock working?</span> — No, it's broken.</div>
+        <div class="q-row">6. (you / wait / for a bus?) &rarr; <input type="text" data-ans="are you waiting for a bus?|are you waiting for a bus" style="flex:1;"><span class="ans-feedback">Are you waiting for a bus?</span> — No, for a taxi.</div>
+      </div>
+
+      <!-- 4.2 -->
+      <div class="content-card">
+        <h3 class="content-title">4.2 Үгсийг зөв дараалалд оруулан асуулт зохионо уу (What... / Where... гэх мэт)</h3>
+        <div class="q-row">1. (is / working / Paul / today) &rarr; <input type="text" value="Is Paul working today?" disabled style="background:#eaeded; flex:1;"></div>
+        <div class="q-row">2. (what / the children / are / doing) &rarr; <input type="text" data-ans="what are the children doing?|what are the children doing" style="flex:1;"><span class="ans-feedback">What are the children doing?</span></div>
+        <div class="q-row">3. (you / are / listening / to me) &rarr; <input type="text" data-ans="are you listening to me?|are you listening to me" style="flex:1;"><span class="ans-feedback">Are you listening to me?</span></div>
+        <div class="q-row">4. (where / going / your friends / are) &rarr; <input type="text" data-ans="where are your friends going?|where are your friends going" style="flex:1;"><span class="ans-feedback">Where are your friends going?</span></div>
+        <div class="q-row">5. (your parents / television / are / watching) &rarr; <input type="text" data-ans="are your parents watching television?|are your parents watching television" style="flex:1;"><span class="ans-feedback">Are your parents watching television?</span></div>
+        <div class="q-row">6. (what / Jessica / is / cooking) &rarr; <input type="text" data-ans="what is jessica cooking?|what is jessica cooking" style="flex:1;"><span class="ans-feedback">What is Jessica cooking?</span></div>
+        <div class="q-row">7. (why / you / looking / at me / are) &rarr; <input type="text" data-ans="why are you looking at me?|why are you looking at me" style="flex:1;"><span class="ans-feedback">Why are you looking at me?</span></div>
+        <div class="q-row">8. (is / coming / the bus) &rarr; <input type="text" data-ans="is the bus coming?|is the bus coming" style="flex:1;"><span class="ans-feedback">Is the bus coming?</span></div>
+      </div>
+
+      <!-- 4.3 -->
+      <div class="content-card">
+        <h3 class="content-title">4.3 Асуултуудыг гүйцээнэ үү</h3>
+        <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin-bottom: 12px; font-size: 14px;">
+          <b>Сонгох үгс:</b> cry &nbsp;|&nbsp; eat &nbsp;|&nbsp; go &nbsp;|&nbsp; laugh &nbsp;|&nbsp; look at &nbsp;|&nbsp; read
+        </div>
+        <div class="q-row">1. ' <input type="text" value="What are you reading" disabled style="background:#eaeded; width:180px;"> ?' — 'A good book.'</div>
+        <div class="q-row">2. 'Where <input type="text" data-ans="is she going" style="width:140px;"> ?' — 'To work.'<span class="ans-feedback">is she going</span></div>
+        <div class="q-row">3. 'What <input type="text" data-ans="are you eating" style="width:140px;"> ?' — 'An apple.'<span class="ans-feedback">are you eating</span></div>
+        <div class="q-row">4. 'Why <input type="text" data-ans="are you crying" style="width:140px;"> ?' — 'Because I'm sad.'<span class="ans-feedback">are you crying</span></div>
+        <div class="q-row">5. 'What <input type="text" data-ans="are they looking at" style="width:160px;"> ?' — 'A picture.'<span class="ans-feedback">are they looking at</span></div>
+        <div class="q-row">6. 'Why <input type="text" data-ans="is he laughing" style="width:140px;"> ?' — 'Because the film is very funny.'<span class="ans-feedback">is he laughing</span></div>
+      </div>
+
+      <!-- 4.4 -->
+      <div class="content-card">
+        <h3 class="content-title">4.4 Богино хариулт бичнэ үү (Yes, I am. / No, it isn't. гэх мэт)</h3>
+        <div class="q-row">1. Are you watching TV? &rarr; <input type="text" data-ans="no, i'm not.|no, i'm not|yes, i am.|yes, i am" placeholder="No, I'm not. / Yes, I am." style="flex:1;"><span class="ans-feedback">No, I'm not. / Yes, I am.</span></div>
+        <div class="q-row">2. Are you wearing a watch? &rarr; <input type="text" data-ans="yes, i am.|yes, i am|no, i'm not.|no, i'm not" placeholder="Yes, I am. / No, I'm not." style="flex:1;"><span class="ans-feedback">Yes, I am. / No, I'm not.</span></div>
+        <div class="q-row">3. Is it raining? &rarr; <input type="text" data-ans="no, it isn't.|no, it isn't|no, it's not.|no, it's not|yes, it is.|yes, it is" placeholder="No, it isn't. / Yes, it is." style="flex:1;"><span class="ans-feedback">No, it isn't. / Yes, it is.</span></div>
+        <div class="q-row">4. Are you sitting on the floor? &rarr; <input type="text" data-ans="no, i'm not.|no, i'm not|yes, i am.|yes, i am" placeholder="No, I'm not. / Yes, I am." style="flex:1;"><span class="ans-feedback">No, I'm not. / Yes, I am.</span></div>
+        <div class="q-row">5. Are you feeling well? &rarr; <input type="text" data-ans="yes, i am.|yes, i am|no, i'm not.|no, i'm not" placeholder="Yes, I am. / No, I'm not." style="flex:1;"><span class="ans-feedback">Yes, I am. / No, I'm not.</span></div>
+      </div>
+
+      <div class="btn-bar">
+        <button class="btn-check" onclick="checkAnswers()">Шалгах (Check)</button>
+        <button class="btn-reset" onclick="resetAnswers()">Цэвэрлэх (Reset)</button>
+      </div>
+
+      <div id="score-panel"></div>
+
+    </section>
+
+    <!-- ==================== 3. ХАРИУНЫ ТАЙЛБАР ==================== -->
+    <section id="tab-answers" class="tab-content">
+      
+      <div class="content-card">
+        <h3 class="content-title">Дасгалуудын зөв хариу ба дүрмийн тайлбар</h3>
+
+        <div class="key-item">
+          <h4>Exercise 4.1 Түлхүүр ба Тайлбар:</h4>
+          • <b>2. Are you going now?</b> &rarr; You бие тул <b>Are</b> урд гарна.<br>
+          • <b>3. Is it raining?</b> &rarr; It эзэн бие тул <b>Is</b> урд гарч асууна.<br>
+          • <b>4. Are you enjoying the film?</b> &rarr; You бие тул <b>Are</b> урд гарна.<br>
+          • <b>5. Is that clock working?</b> &rarr; That clock нь ганц тоо (it) тул <b>Is</b> авна.<br>
+          • <b>6. Are you waiting for a bus?</b> &rarr; You бие тул <b>Are</b> урд гарна.
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 4.2 Түлхүүр ба Үгийн дараалал:</h4>
+          • <b>2. What are the children doing?</b> &rarr; Wh- үг (What) + are + эзэн бие (the children) + үйл үг-ing (doing).<br>
+          • <b>3. Are you listening to me?</b> &rarr; Are + you + listening to me?<br>
+          • <b>4. Where are your friends going?</b> &rarr; Where + are + your friends + going?<br>
+          • <b>5. Are your parents watching television?</b> &rarr; Your parents нь олон тоо тул <b>Are</b> авна.<br>
+          • <b>6. What is Jessica cooking?</b> &rarr; Jessica нь ганц тоо (she) тул <b>is</b> авна.<br>
+          • <b>7. Why are you looking at me?</b> &rarr; Why + are + you + looking at me?<br>
+          • <b>8. Is the bus coming?</b> &rarr; The bus нь ганц тоо тул <b>Is</b> урд гарна.
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 4.3 Түлхүүр:</h4>
+          • 2. <b>is she going</b> (Тэр эмэгтэй хаашаа явж байна вэ?)<br>
+          • 3. <b>are you eating</b> (Чи юу идэж байна вэ?)<br>
+          • 4. <b>are you crying</b> (Чи яагаад уйлж байна вэ?)<br>
+          • 5. <b>are they looking at</b> (Тэд юу руу харж байна вэ?)<br>
+          • 6. <b>is he laughing</b> (Тэр яагаад инээгээд байна вэ?)
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 4.4 Дүрэм:</h4>
+          • Таны одоо байгаа байдлаас шалтгаалж хариулт өөр байж болох ч батлах бол хураангуйлахгүй (<i>Yes, I am.</i>), үгүйсгэх бол хураангуйлж (<i>No, I'm not. / No, it isn't.</i>) бичнэ.
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>
+
+<script>
+function switchTab(tabKey) {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(t => t.classList.remove('active'));
+  contents.forEach(c => c.classList.remove('active'));
+
+  if (tabKey === 'theory') {
+    tabs[0].classList.add('active');
+    document.getElementById('tab-theory').classList.add('active');
+  } else if (tabKey === 'practice') {
+    tabs[1].classList.add('active');
+    document.getElementById('tab-practice').classList.add('active');
+  } else if (tabKey === 'answers') {
+    tabs[2].classList.add('active');
+    document.getElementById('tab-answers').classList.add('active');
+  }
+}
+
+function clean(str) {
+  return str.trim().toLowerCase().replace(/[.,!?'"]/g, "").replace(/\s+/g, " ");
+}
+
+function checkAnswers() {
+  const inputs = document.querySelectorAll("input[data-ans]");
+  let correctCount = 0;
+  const total = inputs.length;
+
+  inputs.forEach(input => {
+    const val = clean(input.value);
+    const answers = input.getAttribute("data-ans").split("|").map(a => clean(a));
+    const feedback = input.parentElement.querySelector(".ans-feedback");
+
+    if (answers.includes(val)) {
+      input.className = "correct";
+      correctCount++;
+      if (feedback) feedback.style.display = "none";
+    } else {
+      input.className = "wrong";
+      if (feedback) feedback.style.display = "inline";
+    }
+  });
+
+  const percent = Math.round((correctCount / total) * 100);
+  const panel = document.getElementById("score-panel");
+  panel.style.display = "block";
+  panel.style.backgroundColor = percent >= 75 ? "var(--correct-bg)" : "var(--wrong-bg)";
+  panel.style.color = percent >= 75 ? "var(--correct-border)" : "var(--wrong-border)";
+  panel.style.border = `1.5px solid ${percent >= 75 ? 'var(--correct-border)' : 'var(--wrong-border)'}`;
+  panel.innerHTML = `Таны нийт оноо: ${correctCount} / ${total} (${percent}%)`;
+  panel.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAnswers() {
+  const inputs = document.querySelectorAll("input[data-ans]");
+  inputs.forEach(input => {
+    input.value = "";
+    input.className = "";
+    const feedback = input.parentElement.querySelector(".ans-feedback");
+    if (feedback) feedback.style.display = "none";
+  });
+  const panel = document.getElementById("score-panel");
+  panel.style.display = "none";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essential Grammar in Use - Unit 7</title>
+<style>
+  :root {
+    --primary: #b83b26;
+    --primary-dark: #962d22;
+    --nav-dark: #263849;
+    --btn-inactive: #34495e;
+    --text-main: #2c3e50;
+    --text-muted: #555555;
+    --bg-page: #f0f3f4;
+    --border-color: #e2e8f0;
+    --pill-bg: #f8f9fa;
+    --correct-bg: #eafaf1;
+    --correct-border: #27ae60;
+    --wrong-bg: #fdedec;
+    --wrong-border: #e74c3c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-page);
+    margin: 0;
+    padding: 20px 10px 40px;
+  }
+
+  .app-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #dcdde1;
+  }
+
+  header {
+    background: var(--primary);
+    color: #ffffff;
+    text-align: center;
+    padding: 22px 15px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  header p {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    opacity: 0.95;
+  }
+
+  /* Таб навигаци */
+  .tab-nav {
+    display: flex;
+    background: #ecf0f1;
+    border-bottom: 2px solid #bdc3c7;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 13px 8px;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 14.5px;
+    font-weight: bold;
+    color: #7f8c8d;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { color: var(--primary); background: #e5e8e8; }
+  .tab-btn.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+    background: #ffffff;
+  }
+
+  .main-content { padding: 24px; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .content-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .content-title {
+    color: var(--primary);
+    font-size: 16.5px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 14px;
+    border-bottom: 1.5px solid #fadbd8;
+    padding-bottom: 6px;
+  }
+
+  .example-pill {
+    background: var(--pill-bg);
+    border-radius: 6px;
+    padding: 9px 14px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+  }
+  .example-pill b { color: var(--primary-dark); }
+  .example-pill span.trans {
+    color: var(--text-muted);
+    font-style: italic;
+    margin-left: 6px;
+  }
+
+  .table-box {
+    overflow-x: auto;
+    margin: 14px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+  }
+  th {
+    background-color: #fbf0ee;
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+
+  .q-row {
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+  }
+  input[type="text"] {
+    padding: 7px 11px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14.5px;
+    outline: none;
+    transition: all 0.2s;
+    background: #fff;
+  }
+  input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184, 59, 38, 0.12);
+  }
+  input.correct {
+    border-color: var(--correct-border) !important;
+    background-color: var(--correct-bg) !important;
+  }
+  input.wrong {
+    border-color: var(--wrong-border) !important;
+    background-color: var(--wrong-bg) !important;
+  }
+  .ans-feedback {
+    display: none;
+    font-size: 12.5px;
+    color: var(--wrong-border);
+    font-weight: 600;
+  }
+
+  .btn-bar {
+    position: sticky;
+    bottom: 15px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    display: flex;
+    gap: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-top: 25px;
+  }
+  .btn-check {
+    flex: 2;
+    background: #27ae60;
+    color: #fff;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn-check:hover { background: #219653; }
+  .btn-reset {
+    flex: 1;
+    background: #7f8c8d;
+    color: #fff;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn-reset:hover { background: #636e72; }
+
+  #score-panel {
+    display: none;
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16.5px;
+    font-weight: 800;
+  }
+
+  .key-item {
+    border-left: 4px solid var(--primary);
+    background: #fdfefe;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid var(--border-color);
+    border-left-width: 4px;
+    border-left-color: var(--primary);
+  }
+  .key-item h4 { margin: 0 0 6px 0; color: var(--primary); font-size: 15px; }
+
+  @media (max-width: 650px) {
+    .app-container { border-radius: 0; margin: 0; }
+    body { padding: 0; }
+    input[type="text"] { width: 100% !important; }
+    .q-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  
+  <header>
+    <h1>Essential Grammar in Use</h1>
+    <p>UNIT 7: Do you ...? (present simple questions) (Цогц сургалтын систем)</p>
+  </header>
+
+  <!-- БҮЛЭГ СОНГОХ (Unit 7 дээр байгаа тул Unit 7 нь УЛААН) -->
+  <div style="background: #263849; padding: 10px; text-align: center; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+    <a href="index.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">🏠 Нүүр</a>
+    <a href="unit1.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 1</a>
+    <a href="unit2.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 2</a>
+    <a href="unit3.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 3</a>
+    <a href="unit4.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 4</a>
+    <a href="unit5.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 5</a>
+    <a href="unit6.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 6</a>
+    <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #b83b26;">Unit 7</a>
+   <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 8</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 9</a>
+  <a href="unit7.html" style="color: white; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #34495e;">Unit 10</a>
+  </div>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('theory')">📖 1. Онол ба Тайлбар</button>
+    <button class="tab-btn" onclick="switchTab('practice')">✍️ 2. Дасгал ажиллах</button>
+    <button class="tab-btn" onclick="switchTab('answers')">🔑 3. Хариуны тайлбар</button>
+  </nav>
+
+  <div class="main-content">
+
+    <!-- ==================== 1. ОНОЛ БА ТАЙЛБАР ==================== -->
+    <section id="tab-theory" class="tab-content active">
+      
+      <div class="content-card">
+        <h3 class="content-title">A. Present Simple цагийн асуух хэлбэрийн бүтэц (Do / Does)</h3>
+        <p>Present Simple цаг дээр асуулт зохиохдоо өгүүлбэрийн эхэнд <b>Do</b> эсвэл <b>Does</b> туслах үйл үгийг ашиглана.</p>
+
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Туслах үг</th>
+                <th>Эзэн бие</th>
+                <th>Үндсэн үйл үг</th>
+                <th>Жишээ асуулт</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Do</b></td>
+                <td>I / we / you / they</td>
+                <td>play / start / like / work</td>
+                <td><b>Do</b> you play the piano?</td>
+              </tr>
+              <tr>
+                <td><b>Does</b></td>
+                <td>he / she / it</td>
+                <td>play / start / like / work *(Үндсэн үйл үгэнд -s орохгүй)*</td>
+                <td><b>Does</b> he play the piano?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="example-pill" style="border-left: 4px solid #e67e22; background: #fffbf5;">
+          <b>⚠️ Анхаарах гол дүрэм:</b> <b>Does</b> туслах үг ашигласан үед үндсэн үйл үг ямар ч <b>-s / -es залгаваргүйгээр анхдагч хэлбэрээрээ</b> бичигдэнэ! (Жишээ нь: *Does she live here?* — зөв, *Does she lives here?* — буруу).
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">B. Өгүүлбэрийн бүтцийн дараалал (Word Order)</h3>
+        <p>Асуух үгтэй болон энгийн асуултуудын дараалал дараах хэлбэртэй байна:</p>
+        <div class="example-pill">
+          • **[Do / Does] + [Эзэн бие] + [Үндсэн үйл үг]?**<br>
+          &nbsp;&nbsp;&rarr; <i>Do you work on Sundays?</i> (Та бүтэн сайнд ажилладаг уу?)<br>
+          &nbsp;&nbsp;&rarr; <i>Does your sister live in London?</i> (Таны эгч Лондонд амьдардаг уу?)
+        </div>
+        <div class="example-pill">
+          • **[Асуух үг (Where / What / How)] + [do / does] + [Эзэн бие] + [Үйл үг]?**<br>
+          &nbsp;&nbsp;&rarr; <i>Where do your parents live?</i> (Таны аав ээж хоёр хаана амьдардаг вэ?)<br>
+          &nbsp;&nbsp;&rarr; <i>How much does it cost?</i> (Энэ ямар үнэтэй вэ?)
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h3 class="content-title">C. Богино хариулт (Short Answers)</h3>
+        <p>Асуултад бүтэн өгүүлбэрээр бус товч байдлаар дараах байдлаар хариулдаг:</p>
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Эзэн бие</th>
+                <th>Тийм (Yes)</th>
+                <th>Үгүй (No)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>I / you / we / they</td>
+                <td>Yes, I / you / we / they <b>do.</b></td>
+                <td>No, I / you / we / they <b>don't.</b></td>
+              </tr>
+              <tr>
+                <td>he / she / it</td>
+                <td>Yes, he / she / it <b>does.</b></td>
+                <td>No, he / she / it <b>doesn't.</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="example-pill">
+          <b>'Do you play the piano?' 'Yes, I do. / No, I don't.'</b> <span class="trans">&rarr; "Та төгөлдөр хуур тоглодог уу?" "Тийм/Үгүй."</span>
+        </div>
+        <div class="example-pill">
+          <b>'Does your brother speak English?' 'Yes, he does. / No, he doesn't.'</b> <span class="trans">&rarr; "Таны ах англиар ярьдаг уу?" "Тийм/Үгүй."</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== 2. ДАСГАЛ АЖИЛЛАХ ==================== -->
+    <section id="tab-practice" class="tab-content">
+      
+      <!-- 7.1 -->
+      <div class="content-card">
+        <h3 class="content-title">7.1 Өгүүлбэрийг асуух хэлбэрт шилжүүлнэ үү (Write questions with Do or Does)</h3>
+        <div class="q-row">1. I like chocolate. &rarr; Do you like chocolate? <input type="text" value="Do you like chocolate?" disabled style="background:#eaeded; width:1px; display:none;"></div>
+        <div class="q-row">2. I play tennis. (you?) &rarr; <input type="text" data-ans="do you play tennis|do you play tennis?" style="flex:1;"><span class="ans-feedback">Do you play tennis?</span></div>
+        <div class="q-row">3. Tom works hard. (your sister?) &rarr; <input type="text" data-ans="does your sister work hard|does your sister work hard?" style="flex:1;"><span class="ans-feedback">Does your sister work hard?</span></div>
+        <div class="q-row">4. They do the same thing. (you?) &rarr; <input type="text" data-ans="do you do the same thing|do you do the same thing?" style="flex:1;"><span class="ans-feedback">Do you do the same thing?</span></div>
+        <div class="q-row">5. The film ends late. (what time?) &rarr; <input type="text" data-ans="what time does the film end|what time does the film end?" style="flex:1;"><span class="ans-feedback">What time does the film end?</span></div>
+        <div class="q-row">6. You speak English. (how often?) &rarr; <input type="text" data-ans="how often do you speak english|how often do you speak english?" style="flex:1;"><span class="ans-feedback">How often do you speak English?</span></div>
+      </div>
+
+      <!-- 7.2 -->
+      <div class="content-card">
+        <h3 class="content-title">7.2 Асуултыг гүйцээнэ үү (Do / Does болон санал болгох үгс)</h3>
+        <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin-bottom: 12px; font-size: 14px;">
+          <b>Сонгох үгс:</b> cost &nbsp;|&nbsp; go &nbsp;|&nbsp; know &nbsp;|&nbsp; like &nbsp;|&nbsp; live &nbsp;|&nbsp; mean &nbsp;|&nbsp; speak &nbsp;|&nbsp; wash
+        </div>
+        <div class="q-row">1. Where <input type="text" value="do you live" disabled style="background:#eaeded; width:120px;"> ? — In London.</div>
+        <div class="q-row">2. You speak English. <input type="text" data-ans="do you speak" style="width:130px;"> any other languages?<span class="ans-feedback">Do you speak</span></div>
+        <div class="q-row">3. 'What is this word?' 'I <input type="text" data-ans="don't know" style="width:120px;">. What <input type="text" data-ans="does it mean" style="width:130px;"> ?'<span class="ans-feedback">don't know ... does it mean</span></div>
+        <div class="q-row">4. ' <input type="text" data-ans="does your job pay" style="width:150px;"> well?' 'No, it's not very good.'<span class="ans-feedback">Does your job pay</span></div>
+        <div class="q-row">5. What time <input type="text" data-ans="do your friends go" style="width:150px;"> home after work?<span class="ans-feedback">do your friends go</span></div>
+        <div class="q-row">6. Sue is married. <input type="text" data-ans="does her husband" style="width:150px;"> work?<span class="ans-feedback">Does her husband</span></div>
+      </div>
+
+      <!-- 7.3 -->
+      <div class="content-card">
+        <h3 class="content-title">7.3 Асуултуудад богино хариулт өгнө үү (Yes, I do. / No, he doesn't. гэх мэт)</h3>
+        <div class="q-row">1. Do you play the piano? &rarr; <input type="text" data-ans="yes, i do.|yes, i do|no, i don't.|no, i don't" placeholder="Yes, I do. / No, I don't." style="flex:1;"><span class="ans-feedback">Yes, I do. / No, I don't.</span></div>
+        <div class="q-row">2. Do you live in a big city? &rarr; <input type="text" data-ans="yes, i do.|yes, i do|no, i don't.|no, i don't" placeholder="Yes, I do. / No, I don't." style="flex:1;"><span class="ans-feedback">Yes, I do. / No, I don't.</span></div>
+        <div class="q-row">3. Does it rain a lot where you live? &rarr; <input type="text" data-ans="yes, it does.|yes, it does|no, it doesn't.|no, it doesn't" placeholder="Yes, it does. / No, it doesn't." style="flex:1;"><span class="ans-feedback">Yes, it does. / No, it doesn't.</span></div>
+        <div class="q-row">4. Do you close your windows at night? &rarr; <input type="text" data-ans="yes, i do.|yes, i do|no, i don't.|no, i don't" placeholder="Yes, I do. / No, I don't." style="flex:1;"><span class="ans-feedback">Yes, I do. / No, I don't.</span></div>
+      </div>
+
+      <div class="btn-bar">
+        <button class="btn-check" onclick="checkAnswers()">Шалгах (Check)</button>
+        <button class="btn-reset" onclick="resetAnswers()">Цэвэрлэх (Reset)</button>
+      </div>
+
+      <div id="score-panel"></div>
+
+    </section>
+
+    <!-- ==================== 3. ХАРИУНЫ ТАЙЛБАР ==================== -->
+    <section id="tab-answers" class="tab-content">
+      
+      <div class="content-card">
+        <h3 class="content-title">Дасгалуудын зөв хариу ба дүрмийн тайлбар</h3>
+
+        <div class="key-item">
+          <h4>Exercise 7.1 Түлхүүр ба Тайлбар:</h4>
+          • <b>2. Do you play tennis?</b> &rarr; You бие дээр <b>Do</b> эхэнд гарна.<br>
+          • <b>3. Does your sister work hard?</b> &rarr; Your sister нь 3-р биеийн ганц тоо (she) тул <b>Does</b> авна, мөн works үг works биш <b>work</b> болж хувирна.<br>
+          • <b>4. Do you do the same thing?</b> &rarr; You бие тул Do эхэнд гарна.<br>
+          • <b>5. What time does the film end?</b> &rarr; Wh- үг + does + the film (it) + end.<br>
+          • <b>6. How often do you speak English?</b> &rarr; How often + do + you + speak English.
+        </div>
+
+        <div class="key-item">
+          <h4>Exercise 7.2 Түлхүүр:</h4>
+          • 2. <b>Do you speak</b> (You бие тул Do)<br>
+          • 3. <b>don't know ... does it mean</b> (It = 3-р бие тул does)<br>
+          • 4. <b>Does your job pay</b> (Your job = it тул Does)<br>
+          • 5. <b>do your friends go</b> (Your friends = they олон тоо тул do)<br>
+          • 6. <b>Does her husband</b> (Her husband = he тул Does)
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>
+
+<script>
+function switchTab(tabKey) {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(t => t.classList.remove('active'));
+  contents.forEach(c => c.classList.remove('active'));
+
+  if (tabKey === 'theory') {
+    tabs[0].classList.add('active');
+    document.getElementById('tab-theory').classList.add('active');
+  } else if (tabKey === 'practice') {
+    tabs[1].classList.add('active');
+    document.getElementById('tab-practice').classList.add('active');
+  } else if (tabKey === 'answers') {
+    tabs[2].classList.add('active');
+    document.getElementById('tab-answers').classList.add('active');
+  }
+}
+
+function clean(str) {
+  return str.trim().toLowerCase().replace(/[.,!?'"]/g, "").replace(/\s+/g, " ");
+}
+
+function checkAnswers() {
+  const inputs = document.querySelectorAll("input[data-ans]");
+  let correctCount = 0;
+  const total = inputs.length;
+
+  inputs.forEach(input => {
+    const val = clean(input.value);
+    const answers = input.getAttribute("data-ans").split("|").map(a => clean(a));
+    const feedback = input.parentElement.querySelector(".ans-feedback");
+
+    if (answers.includes(val)) {
+      input.className = "correct";
+      correctCount++;
+      if (feedback) feedback.style.display = "none";
+    } else {
+      input.className = "wrong";
+      if (feedback) feedback.style.display = "inline";
+    }
+  });
+
+  const percent = Math.round((correctCount / total) * 100);
+  const panel = document.getElementById("score-panel");
+  panel.style.display = "block";
+  panel.style.backgroundColor = percent >= 75 ? "var(--correct-bg)" : "var(--wrong-bg)";
+  panel.style.color = percent >= 75 ? "var(--correct-border)" : "var(--wrong-border)";
+  panel.style.border = `1.5px solid ${percent >= 75 ? 'var(--correct-border)' : 'var(--wrong-border)'}`;
+  panel.innerHTML = `Таны нийт оноо: ${correctCount} / ${total} (${percent}%)`;
+  panel.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAnswers() {
+  const inputs = document.querySelectorAll("input[data-ans]");
+  inputs.forEach(input => {
+    input.value = "";
+    input.className = "";
+    const feedback = input.parentElement.querySelector(".ans-feedback");
+    if (feedback) feedback.style.display = "none";
+  });
+  const panel = document.getElementById("score-panel");
+  panel.style.display = "none";
+}
+</script>
+
+</body>
+</html>
