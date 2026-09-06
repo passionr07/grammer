@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 12: I didn't ... Did you ...? (Past Simple) - Essential Grammar in Use</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #eef2f6; color: #334155; line-height: 1.6; padding: 20px 10px 50px; display: flex; justify-content: center; }
+
+    .app-frame {
+      width: 100%;
+      max-width: 880px;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    header { background: #b83b26; color: white; padding: 24px 18px; text-align: center; }
+    header h1 { font-size: 23px; margin-bottom: 6px; font-weight: 700; }
+    header p { font-size: 13.5px; opacity: 0.95; font-weight: 500; }
+
+    .tab-nav { display: flex; background: white; border-bottom: 2px solid #e2e8f0; }
+    .tab-btn { flex: 1; padding: 13px 10px; font-size: 14px; font-weight: 600; border: none; background: none; cursor: pointer; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; text-align: center; }
+    .tab-btn.active { color: #b83b26; border-bottom-color: #b83b26; background: #fff8f6; }
+
+    .content-area { padding: 24px 18px; background: #f8fafc; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .card { background: white; border-radius: 12px; padding: 22px; margin-bottom: 20px; border: 1.5px solid #edf2f7; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+    .card h3 { color: #b83b26; font-size: 16.5px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1.5px solid #fee2e2; }
+    .card p { font-size: 14px; color: #334155; margin-bottom: 12px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; background: white; }
+    th, td { border: 1px solid #e2e8f0; padding: 9px 12px; text-align: left; }
+    th { background: #fbebe8; color: #991b1b; font-weight: 700; }
+
+    .example-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .example-item { background: #f8fafc; padding: 10px 14px; border-radius: 6px; font-size: 14px; color: #334155; border: 1px solid #f1f5f9; }
+    .example-item strong { color: #991b1b; font-weight: 700; }
+    .example-item span.trans { color: #64748b; margin-left: 6px; }
+
+    .dialogue-box { background: #fff; border-left: 4px solid #b83b26; padding: 12px 16px; margin: 10px 0; border-radius: 0 8px 8px 0; font-size: 14.5px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+
+    .exercise-item { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px dashed #e2e8f0; font-size: 14.5px; }
+    .quiz-input { border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 5px 9px; font-size: 14px; font-weight: 600; color: #1e293b; width: 140px; margin: 0 4px; text-align: center; outline: none; transition: all 0.2s; }
+    .quiz-input.wide { width: 230px; text-align: left; padding-left: 10px; }
+    .quiz-input.extra-wide { width: 300px; text-align: left; padding-left: 10px; }
+    .quiz-input:focus { border-color: #b83b26; background: #fffdfd; }
+    .quiz-input.correct { border-color: #16a34a; background: #f0fdf4; color: #16a34a; }
+    .quiz-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #dc2626; }
+    .inline-hint { display: none; margin-left: 8px; font-size: 13px; font-weight: 600; color: #16a34a; }
+
+    .btn-submit { background: #b83b26; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; margin-right: 8px; }
+    .btn-reset { background: #64748b; color: white; border: none; padding: 12px 18px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; }
+    #score-box { display: none; margin-top: 15px; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="app-frame">
+
+    <header>
+      <h1>Essential Grammar in Use</h1>
+      <p>UNIT 12: I didn't ... Did you ...? (Past Simple negative and questions) (Цогц сургалтын систем)</p>
+    </header>
+
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(event, 'theory')">📖 1. Онол ба Тайлбар</button>
+      <button class="tab-btn" onclick="switchTab(event, 'exercises')">✍️ 2. Дасгал ажиллах</button>
+      <button class="tab-btn" onclick="switchTab(event, 'answers')">🔑 3. Хариуны тайлбар</button>
+    </nav>
+
+    <div class="content-area">
+
+      <!-- TAB 1: ОНОЛ БА ТАЙЛБАР -->
+      <div id="theory" class="tab-content active">
+        <div class="card">
+          <h3>A. Past Simple-ийн үгүйсгэх ба асуух хэлбэр (did / didn't)</h3>
+          <p>Өнгөрсөн цагийн үгүйсгэсэн болон асуусан өгүүлбэрт <strong>did / didn't</strong> туслах үйл үгийг ашиглана. Хамгийн чухал нь туслах үйл үг орсон тул үндсэн үйл үг нь <strong>хувирахгүй үндсэн (infinitive)</strong> хэлбэрээрээ байна.</p>
+          
+          <table>
+            <tr><th>Батлах хэлбэр</th><th>Үгүйсгэх хэлбэр (did not / didn't)</th><th>Асуух хэлбэр (Did...?)</th></tr>
+            <tr><td>I <strong>played</strong></td><td>I <strong>didn't play</strong></td><td><strong>Did</strong> you <strong>play</strong>?</td></tr>
+            <tr><td>We <strong>started</strong></td><td>We <strong>didn't start</strong></td><td><strong>Did</strong> you <strong>start</strong>?</td></tr>
+            <tr><td>She <strong>went</strong></td><td>She <strong>didn't go</strong></td><td><strong>Did</strong> she <strong>go</strong>?</td></tr>
+            <tr><td>They <strong>had</strong></td><td>They <strong>didn't have</strong></td><td><strong>Did</strong> they <strong>have</strong>?</td></tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>B. Одоо ба Өнгөрсөн цагийн харьцуулалт (do/does → did)</h3>
+          <p>Одоо цагт хэрэглэгддэг <em>do / does / don't / doesn't</em> нь өнгөрсөн цаг дээр бүх биен дээр <strong>did / didn't</strong> болж өөрчлөгдөнө.</p>
+          <div class="example-list">
+            <div class="example-item"><strong>I don't watch TV very often.</strong> <span class="trans">→ Би зурагт нэг их үздэггүй. (Одоо цаг)</span></div>
+            <div class="example-item"><strong>I didn't watch TV yesterday.</strong> <span class="trans">→ Би өчигдөр зурагт үзээгүй. (Өнгөрсөн цаг)</span></div>
+            <div class="example-item"><strong>Does she go out often?</strong> <span class="trans">→ Тэр гадагшаа их гардаг уу? (Одоо цаг)</span></div>
+            <div class="example-item"><strong>Did she go out last night?</strong> <span class="trans">→ Тэр өчигдөр орой гадагшаа гарсан уу? (Өнгөрсөн цаг)</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>C. did / didn't + infinitive (Үйл үгийг дахин хувиргахгүй!)</h3>
+          <p>Анхаарах: <em>did</em> эсвэл <em>didn't</em> нэгэнт өнгөрсөн цагийг зааж байгаа тул үндсэн үйл үгэнд -ed залгахгүй, мөн өнгөрсөн хэлбэрт оруулахгүй.</p>
+          <div class="example-list">
+            <div class="example-item"><strong>I didn't watch</strong> <span class="trans">(зөв) | I didn't watched (БУРУУ)</span></div>
+            <div class="example-item"><strong>Did they go?</strong> <span class="trans">(зөв) | Did they went? (БУРУУ)</span></div>
+            <div class="example-item"><strong>He didn't have</strong> <span class="trans">(зөв) | He didn't had (БУРУУ)</span></div>
+            <div class="example-item"><strong>What did you do?</strong> <span class="trans">(зөв) | What did you did? (БУРУУ)</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>D. Асуух өгүүлбэрийн үгийн дараалал ба Богино хариулт</h3>
+          <p>Асуух үгтэй өгүүлбэрийн дараалал: <strong>(Асуух үг) + did + эзэн бие + үндсэн үйл үг</strong></p>
+          <div class="example-list">
+            <div class="example-item"><strong>Did your sister phone you?</strong> <span class="trans">→ Эгч/дүү чинь тан руу залгасан уу?</span></div>
+            <div class="example-item"><strong>What did you do yesterday evening?</strong> <span class="trans">→ Та өчигдөр орой юу хийсэн бэ?</span></div>
+            <div class="example-item"><strong>Where did your parents go for their holiday?</strong> <span class="trans">→ Аав ээж хоёр чинь амралтаараа хаашаа явсан бэ?</span></div>
+          </div>
+
+          <p style="margin-top: 14px; font-weight: 600; color: #991b1b;">Богино хариулт (Short answers):</p>
+          <div class="example-list">
+            <div class="example-item"><strong>'Did you see Joe yesterday?'</strong> — <strong>'No, I didn't.'</strong></div>
+            <div class="example-item"><strong>'Did it rain on Sunday?'</strong> — <strong>'Yes, it did.'</strong></div>
+            <div class="example-item"><strong>'Did Helen come to the party?'</strong> — <strong>'No, she didn't.'</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: НОМЫН БҮХ ДАСГАЛУУД (12.1 - 12.4) -->
+      <div id="exercises" class="tab-content">
+        
+        <!-- 12.1 -->
+        <div class="card">
+          <h3>12.1 Өгүүлбэрийг үгүйсгэсэн хэлбэрт хувирган гүйцээнэ үү (Complete these sentences with the verb in the negative).</h3>
+          <div class="exercise-item">1. I saw Barbara, but I <input type="text" class="quiz-input wide" data-ans="didn't see Jane">. (see Jane)<span class="inline-hint">didn't see Jane</span></div>
+          <div class="exercise-item">2. They worked on Monday, but they <input type="text" class="quiz-input wide" data-ans="didn't work on Tuesday">. (work on Tuesday)<span class="inline-hint">didn't work on Tuesday</span></div>
+          <div class="exercise-item">3. We went to the post office, but we <input type="text" class="quiz-input wide" data-ans="didn't go to the bank">. (go to the bank)<span class="inline-hint">didn't go to the bank</span></div>
+          <div class="exercise-item">4. She had a pen, but she <input type="text" class="quiz-input wide" data-ans="didn't have any paper">. (have any paper)<span class="inline-hint">didn't have any paper</span></div>
+          <div class="exercise-item">5. Jack did French at school, but he <input type="text" class="quiz-input wide" data-ans="didn't do German">. (do German)<span class="inline-hint">didn't do German</span></div>
+        </div>
+
+        <!-- 12.2 -->
+        <div class="card">
+          <h3>12.2 Did ...? бүтцийг ашиглан асуулт зохионо уу (Write questions with Did ...?).</h3>
+          <div class="exercise-item">1. I watched TV last night. And you? → <input type="text" class="quiz-input extra-wide" data-ans="Did you watch TV last night?"><span class="inline-hint">Did you watch TV last night?</span></div>
+          <div class="exercise-item">2. I enjoyed the party. And you? → <input type="text" class="quiz-input extra-wide" data-ans="Did you enjoy the party?"><span class="inline-hint">Did you enjoy the party?</span></div>
+          <div class="exercise-item">3. I had a good holiday. And you? → <input type="text" class="quiz-input extra-wide" data-ans="Did you have a good holiday?"><span class="inline-hint">Did you have a good holiday?</span></div>
+          <div class="exercise-item">4. I finished work early. And you? → <input type="text" class="quiz-input extra-wide" data-ans="Did you finish work early?"><span class="inline-hint">Did you finish work early?</span></div>
+          <div class="exercise-item">5. I slept well last night. And you? → <input type="text" class="quiz-input extra-wide" data-ans="Did you sleep well last night?"><span class="inline-hint">Did you sleep well last night?</span></div>
+        </div>
+
+        <!-- 12.3 -->
+        <div class="card">
+          <h3>12.3 Харилцан яриан дахь B хүний асуултуудыг бичнэ үү (Write B's questions in these conversations).</h3>
+          
+          <div class="dialogue-box">
+            1. A: We went to New York last month.<br>
+            B: Where <input type="text" class="quiz-input" data-ans="did you stay">? (Where / stay?)<br>
+            A: With some friends.
+            <span class="inline-hint">did you stay</span>
+          </div>
+
+          <div class="dialogue-box">
+            2. A: I was late for the meeting.<br>
+            B: What time <input type="text" class="quiz-input" data-ans="did you arrive">? (What time / arrive?)<br>
+            A: Half past nine.
+            <span class="inline-hint">did you arrive</span>
+          </div>
+
+          <div class="dialogue-box">
+            3. A: I played tennis this afternoon.<br>
+            B: <input type="text" class="quiz-input" data-ans="Did you win">? (win?)<br>
+            A: No, I lost.
+            <span class="inline-hint">Did you win</span>
+          </div>
+
+          <div class="dialogue-box">
+            4. A: I had a nice holiday.<br>
+            B: Good. Where <input type="text" class="quiz-input" data-ans="did you go">? (Where / go?)<br>
+            A: To the mountains.
+            <span class="inline-hint">did you go</span>
+          </div>
+
+          <div class="dialogue-box">
+            5. A: We came home by taxi.<br>
+            B: How much <input type="text" class="quiz-input" data-ans="did it cost">? (How much / cost?)<br>
+            A: Ten pounds.
+            <span class="inline-hint">did it cost</span>
+          </div>
+
+          <div class="dialogue-box">
+            6. A: I'm tired this morning.<br>
+            B: <input type="text" class="quiz-input wide" data-ans="Did you go to bed late">? (go to bed late?)<br>
+            A: No, but I didn't sleep well.
+            <span class="inline-hint">Did you go to bed late</span>
+          </div>
+
+          <div class="dialogue-box">
+            7. A: We went to the beach yesterday.<br>
+            B: <input type="text" class="quiz-input wide" data-ans="Did you have a good time">? (have a good time?)<br>
+            A: Yes, it was great.
+            <span class="inline-hint">Did you have a good time</span>
+          </div>
+
+          <div class="dialogue-box">
+            8. A: The window is broken.<br>
+            B: How <input type="text" class="quiz-input" data-ans="did it happen">? (How / happen?)<br>
+            A: I don't know.
+            <span class="inline-hint">did it happen</span>
+          </div>
+        </div>
+
+        <!-- 12.4 -->
+        <div class="card">
+          <h3>12.4 Хаалтанд буй үйл үгийг зөв хэлбэрт оруулна уу: батлах, үгүйсгэх эсвэл асуух хэлбэр.</h3>
+          
+          <div class="exercise-item">
+            1. We went to the cinema, but the film wasn't very good. We <input type="text" class="quiz-input" data-ans="didn't enjoy"> it. (enjoy)
+            <span class="inline-hint">didn't enjoy</span>
+          </div>
+
+          <div class="exercise-item">
+            2. Tim <input type="text" class="quiz-input" data-ans="bought"> some new clothes yesterday — two shirts, a jacket and a pullover. (buy)
+            <span class="inline-hint">bought</span>
+          </div>
+
+          <div class="exercise-item">
+            3. '<input type="text" class="quiz-input" data-ans="Did it rain"> yesterday?' — 'No, it was a nice day.' (rain)
+            <span class="inline-hint">Did it rain</span>
+          </div>
+
+          <div class="exercise-item">
+            4. The party wasn't very good, so we <input type="text" class="quiz-input" data-ans="didn't stay"> long. (stay)
+            <span class="inline-hint">didn't stay</span>
+          </div>
+
+          <div class="exercise-item">
+            5. It was very warm in the room, so I <input type="text" class="quiz-input" data-ans="opened"> the window. (open)
+            <span class="inline-hint">opened</span>
+          </div>
+
+          <div class="exercise-item">
+            6. 'Did you phone Chris this morning?' — 'No, I <input type="text" class="quiz-input" data-ans="didn't have"> time.' (have)
+            <span class="inline-hint">didn't have</span>
+          </div>
+
+          <div class="exercise-item">
+            7. 'I cut my hand this morning.' — 'How <input type="text" class="quiz-input" data-ans="did you do"> that?' (do)
+            <span class="inline-hint">did you do</span>
+          </div>
+
+          <div class="exercise-item">
+            8. 'Why weren't you at the meeting yesterday?' — 'I <input type="text" class="quiz-input" data-ans="didn't know"> about it.' (know)
+            <span class="inline-hint">didn't know</span>
+          </div>
+        </div>
+
+        <button class="btn-submit" onclick="checkAnswers()">Шалгах</button>
+        <button class="btn-reset" onclick="resetQuiz()">Дахин эхлэх</button>
+        <div id="score-box"></div>
+      </div>
+
+      <!-- TAB 3: ХАРИУНЫ ТАЙЛБАР -->
+      <div id="answers" class="tab-content">
+        <div class="card">
+          <h3>12.1 Үгүйсгэх хэлбэрийн тайлбар:</h3>
+          <p>Өнгөрсөн цагт үгүйсгэхэд <strong>didn't + үйл үгийн үндэс</strong> хэрэглэнэ. Үндсэн үйл үг өнгөрсөн цагт хувирахгүй (жишээ нь: <em>didn't work, didn't go, didn't have, didn't do</em>).</p>
+        </div>
+
+        <div class="card">
+          <h3>12.2 Асуух хэлбэрийн тайлбар:</h3>
+          <p>Өнгөрсөн цагийн ерөнхий асуултыг <strong>Did you + үйл үгийн үндэс ...?</strong> гэж эхлүүлнэ (жишээ нь: <em>Did you watch...? Did you enjoy...? Did you sleep...?</em>).</p>
+        </div>
+
+        <div class="card">
+          <h3>12.3 Харилцан ярианы асуултын тайлбар:</h3>
+          <p>• Тусгай асуух үг орсон үед: <em>Where / What time / How much + did + эзэн бие + үйл үг</em>.<br>
+             • 8 дахь өгүүлбэр: 'How did it happen?' (Энэ хэрхэн болсон бэ?) гэсэн асуулт түгээмэл хэрэглэгддэг.</p>
+        </div>
+
+        <div class="card">
+          <h3>12.4 Холимог дасгалын тайлбар:</h3>
+          <p>1. <strong>didn't enjoy</strong> — Кино таалагдаагүй (үгүйсгэсэн өгүүлбэр).<br>
+             2. <strong>bought</strong> — Өчигдөр шинэ хувцас худалдаж авсан (батлах өгүүлбэр тул buy → bought).<br>
+             3. <strong>Did it rain</strong> — Бороо орсон уу гэж асууж байна.<br>
+             4. <strong>didn't stay</strong> — Үдэшлэг таалагдаагүй тул удаан суугаагүй.<br>
+             6. <strong>didn't have</strong> — Зав байгаагүй.<br>
+             7. <strong>did you do</strong> — 'How did you do that?' (Чи яаж байгаад тэгчихэв ээ?).<br>
+             8. <strong>didn't know</strong> — Хурлын талаар мэдээгүй байсан.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(evt, tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    function checkAnswers() {
+      const inputs = document.querySelectorAll('.quiz-input');
+      let score = 0;
+
+      inputs.forEach(input => {
+        // Том жижиг үсэг, цэг таслал, илүүц зайг цэвэрлэх
+        const userVal = input.value.trim().toLowerCase().replace(/[\?\.]/g, '').replace(/\s+/g, ' ');
+        const correctVal = input.getAttribute('data-ans').toLowerCase().replace(/[\?\.]/g, '').replace(/\s+/g, ' ');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+
+        if (userVal === correctVal) {
+          input.classList.add('correct');
+          input.classList.remove('incorrect');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+          score++;
+        } else {
+          input.classList.add('incorrect');
+          input.classList.remove('correct');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'inline';
+        }
+      });
+
+      const scoreBox = document.getElementById('score-box');
+      scoreBox.style.display = 'block';
+      scoreBox.style.background = score === inputs.length ? '#f0fdf4' : '#fef2f2';
+      scoreBox.style.color = score === inputs.length ? '#16a34a' : '#dc2626';
+      scoreBox.innerHTML = `Үр дүн: Нийт ${inputs.length}-аас ${score} зөв хариуллаа!`;
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll('.quiz-input').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'incorrect');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+        if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+      });
+      document.getElementById('score-box').style.display = 'none';
+    }
+  </script>
+
+  <!-- Цэсийг дуудах скрипт -->
+  <script src="nav.js"></script>
+</body>
+</html>

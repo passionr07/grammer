@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 11: worked / got / went (Past Simple) - Essential Grammar in Use</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #eef2f6; color: #334155; line-height: 1.6; padding: 20px 10px 50px; display: flex; justify-content: center; }
+
+    .app-frame {
+      width: 100%;
+      max-width: 880px;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    header { background: #b83b26; color: white; padding: 24px 18px; text-align: center; }
+    header h1 { font-size: 23px; margin-bottom: 6px; font-weight: 700; }
+    header p { font-size: 13.5px; opacity: 0.95; font-weight: 500; }
+
+    .tab-nav { display: flex; background: white; border-bottom: 2px solid #e2e8f0; }
+    .tab-btn { flex: 1; padding: 13px 10px; font-size: 14px; font-weight: 600; border: none; background: none; cursor: pointer; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; text-align: center; }
+    .tab-btn.active { color: #b83b26; border-bottom-color: #b83b26; background: #fff8f6; }
+
+    .content-area { padding: 24px 18px; background: #f8fafc; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .card { background: white; border-radius: 12px; padding: 22px; margin-bottom: 20px; border: 1.5px solid #edf2f7; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+    .card h3 { color: #b83b26; font-size: 16.5px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1.5px solid #fee2e2; }
+    .card p { font-size: 14px; color: #334155; margin-bottom: 12px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; background: white; }
+    th, td { border: 1px solid #e2e8f0; padding: 9px 12px; text-align: left; }
+    th { background: #fbebe8; color: #991b1b; font-weight: 700; }
+
+    .example-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .example-item { background: #f8fafc; padding: 10px 14px; border-radius: 6px; font-size: 14px; color: #334155; border: 1px solid #f1f5f9; }
+    .example-item strong { color: #991b1b; font-weight: 700; }
+    .example-item span.trans { color: #64748b; margin-left: 6px; }
+
+    .word-box { background: #fff8f6; border: 1.5px dashed #b83b26; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; font-weight: 600; color: #991b1b; font-size: 13.5px; line-height: 1.8; }
+    .story-box { line-height: 2.1; font-size: 15px; color: #1e293b; background: #fff; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 16px; }
+
+    .exercise-item { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px dashed #e2e8f0; font-size: 14.5px; }
+    .quiz-input { border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 5px 9px; font-size: 14px; font-weight: 600; color: #1e293b; width: 130px; margin: 0 4px; text-align: center; outline: none; transition: all 0.2s; }
+    .quiz-input.wide { width: 250px; text-align: left; padding-left: 10px; }
+    .quiz-input:focus { border-color: #b83b26; background: #fffdfd; }
+    .quiz-input.correct { border-color: #16a34a; background: #f0fdf4; color: #16a34a; }
+    .quiz-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #dc2626; }
+    .inline-hint { display: none; margin-left: 8px; font-size: 13px; font-weight: 600; color: #16a34a; }
+
+    .btn-submit { background: #b83b26; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; margin-right: 8px; }
+    .btn-reset { background: #64748b; color: white; border: none; padding: 12px 18px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; }
+    #score-box { display: none; margin-top: 15px; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="app-frame">
+
+    <header>
+      <h1>Essential Grammar in Use</h1>
+      <p>UNIT 11: worked / got / went (Past Simple - Энгийн өнгөрсөн цаг) (Цогц сургалтын систем)</p>
+    </header>
+
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(event, 'theory')">📖 1. Онол ба Тайлбар</button>
+      <button class="tab-btn" onclick="switchTab(event, 'exercises')">✍️ 2. Дасгал ажиллах</button>
+      <button class="tab-btn" onclick="switchTab(event, 'answers')">🔑 3. Хариуны тайлбар</button>
+    </nav>
+
+    <div class="content-area">
+
+      <!-- TAB 1: ОНОЛ БА ТАЙЛБАР -->
+      <div id="theory" class="tab-content active">
+        <div class="card">
+          <h3>A. Past Simple цагийн үндсэн хэрэглээ (They watch vs They watched)</h3>
+          <p>Өнгөрсөнд болж өнгөрсөн, бүрэн дууссан үйл явдлыг илэрхийлэхэд <strong>Past Simple</strong> цагийг хэрэглэнэ.</p>
+          <div class="example-list">
+            <div class="example-item"><strong>They watch TV every evening.</strong> <span class="trans">→ Тэд орой бүр зурагт үздэг. (Одоо цаг - Present Simple)</span></div>
+            <div class="example-item"><strong>They watched TV yesterday evening.</strong> <span class="trans">→ Тэд өчигдөр орой зурагт үзсэн. (Өнгөрсөн цаг - Past Simple)</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>B. Дүрэмтэй үйл үгс (Regular verbs: -ed)</h3>
+          <p>Ихэнх дүрэмтэй үйл үгийн ард <strong>-ed</strong> залгаж өнгөрсөн цаг үүсгэнэ:</p>
+          <table>
+            <tr><th>Үндсэн хэлбэр</th><th>Өнгөрсөн цаг (-ed)</th><th>Жишээ өгүүлбэр</th></tr>
+            <tr><td>work / clean</td><td><strong>worked / cleaned</strong></td><td>I cleaned my teeth three times yesterday.</td></tr>
+            <tr><td>start / finish</td><td><strong>started / finished</strong></td><td>The concert started at 7.30 and finished at 10.00.</td></tr>
+            <tr><td>stay / enjoy</td><td><strong>stayed / enjoyed</strong></td><td>We enjoyed our holiday last year. We stayed at a very good hotel.</td></tr>
+          </table>
+
+          <p style="margin-top: 12px; font-weight: 600; color: #991b1b;">Бичлэгийн дүрмүүд (Spelling rules):</p>
+          <table>
+            <tr><th>Дүрэм</th><th>Үндсэн хэлбэр</th><th>Өнгөрсөн цаг</th><th>Монгол утга</th></tr>
+            <tr><td>-e үсгээр төгссөн бол зөвхөн <strong>-d</strong> залгана</td><td>live / dance</td><td><strong>lived / danced</strong></td><td>амьдарсан / бүжиглэсэн</td></tr>
+            <tr><td>Гийгүүлэгч + -y бол <strong>-ied</strong> болно</td><td>study / copy</td><td><strong>studied / copied</strong></td><td>сурсан / хуулсан</td></tr>
+            <tr><td>1 богино эгшиг + 1 гийгүүлэгч давхарлана</td><td>stop / plan</td><td><strong>stopped / planned</strong></td><td>зогссон / төлөвлөсөн</td></tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>C. Дүрэм бус үйл үгс (Irregular verbs)</h3>
+          <p>Зарим үйл үгс өнгөрсөн цаг дээрээ -ed авахгүйгээр өөр хэлбэрт шилждэг тул цээжлэх шаардлагатай:</p>
+          <table>
+            <tr><th>Үндсэн хэлбэр</th><th>Өнгөрсөн цаг</th><th>Үндсэн хэлбэр</th><th>Өнгөрсөн цаг</th></tr>
+            <tr><td>begin (эхлэх)</td><td><strong>began</strong></td><td>have (байх/авах)</td><td><strong>had</strong></td></tr>
+            <tr><td>break (эвдэх)</td><td><strong>broke</strong></td><td>hear (сонсох)</td><td><strong>heard</strong></td></tr>
+            <tr><td>buy (худалдаж авах)</td><td><strong>bought</strong></td><td>know (мэдэх)</td><td><strong>knew</strong></td></tr>
+            <tr><td>come (ирэх)</td><td><strong>came</strong></td><td>leave (орхих/явах)</td><td><strong>left</strong></td></tr>
+            <tr><td>do (хийх)</td><td><strong>did</strong></td><td>lose (гээх/алдах)</td><td><strong>lost</strong></td></tr>
+            <tr><td>drink (уух)</td><td><strong>drank</strong></td><td>make (хийх/бүтээх)</td><td><strong>made</strong></td></tr>
+            <tr><td>eat (идэх)</td><td><strong>ate</strong></td><td>meet (уулзах)</td><td><strong>met</strong></td></tr>
+            <tr><td>get (босох/авах)</td><td><strong>got</strong></td><td>pay (төлөх)</td><td><strong>paid</strong></td></tr>
+            <tr><td>go (явах)</td><td><strong>went</strong></td><td>see (харах)</td><td><strong>saw</strong></td></tr>
+          </table>
+
+          <div class="example-list">
+            <div class="example-item"><strong>I usually get up early, but this morning I got up at 9.30.</strong> <span class="trans">→ Би ихэвчлэн эрт босдог ч өнөө өглөө 9:30-д боссон.</span></div>
+            <div class="example-item"><strong>We did a lot of work yesterday.</strong> <span class="trans">→ Бид өчигдөр маш их ажил хийсэн.</span></div>
+            <div class="example-item"><strong>Caroline went to the cinema three times last week.</strong> <span class="trans">→ Каролин өнгөрсөн долоо хоногт кино театрт 3 удаа явсан.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: НОМЫН БҮХ ДАСГАЛУУД (11.1 - 11.4) -->
+      <div id="exercises" class="tab-content">
+        
+        <!-- 11.1 -->
+        <div class="card">
+          <h3>11.1 Дараах үйл үгсээс тохирохыг сонгон өнгөрсөн цагт хувирган бичнэ үү (Complete the sentences).</h3>
+          <div class="word-box">clean &nbsp;|&nbsp; die &nbsp;|&nbsp; end &nbsp;|&nbsp; enjoy &nbsp;|&nbsp; happen &nbsp;|&nbsp; live &nbsp;|&nbsp; open &nbsp;|&nbsp; play &nbsp;|&nbsp; rain &nbsp;|&nbsp; start &nbsp;|&nbsp; stay &nbsp;|&nbsp; want</div>
+
+          <div class="exercise-item">1. I <input type="text" class="quiz-input" data-ans="cleaned"> my teeth three times yesterday.<span class="inline-hint">cleaned</span></div>
+          <div class="exercise-item">2. It was hot in the room, so I <input type="text" class="quiz-input" data-ans="opened"> the window.<span class="inline-hint">opened</span></div>
+          <div class="exercise-item">3. The film was very long. It <input type="text" class="quiz-input" data-ans="started"> at 7.15 and <input type="text" class="quiz-input" data-ans="finished"> at 10.00.<span class="inline-hint">started / finished (эсвэл ended)</span></div>
+          <div class="exercise-item">4. When I was a child, I <input type="text" class="quiz-input" data-ans="wanted"> to be a doctor.<span class="inline-hint">wanted</span></div>
+          <div class="exercise-item">5. The accident <input type="text" class="quiz-input" data-ans="happened"> last Sunday afternoon.<span class="inline-hint">happened</span></div>
+          <div class="exercise-item">6. It's a nice day today, but yesterday it <input type="text" class="quiz-input" data-ans="rained"> all day.<span class="inline-hint">rained</span></div>
+          <div class="exercise-item">7. We <input type="text" class="quiz-input" data-ans="enjoyed"> our holiday last year. We <input type="text" class="quiz-input" data-ans="stayed"> at a very good hotel.<span class="inline-hint">enjoyed / stayed</span></div>
+          <div class="exercise-item">8. Tara's grandfather <input type="text" class="quiz-input" data-ans="died"> when he was 90 years old.<span class="inline-hint">died</span></div>
+        </div>
+
+        <!-- 11.2 -->
+        <div class="card">
+          <h3>11.2 Өгөгдсөн үйл үгсийн өнгөрсөн цагийн хэлбэрийг бичнэ үү (Write the past simple of these verbs).</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="exercise-item">1. get → <input type="text" class="quiz-input" data-ans="got"><span class="inline-hint">got</span></div>
+            <div class="exercise-item">2. see → <input type="text" class="quiz-input" data-ans="saw"><span class="inline-hint">saw</span></div>
+            <div class="exercise-item">3. play → <input type="text" class="quiz-input" data-ans="played"><span class="inline-hint">played</span></div>
+            <div class="exercise-item">4. pay → <input type="text" class="quiz-input" data-ans="paid"><span class="inline-hint">paid</span></div>
+            <div class="exercise-item">5. visit → <input type="text" class="quiz-input" data-ans="visited"><span class="inline-hint">visited</span></div>
+            <div class="exercise-item">6. buy → <input type="text" class="quiz-input" data-ans="bought"><span class="inline-hint">bought</span></div>
+            <div class="exercise-item">7. go → <input type="text" class="quiz-input" data-ans="went"><span class="inline-hint">went</span></div>
+            <div class="exercise-item">8. think → <input type="text" class="quiz-input" data-ans="thought"><span class="inline-hint">thought</span></div>
+            <div class="exercise-item">9. copy → <input type="text" class="quiz-input" data-ans="copied"><span class="inline-hint">copied</span></div>
+            <div class="exercise-item">10. know → <input type="text" class="quiz-input" data-ans="knew"><span class="inline-hint">knew</span></div>
+            <div class="exercise-item">11. put → <input type="text" class="quiz-input" data-ans="put"><span class="inline-hint">put</span></div>
+            <div class="exercise-item">12. speak → <input type="text" class="quiz-input" data-ans="spoke"><span class="inline-hint">spoke</span></div>
+            <div class="exercise-item">13. write → <input type="text" class="quiz-input" data-ans="wrote"><span class="inline-hint">wrote</span></div>
+            <div class="exercise-item">14. lose → <input type="text" class="quiz-input" data-ans="lost"><span class="inline-hint">lost</span></div>
+          </div>
+        </div>
+
+        <!-- 11.3 -->
+        <div class="card">
+          <h3>11.3 Лизагийн Мадрид руу явсан аяллын тухай уншаад хаалтанд буй үйл үгийг өнгөрсөн цагт хувирган нөхнө үү.</h3>
+          <div class="story-box">
+            Last Tuesday Lisa (1) <input type="text" class="quiz-input" data-ans="got"> (get) up at half past six and (2) <input type="text" class="quiz-input" data-ans="had"> (have) a cup of coffee. 
+            At 7.00 she (3) <input type="text" class="quiz-input" data-ans="left"> (leave) home and (4) <input type="text" class="quiz-input" data-ans="drove"> (drive) to the airport. 
+            When she (5) <input type="text" class="quiz-input" data-ans="arrived"> (arrive), she (6) <input type="text" class="quiz-input" data-ans="parked"> (park) the car, (7) <input type="text" class="quiz-input" data-ans="walked"> (walk) to the terminal and (8) <input type="text" class="quiz-input" data-ans="checked"> (check) in. 
+            Then she (9) <input type="text" class="quiz-input" data-ans="had"> (have) breakfast at a café and (10) <input type="text" class="quiz-input" data-ans="waited"> (wait) for her flight. 
+            The plane (11) <input type="text" class="quiz-input" data-ans="departed"> (depart) on time and (12) <input type="text" class="quiz-input" data-ans="arrived"> (arrive) in Madrid two hours later. 
+            Finally she (13) <input type="text" class="quiz-input" data-ans="took"> (take) a taxi from the airport to her hotel in the centre of Madrid.
+          </div>
+        </div>
+
+        <!-- 11.4 -->
+        <div class="card">
+          <h3>11.4 Өгөгдсөн одоо цагийн дадал зуршлыг өнгөрсөн цаг руу хувиргаж өгүүлбэрийг гүйцээнэ үү.</h3>
+          <div class="exercise-item">1. James always goes to work by car. Yesterday he <input type="text" class="quiz-input wide" data-ans="went to work by car">.<span class="inline-hint">went to work by car</span></div>
+          <div class="exercise-item">2. Rachel often loses her keys. She <input type="text" class="quiz-input wide" data-ans="lost her keys last week"> last week.<span class="inline-hint">lost her keys (last week)</span></div>
+          <div class="exercise-item">3. Kate meets her friends every evening. She <input type="text" class="quiz-input wide" data-ans="met her friends yesterday evening"> yesterday evening.<span class="inline-hint">met her friends (yesterday evening)</span></div>
+          <div class="exercise-item">4. I usually buy two newspapers every day. Yesterday I <input type="text" class="quiz-input wide" data-ans="bought two newspapers">.<span class="inline-hint">bought two newspapers</span></div>
+          <div class="exercise-item">5. We usually go to the cinema on Sundays. Last Sunday we <input type="text" class="quiz-input wide" data-ans="went to the cinema">.<span class="inline-hint">went to the cinema</span></div>
+          <div class="exercise-item">6. I eat an orange every day. Yesterday I <input type="text" class="quiz-input wide" data-ans="ate an orange">.<span class="inline-hint">ate an orange</span></div>
+          <div class="exercise-item">7. Tom always has a shower in the morning. This morning he <input type="text" class="quiz-input wide" data-ans="had a shower">.<span class="inline-hint">had a shower</span></div>
+          <div class="exercise-item">8. Our friends come to see us every Friday. They <input type="text" class="quiz-input wide" data-ans="came to see us last friday"> last Friday.<span class="inline-hint">came to see us (last Friday)</span></div>
+        </div>
+
+        <button class="btn-submit" onclick="checkAnswers()">Шалгах</button>
+        <button class="btn-reset" onclick="resetQuiz()">Дахин эхлэх</button>
+        <div id="score-box"></div>
+      </div>
+
+      <!-- TAB 3: ХАРИУНЫ ТАЙЛБАР -->
+      <div id="answers" class="tab-content">
+        <div class="card">
+          <h3>11.1 Тайлбар:</h3>
+          <p>• <strong>cleaned, opened, started, finished, wanted, happened, rained, enjoyed, stayed</strong> — Эдгээр үйл үгс бүгд дүрэмтэй тул ардаа -ed залгаж өнгөрсөн цаг үүсгэсэн.<br>
+             • <strong>died</strong> — -e үсгээр төгссөн тул зөвхөн -d авсан.</p>
+        </div>
+
+        <div class="card">
+          <h3>11.2 Тайлбар (Дүрэм бус үйл үгийн хувирал):</h3>
+          <p>• get → <strong>got</strong>, see → <strong>saw</strong>, pay → <strong>paid</strong>, buy → <strong>bought</strong>, go → <strong>went</strong>, think → <strong>thought</strong>, know → <strong>knew</strong>, put → <strong>put</strong> (өөрчлөгдөхгүй), speak → <strong>spoke</strong>, write → <strong>wrote</strong>, lose → <strong>lost</strong>.<br>
+             • play → <strong>played</strong>, visit → <strong>visited</strong>, copy → <strong>copied</strong> (-y нь -ied болсон дүрэмтэй үйл үг).</p>
+        </div>
+
+        <div class="card">
+          <h3>11.3 & 11.4 Тайлбар:</h3>
+          <p>Өгүүлбэрт <em>yesterday, last week, last Sunday, this morning</em> гэх мэт өнгөрсөн цаг заасан үгс орсон бол үйл үг заавал Past Simple хэлбэрт (went, met, bought, ate, had, came г.м) хувирна.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(evt, tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    function checkAnswers() {
+      const inputs = document.querySelectorAll('.quiz-input');
+      let score = 0;
+
+      inputs.forEach(input => {
+        const userVal = input.value.trim().toLowerCase().replace(/\s+/g, ' ');
+        const correctVal = input.getAttribute('data-ans').toLowerCase();
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+
+        let isMatch = (userVal === correctVal);
+
+        // Уян хатан шалгах нөхцөлүүд
+        if (!isMatch) {
+          if (correctVal === "finished" && userVal === "ended") isMatch = true;
+          if (correctVal === "lost her keys last week" && userVal === "lost her keys") isMatch = true;
+          if (correctVal === "met her friends yesterday evening" && userVal === "met her friends") isMatch = true;
+          if (correctVal === "came to see us last friday" && userVal === "came to see us") isMatch = true;
+        }
+
+        if (isMatch) {
+          input.classList.add('correct');
+          input.classList.remove('incorrect');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+          score++;
+        } else {
+          input.classList.add('incorrect');
+          input.classList.remove('correct');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'inline';
+        }
+      });
+
+      const scoreBox = document.getElementById('score-box');
+      scoreBox.style.display = 'block';
+      scoreBox.style.background = score === inputs.length ? '#f0fdf4' : '#fef2f2';
+      scoreBox.style.color = score === inputs.length ? '#16a34a' : '#dc2626';
+      scoreBox.innerHTML = `Үр дүн: Нийт ${inputs.length}-аас ${score} зөв хариуллаа!`;
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll('.quiz-input').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'incorrect');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+        if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+      });
+      document.getElementById('score-box').style.display = 'none';
+    }
+  </script>
+
+  <script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 13: I was doing (Past Continuous) - Essential Grammar in Use</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #eef2f6; color: #334155; line-height: 1.6; padding: 20px 10px 50px; display: flex; justify-content: center; }
+
+    .app-frame {
+      width: 100%;
+      max-width: 880px;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    header { background: #b83b26; color: white; padding: 24px 18px; text-align: center; }
+    header h1 { font-size: 23px; margin-bottom: 6px; font-weight: 700; }
+    header p { font-size: 13.5px; opacity: 0.95; font-weight: 500; }
+
+    .tab-nav { display: flex; background: white; border-bottom: 2px solid #e2e8f0; }
+    .tab-btn { flex: 1; padding: 13px 10px; font-size: 14px; font-weight: 600; border: none; background: none; cursor: pointer; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; text-align: center; }
+    .tab-btn.active { color: #b83b26; border-bottom-color: #b83b26; background: #fff8f6; }
+
+    .content-area { padding: 24px 18px; background: #f8fafc; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .card { background: white; border-radius: 12px; padding: 22px; margin-bottom: 20px; border: 1.5px solid #edf2f7; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+    .card h3 { color: #b83b26; font-size: 16.5px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1.5px solid #fee2e2; }
+    .card p { font-size: 14px; color: #334155; margin-bottom: 12px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; background: white; }
+    th, td { border: 1px solid #e2e8f0; padding: 9px 12px; text-align: left; }
+    th { background: #fbebe8; color: #991b1b; font-weight: 700; }
+
+    .example-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .example-item { background: #f8fafc; padding: 10px 14px; border-radius: 6px; font-size: 14px; color: #334155; border: 1px solid #f1f5f9; }
+    .example-item strong { color: #991b1b; font-weight: 700; }
+    .example-item span.trans { color: #64748b; margin-left: 6px; }
+
+    .info-box { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; color: #166534; }
+    .schedule-box { background: #fff8f6; border: 1.5px dashed #b83b26; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; color: #7f1d1d; line-height: 1.8; }
+    .expl-item { margin-bottom: 12px; padding-left: 10px; border-left: 3px solid #fca5a5; font-size: 13.8px; }
+
+    .exercise-item { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px dashed #e2e8f0; font-size: 14.5px; }
+    .quiz-input { border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 5px 9px; font-size: 14px; font-weight: 600; color: #1e293b; width: 160px; margin: 0 4px; text-align: center; outline: none; transition: all 0.2s; }
+    .quiz-input.wide { width: 280px; text-align: left; padding-left: 10px; }
+    .quiz-input.extra-wide { width: 360px; text-align: left; padding-left: 10px; }
+    .quiz-input:focus { border-color: #b83b26; background: #fffdfd; }
+    .quiz-input.correct { border-color: #16a34a; background: #f0fdf4; color: #16a34a; }
+    .quiz-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #dc2626; }
+    .inline-hint { display: none; margin-left: 8px; font-size: 13px; font-weight: 600; color: #16a34a; }
+
+    .btn-submit { background: #b83b26; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; margin-right: 8px; }
+    .btn-reset { background: #64748b; color: white; border: none; padding: 12px 18px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; }
+    #score-box { display: none; margin-top: 15px; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="app-frame">
+
+    <header>
+      <h1>Essential Grammar in Use</h1>
+      <p>UNIT 13: I was doing (Past Continuous - Өнгөрсөнд үргэлжлэх цаг) (Цогц сургалтын систем)</p>
+    </header>
+
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(event, 'theory')">📖 1. Онол ба Тайлбар</button>
+      <button class="tab-btn" onclick="switchTab(event, 'exercises')">✍️ 2. Дасгал ажиллах</button>
+      <button class="tab-btn" onclick="switchTab(event, 'answers')">🔑 3. Хариуны тайлбар</button>
+    </nav>
+
+    <div class="content-area">
+
+      <!-- TAB 1: ОНОЛ БА ТАЙЛБАР -->
+      <div id="theory" class="tab-content active">
+        
+        <div class="card">
+          <h3>A. Past Continuous цагийн үндсэн ойлголт</h3>
+          <p>Өнгөрсөнд тодорхой цаг мөчид ямар нэгэн үйлдэл эхэлчихсэн, дуусаагүй <strong>ид дундаа үргэлжилж байсан</strong> процессыг илэрхийлэхэд Past Continuous цагийг ашиглана.</p>
+          
+          <div class="info-box">
+            <strong>Номын жишээ нөхцөл байдал:</strong><br>
+            Өчигдөр 4:00 цагт Жак ном уншиж эхэлсэн. 4:30 цагт утас нь дуугарч тэр уншихаа зогсоосон.<br>
+            Тэгвэл 4:15 цагт тэр юу хийж байсан бэ? → <strong>He was reading a book.</strong> (Тэр ном уншиж байсан — үйл явц дуусаагүй үргэлжилж байсан).
+          </div>
+
+          <div class="example-list">
+            <div class="example-item"><strong>It is 6 o'clock now. Paul is at home. He is watching TV.</strong> <span class="trans">→ Одоо 6 цаг болж байна. Пол гэртээ байна. Тэр зурагт үзэж байна. (Одоо цаг)</span></div>
+            <div class="example-item"><strong>At 4 o'clock he wasn't at home. He was swimming in the pool.</strong> <span class="trans">→ 4 цагт тэр гэртээ байгаагүй. Тэр усан санд сэлж байсан. (Өнгөрсөн цаг)</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>B. Өгүүлбэрийн хувирал ба бүтэц (was / were + -ing)</h3>
+          <table>
+            <tr>
+              <th>Хэлбэр</th>
+              <th>Бүтэц</th>
+              <th>Жишээ өгүүлбэр</th>
+            </tr>
+            <tr>
+              <td><strong>Батлах (+)</strong></td>
+              <td>I / he / she / it + <strong>was</strong> + -ing<br>we / you / they + <strong>were</strong> + -ing</td>
+              <td>I <strong>was doing</strong> my homework.<br>They <strong>were playing</strong> football.</td>
+            </tr>
+            <tr>
+              <td><strong>Үгүйсгэх (-)</strong></td>
+              <td>I / he / she / it + <strong>wasn't</strong> + -ing<br>we / you / they + <strong>weren't</strong> + -ing</td>
+              <td>It <strong>wasn't raining</strong>.<br>We <strong>weren't watching</strong> TV.</td>
+            </tr>
+            <tr>
+              <td><strong>Асуух (?)</strong></td>
+              <td><strong>Was</strong> + I / he / she / it + -ing?<br><strong>Were</strong> + we / you / they + -ing?</td>
+              <td><strong>What were</strong> you <strong>doing</strong> at 11.30?<br><strong>Was</strong> she <strong>sleeping</strong>?</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- НОМЫН ЖИШЭЭ ӨГҮҮЛБЭРҮҮД -->
+        <div class="card">
+          <h3>C. Номон дээрх жишээ өгүүлбэрүүд (Examples)</h3>
+          <div class="example-list">
+            <div class="example-item">
+              <strong>What were you doing at 11.30 yesterday? Were you working?</strong> 
+              <span class="trans">→ Та өчигдөр 11:30-д юу хийж байсан бэ? Ажиллаж байсан уу?</span>
+            </div>
+            <div class="example-item">
+              <strong>'What did he say?' — 'I don't know. I wasn't listening.'</strong> 
+              <span class="trans">→ "Тэр юу гэж хэлсэн бэ?" — "Би мэдэхгүй. Би сонсоогүй (анхаарч сонсож байгаагүй)."</span>
+            </div>
+            <div class="example-item">
+              <strong>It was raining, so we didn't go out.</strong> 
+              <span class="trans">→ Бороо орж байсан тул бид гадагшаа гараагүй.</span>
+            </div>
+            <div class="example-item">
+              <strong>In 2009 we were living in Canada.</strong> 
+              <span class="trans">→ 2009 онд бид Канадад амьдарч байсан.</span>
+            </div>
+            <div class="example-item">
+              <strong>Today she's wearing a skirt, but yesterday she was wearing trousers.</strong> 
+              <span class="trans">→ Өнөөдөр тэр банзал өмссөн байна, харин өчигдөр өмд өмсөж явсан.</span>
+            </div>
+            <div class="example-item">
+              <strong>I woke up early yesterday. It was a beautiful morning. The sun was shining and the birds were singing.</strong> 
+              <span class="trans">→ Би өчигдөр эрт сэрсэн. Үнэхээр сайхан өглөө байлаа. Нар шарж, шувууд жиргэж байсан.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>D. Үйл үгэнд -ing залгах бичлэгийн дүрэм (Appendix 5: Spelling)</h3>
+          <table>
+            <tr>
+              <th>Дүрэм</th>
+              <th>Үндсэн үйл үг</th>
+              <th>-ing хэлбэр</th>
+              <th>Монгол утга</th>
+            </tr>
+            <tr>
+              <td>Төгсгөлийн дуудагддаггүй <strong>-e</strong> үсгийг хасна</td>
+              <td>live / dance / write</td>
+              <td><strong>living / dancing / writing</strong></td>
+              <td>амьдарч / бүжиглэж / бичиж байсан</td>
+            </tr>
+            <tr>
+              <td>1 богино эгшиг + 1 гийгүүлэгчтэй бол төгсгөлийг <strong>давхарлана</strong></td>
+              <td>run / sit / swim</td>
+              <td><strong>running / sitting / swimming</strong></td>
+              <td>гүйж / сууж / сэлж байсан</td>
+            </tr>
+            <tr>
+              <td><strong>-ie</strong> төгсгөл нь <strong>-y</strong> болж өөрчлөгдөнө</td>
+              <td>lie</td>
+              <td><strong>lying</strong></td>
+              <td>хэвтэж / худал ярьж байсан</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>E. Present Continuous болон Past Continuous-ийн ялгаа</h3>
+          <table>
+            <tr>
+              <th>Present Continuous (am/is/are + -ing)</th>
+              <th>Past Continuous (was/were + -ing)</th>
+            </tr>
+            <tr>
+              <td>I <strong>am working</strong> now. (Би одоо ажиллаж байна)</td>
+              <td>I <strong>was working</strong> at 10.30 last night. (Би өчигдөр орой 10:30-д ажиллаж байсан)</td>
+            </tr>
+            <tr>
+              <td>It <strong>isn't raining</strong> at the moment. (Одоо бороо орохгүй байна)</td>
+              <td>It <strong>wasn't raining</strong> when we went out. (Биднийг гарахад бороо ороогүй байсан)</td>
+            </tr>
+            <tr>
+              <td>What <strong>are</strong> you <strong>doing</strong>? (Чи одоо юу хийж байна?)</td>
+              <td>What <strong>were</strong> you <strong>doing</strong> at 3 o'clock? (3 цагт юу хийж байсан бэ?)</td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- TAB 2: НОМЫН БҮХ ДАСГАЛУУД (13.1 - 13.4) -->
+      <div id="exercises" class="tab-content">
+        
+        <!-- 13.1 -->
+        <div class="card">
+          <h3>13.1 Өчигдөр өдрийн 3 цагт хүмүүс хаана байсан ба юу хийж байсан бэ? Загварын дагуу 2 өгүүлбэр болгон гүйцээнэ үү.</h3>
+          
+          <div class="exercise-item">
+            1. Rachel (at home / watch TV)<br>
+            → Rachel <input type="text" class="quiz-input wide" data-ans="was at home. She was watching TV.">
+            <span class="inline-hint">was at home. She was watching TV.</span>
+          </div>
+
+          <div class="exercise-item">
+            2. Jack and Kate (at the cinema / watch a film)<br>
+            → Jack and Kate <input type="text" class="quiz-input wide" data-ans="were at the cinema. They were watching a film.">
+            <span class="inline-hint">were at the cinema. They were watching a film.</span>
+          </div>
+
+          <div class="exercise-item">
+            3. Tom (in his car / drive)<br>
+            → Tom <input type="text" class="quiz-input wide" data-ans="was in his car. He was driving.">
+            <span class="inline-hint">was in his car. He was driving.</span>
+          </div>
+
+          <div class="exercise-item">
+            4. Tracey (at the station / wait for a train)<br>
+            → Tracey <input type="text" class="quiz-input wide" data-ans="was at the station. She was waiting for a train.">
+            <span class="inline-hint">was at the station. She was waiting for a train.</span>
+          </div>
+
+          <div class="exercise-item">
+            5. Mr and Mrs Hall (in the park / walk)<br>
+            → Mr and Mrs Hall <input type="text" class="quiz-input wide" data-ans="were in the park. They were walking.">
+            <span class="inline-hint">were in the park. They were walking.</span>
+          </div>
+
+          <div class="exercise-item">
+            6. And you? I (at home / study English)<br>
+            → I <input type="text" class="quiz-input wide" data-ans="was at home. I was studying English.">
+            <span class="inline-hint">was at home. I was studying English. (Жишээ хариу)</span>
+          </div>
+        </div>
+
+        <!-- 13.2 -->
+        <div class="card">
+          <h3>13.2 Сарагийн өчигдөр өглөөний хуваарийг хараад цаг бүрт юу хийж байсныг өгүүлбэр болгон бичнэ үү.</h3>
+          <div class="schedule-box">
+            • 7.10 – 7.25: have breakfast<br>
+            • 7.30 – 8.10: read the newspaper<br>
+            • 8.30 – 9.00: wash her car<br>
+            • 9.20 – 10.00: clean the kitchen<br>
+            • 10.15 – 11.45: play tennis<br>
+            • 12.00 – 12.45: cook dinner
+          </div>
+
+          <div class="exercise-item">1. At 8.45 she <input type="text" class="quiz-input wide" data-ans="was washing her car">.<span class="inline-hint">was washing her car</span></div>
+          <div class="exercise-item">2. At 10.45 she <input type="text" class="quiz-input wide" data-ans="was playing tennis">.<span class="inline-hint">was playing tennis</span></div>
+          <div class="exercise-item">3. At 8 o'clock she <input type="text" class="quiz-input wide" data-ans="was reading the newspaper">.<span class="inline-hint">was reading the newspaper</span></div>
+          <div class="exercise-item">4. At 12.10 she <input type="text" class="quiz-input wide" data-ans="was cooking dinner">.<span class="inline-hint">was cooking dinner</span></div>
+          <div class="exercise-item">5. At 7.15 she <input type="text" class="quiz-input wide" data-ans="was having breakfast">.<span class="inline-hint">was having breakfast</span></div>
+          <div class="exercise-item">6. At 9.30 she <input type="text" class="quiz-input wide" data-ans="was cleaning the kitchen">.<span class="inline-hint">was cleaning the kitchen</span></div>
+        </div>
+
+        <!-- 13.3 -->
+        <div class="card">
+          <h3>13.3 was/were -ing бүтцийг ашиглан асуултуудыг гүйцээнэ үү (where/what/why шаардлагатай бол ашиглана).</h3>
+          
+          <div class="exercise-item">
+            1. (you / live) in 2012? — In London.<br>
+            → <input type="text" class="quiz-input extra-wide" data-ans="Where were you living in 2012?">
+            <span class="inline-hint">Where were you living in 2012?</span>
+          </div>
+
+          <div class="exercise-item">
+            2. (you / do) at 2 o'clock? — I was asleep.<br>
+            → <input type="text" class="quiz-input extra-wide" data-ans="What were you doing at 2 o'clock?">
+            <span class="inline-hint">What were you doing at 2 o'clock?</span>
+          </div>
+
+          <div class="exercise-item">
+            3. (it / rain) when you got up? — No, it was sunny.<br>
+            → <input type="text" class="quiz-input extra-wide" data-ans="Was it raining when you got up?">
+            <span class="inline-hint">Was it raining when you got up?</span>
+          </div>
+
+          <div class="exercise-item">
+            4. (Sue / drive) so fast? — Because she was late.<br>
+            → <input type="text" class="quiz-input extra-wide" data-ans="Why was Sue driving so fast?">
+            <span class="inline-hint">Why was Sue driving so fast?</span>
+          </div>
+
+          <div class="exercise-item">
+            5. (Tim / wear) a suit yesterday? — No, a T-shirt and jeans.<br>
+            → <input type="text" class="quiz-input extra-wide" data-ans="Was Tim wearing a suit yesterday?">
+            <span class="inline-hint">Was Tim wearing a suit yesterday?</span>
+          </div>
+        </div>
+
+        <!-- 13.4 -->
+        <div class="card">
+          <h3>13.4 Өчигдөр үдээс хойш Жогийн хийж байсан болон хийгээгүй үйлдлийг батлах эсвэл үгүйсгэх хэлбэрээр бичнэ үү.</h3>
+
+          <div class="exercise-item">1. (wear / a jacket) → He <input type="text" class="quiz-input wide" data-ans="wasn't wearing a jacket">.<span class="inline-hint">wasn't wearing a jacket</span></div>
+          <div class="exercise-item">2. (carry / a bag) → He <input type="text" class="quiz-input wide" data-ans="was carrying a bag">.<span class="inline-hint">was carrying a bag</span></div>
+          <div class="exercise-item">3. (go / to the dentist) → He <input type="text" class="quiz-input wide" data-ans="wasn't going to the dentist">.<span class="inline-hint">wasn't going to the dentist</span></div>
+          <div class="exercise-item">4. (eat / an ice cream) → He <input type="text" class="quiz-input wide" data-ans="was eating an ice cream">.<span class="inline-hint">was eating an ice cream</span></div>
+          <div class="exercise-item">5. (carry / an umbrella) → He <input type="text" class="quiz-input wide" data-ans="wasn't carrying an umbrella">.<span class="inline-hint">wasn't carrying an umbrella</span></div>
+          <div class="exercise-item">6. (go / home) → He <input type="text" class="quiz-input wide" data-ans="wasn't going home">.<span class="inline-hint">wasn't going home</span></div>
+          <div class="exercise-item">7. (wear / a hat) → He <input type="text" class="quiz-input wide" data-ans="was wearing a hat">.<span class="inline-hint">was wearing a hat</span></div>
+          <div class="exercise-item">8. (ride / a bicycle) → He <input type="text" class="quiz-input wide" data-ans="wasn't riding a bicycle">.<span class="inline-hint">wasn't riding a bicycle</span></div>
+        </div>
+
+        <button class="btn-submit" onclick="checkAnswers()">Шалгах</button>
+        <button class="btn-reset" onclick="resetQuiz()">Дахин эхлэх</button>
+        <div id="score-box"></div>
+      </div>
+
+      <!-- TAB 3: ХАРИУНЫ ТАЙЛБАР -->
+      <div id="answers" class="tab-content">
+        
+        <div class="card">
+          <h3>13.1 Дасгалын дэлгэрэнгүй хариу ба тайлбар:</h3>
+          <div class="expl-item"><strong>1. was at home. She was watching TV.</strong><br>Тайлбар: Rachel (гуравдагч этгээд, ганц тоо) тул <em>was</em> авна. Тэр гэртээ байсан бөгөөд зурагт үзэж байсан.</div>
+          <div class="expl-item"><strong>2. were at the cinema. They were watching a film.</strong><br>Тайлбар: Jack and Kate нь олон тоо (They) тул <em>were</em> авна. Тэд кино үзэж байсан.</div>
+          <div class="expl-item"><strong>3. was in his car. He was driving.</strong><br>Тайлбар: Tom (ганц тоо) тул <em>was</em> авна. Drive үйл үгийн эцсийн 'e' хасагдаж <em>driving</em> болсон.</div>
+          <div class="expl-item"><strong>4. was at the station. She was waiting for a train.</strong><br>Тайлбар: Tracey галт тэрэг хүлээж байсан үйл явц дундаа байсан тул <em>was waiting</em> болно.</div>
+          <div class="expl-item"><strong>5. were in the park. They were walking.</strong><br>Тайлбар: Ноён, хатагтай Холл хоёр (олон тоо) цэцэрлэгт хүрээлэнд алхаж байсан (<em>were walking</em>).</div>
+        </div>
+
+        <div class="card">
+          <h3>13.2 Дасгалын дэлгэрэнгүй хариу ба тайлбар:</h3>
+          <div class="expl-item"><strong>1. was washing her car</strong> — 8:45 цаг нь машинаа угааж байсан (8.30-9.00) хугацааны яг дунд үе тул үйлдэл үргэлжилж байсан.</div>
+          <div class="expl-item"><strong>2. was playing tennis</strong> — 10:45 цагт теннис тоглож байсан (10.15-11.45).</div>
+          <div class="expl-item"><strong>3. was reading the newspaper</strong> — 8:00 цагт сонин уншиж байсан (7.30-8.10).</div>
+          <div class="expl-item"><strong>4. was cooking dinner</strong> — 12:10 цагт хоол хийж байсан (12.00-12.45).</div>
+          <div class="expl-item"><strong>5. was having breakfast</strong> — 7:15 цагт өглөөний цайгаа ууж байсан (7.10-7.25). <em>Have</em> үйл үгийн 'e' хасагдаж <em>having</em> болсон.</div>
+          <div class="expl-item"><strong>6. was cleaning the kitchen</strong> — 9:30 цагт гал тогоогоо цэвэрлэж байсан (9.20-10.00).</div>
+        </div>
+
+        <div class="card">
+          <h3>13.3 Дасгалын дэлгэрэнгүй хариу ба тайлбар:</h3>
+          <div class="expl-item"><strong>1. Where were you living in 2012?</strong> — Хариултад 'In London' гэсэн байршил заасан тул <em>Where</em>-ээр эхэлж, 'you' төлөөний нэрний өмнө <em>were</em> тавигдана.</div>
+          <div class="expl-item"><strong>2. What were you doing at 2 o'clock?</strong> — Тодорхой цагт юу хийж байсныг лавласан тул <em>What were you doing...?</em> бүтэц орно.</div>
+          <div class="expl-item"><strong>3. Was it raining when you got up?</strong> — Эзэн бие нь 'it' тул туслах үйл үг <em>Was</em>-аар эхэлсэн ерөнхий тийм/үгүй асуулт болно.</div>
+          <div class="expl-item"><strong>4. Why was Sue driving so fast?</strong> — Хариултад 'Because' (учир нь) гэсэн шалтгаан заасан тул <em>Why was [эзэн бие] driving...?</em> болно.</div>
+          <div class="expl-item"><strong>5. Was Tim wearing a suit yesterday?</strong> — Тим костюм өмссөн байсан уу гэж асууж байна. Tim нь ганц тоо тул <em>Was</em> орно.</div>
+        </div>
+
+        <div class="card">
+          <h3>13.4 Дасгалын дэлгэрэнгүй хариу ба тайлбар:</h3>
+          <div class="expl-item"><strong>1. wasn't wearing a jacket</strong> — Тэр хүрэм өмсөөгүй байсан (үгүйсгэсэн төлөв).</div>
+          <div class="expl-item"><strong>2. was carrying a bag</strong> — Тэр цүнх барьж явсан (батлах төлөв).</div>
+          <div class="expl-item"><strong>3. wasn't going to the dentist</strong> — Тэр шүдний эмч рүү яваагүй байсан.</div>
+          <div class="expl-item"><strong>4. was eating an ice cream</strong> — Тэр зайрмаг идэж байсан.</div>
+          <div class="expl-item"><strong>5. wasn't carrying an umbrella</strong> — Тэр шүхэр бариагүй байсан.</div>
+          <div class="expl-item"><strong>6. wasn't going home</strong> — Тэр гэр рүүгээ яваагүй байсан.</div>
+          <div class="expl-item"><strong>7. was wearing a hat</strong> — Тэр малгай өмссөн байсан.</div>
+          <div class="expl-item"><strong>8. wasn't riding a bicycle</strong> — Тэр дугуй унаагүй байсан. <em>Ride</em> үйл үгийн 'e' хасагдаж <em>riding</em> болно.</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(evt, tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    function checkAnswers() {
+      const inputs = document.querySelectorAll('.quiz-input');
+      let score = 0;
+
+      inputs.forEach(input => {
+        const userVal = input.value.trim().toLowerCase().replace(/[\?\.]/g, '').replace(/\s+/g, ' ');
+        const correctVal = input.getAttribute('data-ans').toLowerCase().replace(/[\?\.]/g, '').replace(/\s+/g, ' ');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+
+        let isMatch = (userVal === correctVal);
+
+        if (!isMatch) {
+          if (correctVal.includes("was at home. i was studying english") && userVal.length > 5) isMatch = true;
+          if (correctVal === "was reading the newspaper" && (userVal === "was reading a newspaper" || userVal === "was reading")) isMatch = true;
+          if (correctVal === "was cooking dinner" && userVal === "was cooking") isMatch = true;
+          if (correctVal === "wasn't wearing a jacket" && userVal === "was not wearing a jacket") isMatch = true;
+          if (correctVal === "wasn't going to the dentist" && userVal === "was not going to the dentist") isMatch = true;
+          if (correctVal === "wasn't carrying an umbrella" && userVal === "was not carrying an umbrella") isMatch = true;
+          if (correctVal === "wasn't going home" && userVal === "was not going home") isMatch = true;
+          if (correctVal === "wasn't riding a bicycle" && userVal === "was not riding a bicycle") isMatch = true;
+        }
+
+        if (isMatch) {
+          input.classList.add('correct');
+          input.classList.remove('incorrect');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+          score++;
+        } else {
+          input.classList.add('incorrect');
+          input.classList.remove('correct');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'inline';
+        }
+      });
+
+      const scoreBox = document.getElementById('score-box');
+      scoreBox.style.display = 'block';
+      scoreBox.style.background = score === inputs.length ? '#f0fdf4' : '#fef2f2';
+      scoreBox.style.color = score === inputs.length ? '#16a34a' : '#dc2626';
+      scoreBox.innerHTML = `Үр дүн: Нийт ${inputs.length}-аас ${score} зөв хариуллаа!`;
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll('.quiz-input').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'incorrect');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+        if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+      });
+      document.getElementById('score-box').style.display = 'none';
+    }
+  </script>
+
+  <script src="nav.js"></script>
+</body>
+</html>
