@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 14: I was doing and I did (Past Continuous vs Past Simple) - Essential Grammar in Use</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #eef2f6; color: #334155; line-height: 1.6; padding: 20px 10px 50px; display: flex; justify-content: center; }
+
+    .app-frame {
+      width: 100%;
+      max-width: 880px;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    header { background: #b83b26; color: white; padding: 24px 18px; text-align: center; }
+    header h1 { font-size: 23px; margin-bottom: 6px; font-weight: 700; }
+    header p { font-size: 13.5px; opacity: 0.95; font-weight: 500; }
+
+    .tab-nav { display: flex; background: white; border-bottom: 2px solid #e2e8f0; }
+    .tab-btn { flex: 1; padding: 13px 10px; font-size: 14px; font-weight: 600; border: none; background: none; cursor: pointer; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; text-align: center; }
+    .tab-btn.active { color: #b83b26; border-bottom-color: #b83b26; background: #fff8f6; }
+
+    .content-area { padding: 24px 18px; background: #f8fafc; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .card { background: white; border-radius: 12px; padding: 22px; margin-bottom: 20px; border: 1.5px solid #edf2f7; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+    .card h3 { color: #b83b26; font-size: 16.5px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1.5px solid #fee2e2; }
+    .card p { font-size: 14px; color: #334155; margin-bottom: 12px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; background: white; }
+    th, td { border: 1px solid #e2e8f0; padding: 9px 12px; text-align: left; }
+    th { background: #fbebe8; color: #991b1b; font-weight: 700; }
+
+    .example-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .example-item { background: #f8fafc; padding: 10px 14px; border-radius: 6px; font-size: 14px; color: #334155; border: 1px solid #f1f5f9; }
+    .example-item strong { color: #991b1b; font-weight: 700; }
+    .example-item span.trans { color: #64748b; margin-left: 6px; }
+
+    .timeline-box { background: #fff8f6; border: 1.5px dashed #b83b26; border-radius: 8px; padding: 14px 18px; margin-bottom: 16px; font-size: 14px; color: #7f1d1d; line-height: 1.8; }
+    .dialogue-box { background: #fff; border-left: 4px solid #b83b26; padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14.5px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .expl-item { margin-bottom: 12px; padding-left: 10px; border-left: 3px solid #fca5a5; font-size: 13.8px; }
+
+    .exercise-item { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px dashed #e2e8f0; font-size: 14.5px; line-height: 1.8; }
+    .quiz-input { border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 5px 9px; font-size: 14px; font-weight: 600; color: #1e293b; width: 140px; margin: 0 4px; text-align: center; outline: none; transition: all 0.2s; }
+    .quiz-input.wide { width: 180px; }
+    .quiz-input:focus { border-color: #b83b26; background: #fffdfd; }
+    .quiz-input.correct { border-color: #16a34a; background: #f0fdf4; color: #16a34a; }
+    .quiz-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #dc2626; }
+    .inline-hint { display: none; margin-left: 8px; font-size: 13px; font-weight: 600; color: #16a34a; }
+
+    .btn-submit { background: #b83b26; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; margin-right: 8px; }
+    .btn-reset { background: #64748b; color: white; border: none; padding: 12px 18px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; }
+    #score-box { display: none; margin-top: 15px; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="app-frame">
+
+    <header>
+      <h1>Essential Grammar in Use</h1>
+      <p>UNIT 14: I was doing (past continuous) and I did (past simple) (Цогц сургалтын систем)</p>
+    </header>
+
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(event, 'theory')">📖 1. Онол ба Тайлбар</button>
+      <button class="tab-btn" onclick="switchTab(event, 'exercises')">✍️ 2. Дасгал ажиллах</button>
+      <button class="tab-btn" onclick="switchTab(event, 'answers')">🔑 3. Хариуны тайлбар</button>
+    </nav>
+
+    <div class="content-area">
+
+      <!-- TAB 1: ОНОЛ БА ТАЙЛБАР -->
+      <div id="theory" class="tab-content active">
+        
+        <!-- SECTION A -->
+        <div class="card">
+          <h3>A. Үйл явдлын дараалал ба харьцуулалт (Жакын жишээ)</h3>
+          <p>Нэг үйлдэл үргэлжилж байх дундуур өөр нэг гэнэтийн үйл явдал болсон үед энэ 2 цаг хамт хэрэглэгдэнэ:</p>
+          
+          <div class="timeline-box">
+            • Jack <strong>was reading</strong> a book. (Жак ном уншиж байсан — үргэлжилж буй процесс)<br>
+            • The phone <strong>rang</strong>. (Утас нь дуугарсан — гэнэтийн богино үйлдэл)<br>
+            • He <strong>stopped</strong> reading and <strong>answered</strong> the phone. (Тэр уншихаа зогсоож, утсаа авсан)
+          </div>
+
+          <div class="example-list">
+            <div class="example-item"><strong>What happened? The phone rang.</strong> <span class="trans">→ Юу болсон бэ? Утас дуугарсан. (Past Simple)</span></div>
+            <div class="example-item"><strong>What was Jack doing when the phone rang? He was reading a book.</strong> <span class="trans">→ Утас дуугарахад Жак юу хийж байсан бэ? Ном уншиж байсан. (Past Continuous)</span></div>
+            <div class="example-item"><strong>What did he do when the phone rang? He stopped reading and answered the phone.</strong> <span class="trans">→ Утас дуугарахад тэр юу хийсэн бэ? Тэр уншихаа зогсоож, утсаа авсан. (Past Simple)</span></div>
+          </div>
+        </div>
+
+        <!-- SECTION B -->
+        <div class="card">
+          <h3>B. Past Continuous болон Past Simple-ийн гол ялгаа</h3>
+          <table>
+            <tr>
+              <th>Past Continuous (Дундаа үргэлжилж байсан)</th>
+              <th>Past Simple (Эхлээд дууссан бүрэн үйлдэл)</th>
+            </tr>
+            <tr>
+              <td>It <strong>was raining</strong> when we went out.<br><em>(Биднийг гарахад бороо орж байсан — дундаа явж байсан)</em></td>
+              <td>It <strong>rained</strong> yesterday.<br><em>(Өчигдөр бороо орсон — үйлдэл эхэлж, дууссан)</em></td>
+            </tr>
+            <tr>
+              <td>What <strong>were you doing</strong> when the phone rang?<br><em>(Утас дуугарах мөчид чи яг юу хийж байсан бэ?)</em></td>
+              <td>What <strong>did you do</strong> when the phone rang?<br><em>(Утас дуугарсны дараа чи ямар үйлдэл хийсэн бэ?)</em></td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- SECTION C -->
+        <div class="card">
+          <h3>C. When болон While холбоосын хэрэглээ</h3>
+          <p>Нэг урт үйлдэл үргэлжилж байх явцад (Past Continuous) богино үйлдэл (Past Simple) болсныг илэрхийлэхдээ <strong>while</strong> болон <strong>when</strong> ашиглана:</p>
+          
+          <div class="example-list">
+            <div class="example-item"><strong>Matt phoned while we were having dinner.</strong> <span class="trans">→ Биднийг оройн хоолоо идэж байх хооронд Мэтт залгасан.</span></div>
+            <div class="example-item"><strong>It was raining when I got up.</strong> <span class="trans">→ Намайг сэрэхэд бороо орж байсан.</span></div>
+            <div class="example-item"><strong>I saw you in the park yesterday. You were sitting on the grass and reading a book.</strong> <span class="trans">→ Би өчигдөр чамайг паркад харсан. Чи зүлгэн дээр суугаад ном уншиж байсан.</span></div>
+            <div class="example-item"><strong>I hurt my back while I was working in the garden.</strong> <span class="trans">→ Би цэцэрлэгт ажиллаж байхдаа нуруугаа эвгүй болгочихсон.</span></div>
+          </div>
+
+          <p style="margin-top: 14px; font-weight: 600; color: #991b1b;">Анхаар: Дараалсан үйлдлүүд дээр хоёулаа Past Simple байна:</p>
+          <div class="example-list">
+            <div class="example-item"><strong>I was walking along the road when I saw Dan. So I stopped, and we talked for a while.</strong> <span class="trans">→ Би зам дагуу алхаж явтал Дэнийг харсан. Тэгээд би зогссон, бид хэсэг ярилцсан. (stopped, talked нь дараалсан үйлдэл)</span></div>
+          </div>
+        </div>
+
+        <!-- SECTION D -->
+        <div class="card">
+          <h3>D. Үргэлжлэх цаг дээр ашиглагддаггүй үйл үгс (Non-continuous verbs)</h3>
+          <p><em>Know, want, like, believe, understand</em> гэх мэт төлөв заасан үйл үгс нь өнгөрсөнд ч гэсэн -ing хэлбэрт ордоггүй тул заавал <strong>Past Simple</strong> дээр бичигдэнэ:</p>
+          <div class="example-list">
+            <div class="example-item"><strong>We were good friends. We knew each other well.</strong> <span class="trans">(ЗӨВ) | We were knowing (БУРУУ)</span></div>
+            <div class="example-item"><strong>I was having a good time, but I knew nobody.</strong> <span class="trans">(Би цагийг сайхан өнгөрөөж байсан ч хэнийг ч таньдаггүй байв)</span></div>
+            <div class="example-item"><strong>I was enjoying the party, but Chris wanted to go home.</strong> <span class="trans">(ЗӨВ) | Chris was wanting (БУРУУ)</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAB 2: НОМЫН БҮХ ДАСГАЛУУД (14.1 - 14.2) -->
+      <div id="exercises" class="tab-content">
+        
+        <!-- 14.1 -->
+        <div class="card">
+          <h3>14.1 Өгөгдсөн өгүүллэгийн хаалтанд буй үйл үгсийг Past Simple эсвэл Past Continuous цагт зөв тохируулан бичнэ үү.</h3>
+          
+          <div class="exercise-item">
+            <strong>1. Lucy:</strong><br>
+            Lucy <input type="text" class="quiz-input" data-ans="broke"> (break) her arm last week. 
+            It <input type="text" class="quiz-input" data-ans="happened"> (happen) when she <input type="text" class="quiz-input wide" data-ans="was painting"> (paint) her room. 
+            She <input type="text" class="quiz-input" data-ans="fell"> (fall) off the ladder.
+            <span class="inline-hint">broke / happened / was painting / fell</span>
+          </div>
+
+          <div class="exercise-item">
+            <strong>2. Paula:</strong><br>
+            The train <input type="text" class="quiz-input" data-ans="arrived"> (arrive) at the station and Paula <input type="text" class="quiz-input" data-ans="got"> (get) off. 
+            Two friends of hers, Jon and Rachel, <input type="text" class="quiz-input wide" data-ans="were waiting"> (wait) to meet her.
+            <span class="inline-hint">arrived / got / were waiting</span>
+          </div>
+
+          <div class="exercise-item">
+            <strong>3. Sue & James:</strong><br>
+            Yesterday Sue <input type="text" class="quiz-input wide" data-ans="was walking"> (walk) along the road when she <input type="text" class="quiz-input" data-ans="met"> (meet) James. 
+            He <input type="text" class="quiz-input wide" data-ans="was going"> (go) to the station to catch a train and he <input type="text" class="quiz-input wide" data-ans="was carrying"> (carry) a bag. 
+            They <input type="text" class="quiz-input" data-ans="stopped"> (stop) to talk for a few minutes.
+            <span class="inline-hint">was walking / met / was going / was carrying / stopped</span>
+          </div>
+        </div>
+
+        <!-- 14.2 -->
+        <div class="card">
+          <h3>14.2 Харилцан яриан дахь хаалтанд буй үйл үгсийг Past Continuous эсвэл Past Simple цагт хувирган нөхнө үү.</h3>
+          
+          <div class="dialogue-box">
+            1. A: What <input type="text" class="quiz-input wide" data-ans="were you doing"> (you / do) when the phone <input type="text" class="quiz-input" data-ans="rang"> (ring)?<br>
+            B: I <input type="text" class="quiz-input wide" data-ans="was watching"> (watch) television.
+            <span class="inline-hint">were you doing / rang / was watching</span>
+          </div>
+
+          <div class="dialogue-box">
+            2. A: Was Jane busy when you went to see her?<br>
+            B: Yes, she <input type="text" class="quiz-input wide" data-ans="was studying"> (study).
+            <span class="inline-hint">was studying</span>
+          </div>
+
+          <div class="dialogue-box">
+            3. A: What time <input type="text" class="quiz-input wide" data-ans="did the post arrive"> (the post / arrive) this morning?<br>
+            B: It <input type="text" class="quiz-input" data-ans="came"> (come) while I <input type="text" class="quiz-input wide" data-ans="was having"> (have) breakfast.
+            <span class="inline-hint">did the post arrive / came / was having</span>
+          </div>
+
+          <div class="dialogue-box">
+            4. A: Was Tracey at work today?<br>
+            B: No, she <input type="text" class="quiz-input wide" data-ans="didn't go"> (not / go) to work. She was ill.
+            <span class="inline-hint">didn't go</span>
+          </div>
+
+          <div class="dialogue-box">
+            5. A: How fast <input type="text" class="quiz-input wide" data-ans="were you driving"> (you / drive) when the police <input type="text" class="quiz-input" data-ans="stopped"> (stop) you?<br>
+            B: I'm not sure, but I <input type="text" class="quiz-input wide" data-ans="wasn't driving"> (not / drive) very fast.
+            <span class="inline-hint">were you driving / stopped / wasn't driving</span>
+          </div>
+
+          <div class="dialogue-box">
+            6. A: <input type="text" class="quiz-input wide" data-ans="Did your team win"> (your team / win) the football match yesterday?<br>
+            B: The weather was very bad, so we <input type="text" class="quiz-input wide" data-ans="didn't play"> (not / play).
+            <span class="inline-hint">Did your team win / didn't play</span>
+          </div>
+
+          <div class="dialogue-box">
+            7. A: How <input type="text" class="quiz-input wide" data-ans="did you break"> (you / break) the window?<br>
+            B: We <input type="text" class="quiz-input wide" data-ans="were playing"> (play) football. I <input type="text" class="quiz-input" data-ans="kicked"> (kick) the ball and it <input type="text" class="quiz-input" data-ans="hit"> (hit) the window.
+            <span class="inline-hint">did you break / were playing / kicked / hit</span>
+          </div>
+
+          <div class="dialogue-box">
+            8. A: <input type="text" class="quiz-input wide" data-ans="Did you see"> (you / see) Jenny last night?<br>
+            B: Yes, she <input type="text" class="quiz-input wide" data-ans="was wearing"> (wear) a very nice jacket.
+            <span class="inline-hint">Did you see / was wearing</span>
+          </div>
+
+          <div class="dialogue-box">
+            9. A: What <input type="text" class="quiz-input wide" data-ans="were you doing"> (you / do) at 2 o'clock this morning?<br>
+            B: I was asleep.
+            <span class="inline-hint">were you doing</span>
+          </div>
+
+          <div class="dialogue-box">
+            10. A: I <input type="text" class="quiz-input" data-ans="lost"> (lose) my key last night. How <input type="text" class="quiz-input wide" data-ans="did you get"> (you / get) into your room?<br>
+            B: I <input type="text" class="quiz-input" data-ans="climbed"> (climb) in through a window.
+            <span class="inline-hint">lost / did you get / climbed</span>
+          </div>
+        </div>
+
+        <button class="btn-submit" onclick="checkAnswers()">Шалгах</button>
+        <button class="btn-reset" onclick="resetQuiz()">Дахин эхлэх</button>
+        <div id="score-box"></div>
+      </div>
+
+      <!-- TAB 3: ХАРИУНЫ ТАЙЛБАР -->
+      <div id="answers" class="tab-content">
+        
+        <div class="card">
+          <h3>14.1 Өгүүллэгийн дасгалын дэлгэрэнгүй тайлбар:</h3>
+          <div class="expl-item"><strong>1. Lucy: broke / happened / was painting / fell</strong><br>
+            Люси гараа хугалсан (<em>broke</em> - гол үйл явдал). Энэ нь өрөөгөө будаж байх үед (<em>was painting</em> - процесс дундаа байсан) шатнаас унаснаар (<em>fell</em>) болсон.
+          </div>
+          <div class="expl-item"><strong>2. Paula: arrived / got / were waiting</strong><br>
+            Галт тэрэг ирсэн (<em>arrived</em>), Паула буусан (<em>got off</em>) нь дараалсан үйлдлүүд. Харин түүний найзууд түүнийг тосохоор хүлээж байсан нь үргэлжилсэн төлөв тул <em>were waiting</em> авна.
+          </div>
+          <div class="expl-item"><strong>3. Sue & James: was walking / met / was going / was carrying / stopped</strong><br>
+            Сью замаар алхаж байхдаа (<em>was walking</em>) Жэймстэй таарсан (<em>met</em>). Жэймс буудал руу явж байсан бөгөөд (<em>was going</em>) цүнх барьчихсан явсан (<em>was carrying</em>). Тэд зогсоод хэсэг ярилцсан (<em>stopped</em> - дараалсан үйлдэл).
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>14.2 Харилцан ярианы дэлгэрэнгүй тайлбар:</h3>
+          <div class="expl-item"><strong>1. were you doing / rang / was watching:</strong> Утас дуугарах мөчид зурагт үзэж байсан тул Continuous.</div>
+          <div class="expl-item"><strong>2. was studying:</strong> Жэйнийг очиж уулзах үед хичээлээ хийж дундаа орчихсон байсан.</div>
+          <div class="expl-item"><strong>3. did the post arrive / came / was having:</strong> Шуудан ирэх нь богино үйлдэл (Past Simple). Харин өглөөний цайгаа ууж байх үеэр ирсэн тул <em>was having</em>.</div>
+          <div class="expl-item"><strong>4. didn't go:</strong> Өчигдөр ажилдаа яваагүй (Past Simple negative).</div>
+          <div class="expl-item"><strong>5. were you driving / stopped / wasn't driving:</strong> Цагдаа зогсоох тэр мөчид хэр хурдтай давхиж байсныг асууж байна.</div>
+          <div class="expl-item"><strong>6. Did your team win / didn't play:</strong> Тоглолт болоогүй тул тоглоогүй (didn't play).</div>
+          <div class="expl-item"><strong>7. did you break / were playing / kicked / hit:</strong> Хөлбөмбөг тоглож байх явцад (<em>were playing</em>) бөмбөг өшиглөж (<em>kicked</em>) цонх оносон (<em>hit</em>).</div>
+          <div class="expl-item"><strong>8. Did you see / was wearing:</strong> Женниг харах үед тэр гоё хүрэм өмссөн байсан (өмсчихсөн явж байсан).</div>
+          <div class="expl-item"><strong>9. were you doing:</strong> Шөнийн 2 цаг гэсэн тодорхой цагт юу хийж байсныг асууж байна.</div>
+          <div class="expl-item"><strong>10. lost / did you get / climbed:</strong> Түлхүүрээ гээсэн (lost), яаж өрөөндөө орсон бэ (did you get), цонхоор авирч орсон (climbed). Бүгд дууссан дараалсан үйлдлүүд.</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(evt, tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    function checkAnswers() {
+      const inputs = document.querySelectorAll('.quiz-input');
+      let score = 0;
+
+      inputs.forEach(input => {
+        const userVal = input.value.trim().toLowerCase().replace(/[\?\.]/g, '').replace(/\s+/g, ' ');
+        const correctVal = input.getAttribute('data-ans').toLowerCase().replace(/[\?\.]/g, '').replace(/\s+/g, ' ');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+
+        let isMatch = (userVal === correctVal);
+
+        // Уян хатан шалгах логикууд
+        if (!isMatch) {
+          if (correctVal === "didn't go" && userVal === "did not go") isMatch = true;
+          if (correctVal === "wasn't driving" && userVal === "was not driving") isMatch = true;
+          if (correctVal === "didn't play" && userVal === "did not play") isMatch = true;
+        }
+
+        if (isMatch) {
+          input.classList.add('correct');
+          input.classList.remove('incorrect');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+          score++;
+        } else {
+          input.classList.add('incorrect');
+          input.classList.remove('correct');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'inline';
+        }
+      });
+
+      const scoreBox = document.getElementById('score-box');
+      scoreBox.style.display = 'block';
+      scoreBox.style.background = score === inputs.length ? '#f0fdf4' : '#fef2f2';
+      scoreBox.style.color = score === inputs.length ? '#16a34a' : '#dc2626';
+      scoreBox.innerHTML = `Үр дүн: Нийт ${inputs.length}-аас ${score} зөв хариуллаа!`;
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll('.quiz-input').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'incorrect');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+        if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+      });
+      document.getElementById('score-box').style.display = 'none';
+    }
+  </script>
+
+  <script src="nav.js"></script>
+</body>
+</html>

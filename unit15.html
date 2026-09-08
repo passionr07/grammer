@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 15: I have done (Present Perfect 1) - Essential Grammar in Use</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #eef2f6; color: #334155; line-height: 1.6; padding: 20px 10px 50px; display: flex; justify-content: center; }
+
+    .app-frame {
+      width: 100%;
+      max-width: 880px;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    header { background: #b83b26; color: white; padding: 24px 18px; text-align: center; }
+    header h1 { font-size: 23px; margin-bottom: 6px; font-weight: 700; }
+    header p { font-size: 13.5px; opacity: 0.95; font-weight: 500; }
+
+    .tab-nav { display: flex; background: white; border-bottom: 2px solid #e2e8f0; }
+    .tab-btn { flex: 1; padding: 13px 10px; font-size: 14px; font-weight: 600; border: none; background: none; cursor: pointer; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; text-align: center; }
+    .tab-btn.active { color: #b83b26; border-bottom-color: #b83b26; background: #fff8f6; }
+
+    .content-area { padding: 24px 18px; background: #f8fafc; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .card { background: white; border-radius: 12px; padding: 22px; margin-bottom: 20px; border: 1.5px solid #edf2f7; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+    .card h3 { color: #b83b26; font-size: 16.5px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1.5px solid #fee2e2; }
+    .card p { font-size: 14px; color: #334155; margin-bottom: 12px; }
+
+    /* Visual Sequence Boxes */
+    .sequence-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 14px 0; }
+    .seq-box { background: #fff8f6; border: 1.5px solid #fecaca; border-radius: 10px; padding: 14px; }
+    .seq-box h4 { color: #991b1b; font-size: 14px; margin-bottom: 8px; }
+    .seq-step { font-size: 13.5px; margin-bottom: 6px; padding-left: 8px; border-left: 3px solid #b83b26; }
+    .seq-step.highlight { background: #fef2f2; font-weight: 600; padding: 6px 8px; border-radius: 4px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; background: white; }
+    th, td { border: 1px solid #e2e8f0; padding: 9px 12px; text-align: left; vertical-align: middle; }
+    th { background: #fbebe8; color: #991b1b; font-weight: 700; }
+
+    .example-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .example-item { background: #f8fafc; padding: 10px 14px; border-radius: 6px; font-size: 14px; color: #334155; border: 1px solid #f1f5f9; }
+    .example-item strong { color: #991b1b; font-weight: 700; }
+    .example-item span.trans { color: #64748b; margin-left: 6px; }
+
+    .sub-box { background: #f1f5f9; border-radius: 6px; padding: 8px 12px; font-size: 13.5px; margin-top: 6px; font-family: monospace; color: #1e293b; }
+    .ref-bar { font-size: 12.5px; color: #64748b; margin-top: 15px; padding: 8px 12px; background: #f1f5f9; border-radius: 6px; }
+    .expl-item { margin-bottom: 12px; padding-left: 10px; border-left: 3px solid #fca5a5; font-size: 13.8px; }
+
+    .exercise-item { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px dashed #e2e8f0; font-size: 14.5px; line-height: 1.8; }
+    .quiz-input { border: 1.5px solid #cbd5e1; border-radius: 4px; padding: 5px 9px; font-size: 14px; font-weight: 600; color: #1e293b; width: 160px; margin: 0 4px; text-align: center; outline: none; transition: all 0.2s; }
+    .quiz-input.wide { width: 260px; text-align: left; padding-left: 10px; }
+    .quiz-input:focus { border-color: #b83b26; background: #fffdfd; }
+    .quiz-input.correct { border-color: #16a34a; background: #f0fdf4; color: #16a34a; }
+    .quiz-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #dc2626; }
+    .inline-hint { display: none; margin-left: 8px; font-size: 13px; font-weight: 600; color: #16a34a; }
+
+    .btn-submit { background: #b83b26; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; margin-right: 8px; }
+    .btn-reset { background: #64748b; color: white; border: none; padding: 12px 18px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; }
+    #score-box { display: none; margin-top: 15px; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="app-frame">
+
+    <header>
+      <h1>Essential Grammar in Use</h1>
+      <p>UNIT 15: I have done (present perfect 1)</p>
+    </header>
+
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(event, 'theory')">📖 1. Онол ба Тайлбар</button>
+      <button class="tab-btn" onclick="switchTab(event, 'exercises')">✍️ 2. Дасгал ажиллах</button>
+      <button class="tab-btn" onclick="switchTab(event, 'answers')">🔑 3. Хариуны тайлбар</button>
+    </nav>
+
+    <div class="content-area">
+
+      <!-- TAB 1: ОНОЛ БА ТАЙЛБАР -->
+      <div id="theory" class="tab-content active">
+        
+        <!-- SECTION A -->
+        <div class="card">
+          <h3>A. Номон дээрх зурагт нөхцөл байдал</h3>
+          
+          <div class="sequence-container">
+            <div class="seq-box">
+              <h4>1. Гутлаа цэвэрлэх дараалал:</h4>
+              <div class="seq-step">1. His shoes are dirty. <em>(Гутлууд нь бохир байна.)</em></div>
+              <div class="seq-step">2. He is cleaning his shoes. <em>(Тэр гутлаа цэвэрлэж байна.)</em></div>
+              <div class="seq-step highlight">
+                3. He <strong>has cleaned</strong> his shoes.<br>
+                💬 <em>'I've cleaned my shoes.'</em><br>
+                <span style="color: #64748b; font-size: 12.5px;">(= his shoes are clean <strong>now</strong> / гутлууд нь одоо цэвэрхэн байна)</span>
+              </div>
+            </div>
+
+            <div class="seq-box">
+              <h4>2. Гадагшаа гарах дараалал:</h4>
+              <div class="seq-step">1. They are at home. <em>(Тэд гэртээ байна.)</em></div>
+              <div class="seq-step">2. They are going out. <em>(Тэд гадагшаа гарч явж байна.)</em></div>
+              <div class="seq-step highlight">
+                3. They <strong>have gone</strong> out.<br>
+                <span style="color: #64748b; font-size: 12.5px;">(= they are not at home <strong>now</strong> / тэд одоо гэртээ байхгүй байна)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION B -->
+        <div class="card">
+          <h3>B. has cleaned / have gone etc. is the present perfect (have + past participle):</h3>
+          
+          <table>
+            <tr>
+              <th colspan="2">Батлах ба Үгүйсгэх хэлбэр</th>
+              <th colspan="2">Асуух хэлбэр</th>
+              <th>Үйл үгийн төрөл</th>
+            </tr>
+            <tr>
+              <td><strong>I / we / you / they</strong></td>
+              <td>have ('ve)<br>have not (haven't)</td>
+              <td><strong>have</strong></td>
+              <td>I / we / you / they</td>
+              <td rowspan="2">
+                <strong>cleaned / finished / started</strong><br>
+                <em style="color: #16a34a;">} regular verbs</em><br><br>
+                <strong>lost / done / been / gone</strong><br>
+                <em style="color: #b83b26;">} irregular verbs</em><br>
+                <span style="font-size: 11.5px; color: #64748b;">↑ past participle</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>he / she / it</strong></td>
+              <td>has ('s)<br>has not (hasn't)</td>
+              <td><strong>has</strong></td>
+              <td>he / she / it</td>
+            </tr>
+          </table>
+
+          <h4 style="color: #991b1b; font-size: 14.5px; margin: 16px 0 6px;">Regular verbs (Дүрэмтэй үйл үгс):</h4>
+          <p>The past participle is <strong>-ed</strong> (the same as the past simple):</p>
+          <div class="sub-box">
+            clean → I have <strong>cleaned</strong> &nbsp;|&nbsp; finish → we have <strong>finished</strong> &nbsp;|&nbsp; start → she has <strong>started</strong>
+          </div>
+
+          <h4 style="color: #991b1b; font-size: 14.5px; margin: 16px 0 6px;">Irregular verbs (Дүрэм бус үйл үгс):</h4>
+          <p>The past participle is <strong>not -ed</strong>.</p>
+          <p style="font-size: 13.5px; margin-top: 4px;">• Sometimes the past simple and past participle are the <strong>same</strong>:</p>
+          <div class="sub-box">
+            buy → I <strong>bought</strong> / I have <strong>bought</strong> &nbsp;|&nbsp; have → he <strong>had</strong> / he has <strong>had</strong>
+          </div>
+
+          <p style="font-size: 13.5px; margin-top: 10px;">• Sometimes the past simple and past participle are <strong>different</strong>:</p>
+          <div class="sub-box">
+            break → I <strong>broke</strong> / I have <strong>broken</strong> &nbsp;|&nbsp; see → you <strong>saw</strong> / you have <strong>seen</strong><br>
+            fall → it <strong>fell</strong> / it has <strong>fallen</strong> &nbsp;|&nbsp; go → they <strong>went</strong> / they have <strong>gone</strong>
+          </div>
+        </div>
+
+        <!-- SECTION C -->
+        <div class="card">
+          <h3>C. We use the present perfect for an action in the past with a result now:</h3>
+          
+          <div class="example-list">
+            <div class="example-item">
+              <strong>I've lost my passport.</strong>
+              <span class="trans">(= I can't find my passport <em>now</em> → Би одоо пасспортоо олж чадахгүй байна)</span>
+            </div>
+
+            <div class="example-item">
+              <strong>'Where's Rebecca?' 'She's gone to bed.'</strong>
+              <span class="trans">(= she is in bed <em>now</em> → Тэр одоо орондоо унтаж байна)</span>
+            </div>
+
+            <div class="example-item">
+              <strong>We've bought a new car.</strong>
+              <span class="trans">(= we have a new car <em>now</em> → Бид одоо шинэ машинтай болсон)</span>
+            </div>
+
+            <div class="example-item">
+              <strong>It's Rachel's birthday tomorrow and I haven't bought her a present.</strong>
+              <span class="trans">(= I don't have a present for her <em>now</em> → Одоогоор надад түүнд өгөх бэлэг алга)</span>
+            </div>
+
+            <div class="example-item">
+              <strong>'Bob is away on holiday.' 'Oh, where has he gone?'</strong>
+              <span class="trans">(= where is he <em>now</em>? → Тэр одоо хаана байгаа вэ?)</span>
+            </div>
+
+            <div class="example-item">
+              <strong>Can I take this newspaper? Have you finished with it?</strong>
+              <span class="trans">(= do you need it <em>now</em>? → Танд энэ сонин одоо хэрэгтэй юу?)</span>
+            </div>
+          </div>
+
+          <div class="ref-bar">
+            <strong>Номын заалтууд:</strong> present perfect → <em>Units 16–19</em> | present perfect and past simple → <em>Unit 20</em> | irregular verbs → <em>Unit 24, Appendix 2–3</em>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAB 2: НОМЫН БҮХ ДАСГАЛУУД (15.1 - 15.2) -->
+      <div id="exercises" class="tab-content">
+        
+        <!-- 15.1 -->
+        <div class="card">
+          <h3>15.1 Look at the pictures. What has happened? Choose from the box.</h3>
+          <p style="font-size: 13.5px; color: #64748b; margin-bottom: 12px;">
+            Үйл үгс: <em>clean his shoes / close the door / go to bed / have a shower / stop raining / fall down</em>
+          </p>
+          
+          <div class="exercise-item">
+            1. (He is cleaning his shoes) → He <input type="text" class="quiz-input wide" data-ans="has cleaned his shoes">.
+            <span class="inline-hint">has cleaned his shoes</span>
+          </div>
+
+          <div class="exercise-item">
+            2. (She is closing the door) → She <input type="text" class="quiz-input wide" data-ans="has closed the door">.
+            <span class="inline-hint">has closed the door</span>
+          </div>
+
+          <div class="exercise-item">
+            3. (They are going to bed) → They <input type="text" class="quiz-input wide" data-ans="have gone to bed">.
+            <span class="inline-hint">have gone to bed</span>
+          </div>
+
+          <div class="exercise-item">
+            4. (It is raining, now it stops) → It <input type="text" class="quiz-input wide" data-ans="has stopped raining">.
+            <span class="inline-hint">has stopped raining</span>
+          </div>
+
+          <div class="exercise-item">
+            5. (He is taking a bath/shower) → He <input type="text" class="quiz-input wide" data-ans="has had a shower">.
+            <span class="inline-hint">has had a shower (эсвэл has had a bath)</span>
+          </div>
+
+          <div class="exercise-item">
+            6. (The picture was on the wall, now it is on the floor) → The picture <input type="text" class="quiz-input wide" data-ans="has fallen down">.
+            <span class="inline-hint">has fallen down</span>
+          </div>
+        </div>
+
+        <!-- 15.2 -->
+        <div class="card">
+          <h3>15.2 Complete the sentences with a verb from the box.</h3>
+          <p style="font-size: 13.5px; color: #64748b; margin-bottom: 12px;">
+            Үйл үгс: <em>break / buy / finish / forget / go / go / invite / see / not see / take / tell</em>
+          </p>
+
+          <div class="exercise-item">
+            1. 'Can I have this newspaper?' — 'Yes, I <input type="text" class="quiz-input" data-ans="have finished"> with it.'
+            <span class="inline-hint">have finished / 've finished</span>
+          </div>
+
+          <div class="exercise-item">
+            2. I <input type="text" class="quiz-input" data-ans="have bought"> some new shoes. Do you want to see them?
+            <span class="inline-hint">have bought / 've bought</span>
+          </div>
+
+          <div class="exercise-item">
+            3. 'Where is Liz?' — 'She <input type="text" class="quiz-input" data-ans="has gone"> out.'
+            <span class="inline-hint">has gone / 's gone</span>
+          </div>
+
+          <div class="exercise-item">
+            4. I'm looking for Paula. <input type="text" class="quiz-input" data-ans="Have you seen"> her?
+            <span class="inline-hint">Have you seen</span>
+          </div>
+
+          <div class="exercise-item">
+            5. Look! Somebody <input type="text" class="quiz-input" data-ans="has broken"> that window.
+            <span class="inline-hint">has broken</span>
+          </div>
+
+          <div class="exercise-item">
+            6. 'Does Lisa know that you're going away?' — 'Yes, I <input type="text" class="quiz-input" data-ans="have told"> her.'
+            <span class="inline-hint">have told / 've told</span>
+          </div>
+
+          <div class="exercise-item">
+            7. I can't find my umbrella. Somebody <input type="text" class="quiz-input" data-ans="has taken"> it.
+            <span class="inline-hint">has taken</span>
+          </div>
+
+          <div class="exercise-item">
+            8. 'Where are my glasses?' — 'I don't know. I <input type="text" class="quiz-input" data-ans="haven't seen"> them.'
+            <span class="inline-hint">haven't seen / have not seen</span>
+          </div>
+
+          <div class="exercise-item">
+            9. I'm looking for Sarah. Where <input type="text" class="quiz-input wide" data-ans="has she gone">?
+            <span class="inline-hint">has she gone</span>
+          </div>
+
+          <div class="exercise-item">
+            10. I know that woman, but I <input type="text" class="quiz-input" data-ans="have forgotten"> her name.
+            <span class="inline-hint">have forgotten / 've forgotten</span>
+          </div>
+
+          <div class="exercise-item">
+            11. Sue is having a party tonight. She <input type="text" class="quiz-input" data-ans="has invited"> a lot of people.
+            <span class="inline-hint">has invited / 's invited</span>
+          </div>
+        </div>
+
+        <button class="btn-submit" onclick="checkAnswers()">Шалгах</button>
+        <button class="btn-reset" onclick="resetQuiz()">Дахин эхлэх</button>
+        <div id="score-box"></div>
+      </div>
+
+      <!-- TAB 3: ХАРИУНЫ ТАЙЛБАР -->
+      <div id="answers" class="tab-content">
+        
+        <div class="card">
+          <h3>15.1 Дасгалын дэлгэрэнгүй тайлбар:</h3>
+          <div class="expl-item"><strong>1. has cleaned his shoes:</strong> Гутлаа цэвэрлэх үйлдэл дууссан бөгөөд одоо цэвэрхэн байна.</div>
+          <div class="expl-item"><strong>2. has closed the door:</strong> Хаалга хаагдсан үр дүн нь одоо харагдаж байна.</div>
+          <div class="expl-item"><strong>3. have gone to bed:</strong> Тэд орондоо орсон (одоо өрөөндөө алга). 'They' тул <em>have</em> авна.</div>
+          <div class="expl-item"><strong>4. has stopped raining:</strong> Бороо зогссон байна. Stop үйл үг нь <em>stopped</em> болж 'p' үсэг давхарлана.</div>
+          <div class="expl-item"><strong>5. has had a shower:</strong> Усанд орчихсон гарч ирж байна. Have үйл үгийн 3-р хэлбэр нь <em>had</em>.</div>
+          <div class="expl-item"><strong>6. has fallen down:</strong> Зураг хананаас уначихсан (шалан дээр байна). Fall → fell → <em>fallen</em>.</div>
+        </div>
+
+        <div class="card">
+          <h3>15.2 Дасгалын дэлгэрэнгүй тайлбар:</h3>
+          <div class="expl-item"><strong>1. have finished ('ve finished):</strong> Сонинг уншиж дуусгасан (одоо авч болно).</div>
+          <div class="expl-item"><strong>2. have bought ('ve bought):</strong> Шинэ гутал авсан (одоо хажууд байна, үзүүлэхэд бэлэн).</div>
+          <div class="expl-item"><strong>3. has gone ('s gone):</strong> Лиз гадагшаа гарсан (одоо энд алга).</div>
+          <div class="expl-item"><strong>4. Have you seen:</strong> Полаг харсан уу гэж асууж байна. See → <em>seen</em>.</div>
+          <div class="expl-item"><strong>5. has broken:</strong> Хэн нэгэн цонх хагалсан (цонх одоо хагархай байна). Break → <em>broken</em>.</div>
+          <div class="expl-item"><strong>6. have told ('ve told):</strong> Би Лизад хэлчихсэн (тэр одоо мэдэж байгаа). Tell → <em>told</em>.</div>
+          <div class="expl-item"><strong>7. has taken:</strong> Шүхрийг хэн нэгэн авсан (шүхэр байхгүй байна). Take → <em>taken</em>.</div>
+          <div class="expl-item"><strong>8. haven't seen:</strong> Хараагүй байна (үгүйсгэсэн хэлбэр).</div>
+          <div class="expl-item"><strong>9. has she gone:</strong> Сара хаашаа явчихсан бэ? (Асуух дараалал: Where + has + she + gone?).</div>
+          <div class="expl-item"><strong>10. have forgotten ('ve forgotten):</strong> Нэрийг нь мартчихсан байна. Forget → <em>forgotten</em>.</div>
+          <div class="expl-item"><strong>11. has invited ('s invited):</strong> Сью үдэшлэгтээ олон хүн урьчихсан. Invite → <em>invited</em>.</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(evt, tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    function checkAnswers() {
+      const inputs = document.querySelectorAll('.quiz-input');
+      let score = 0;
+
+      inputs.forEach(input => {
+        const userVal = input.value.trim().toLowerCase().replace(/[\?\.]/g, '').replace(/\s+/g, ' ');
+        const correctVal = input.getAttribute('data-ans').toLowerCase().replace(/[\?\.]/g, '').replace(/\s+/g, ' ');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+
+        let isMatch = (userVal === correctVal);
+
+        // Уян хатан шалгах логикууд
+        if (!isMatch) {
+          if (correctVal === "has had a shower" && (userVal === "has had a bath" || userVal === "'s had a shower")) isMatch = true;
+          if (correctVal === "have finished" && userVal === "'ve finished") isMatch = true;
+          if (correctVal === "have bought" && userVal === "'ve bought") isMatch = true;
+          if (correctVal === "has gone" && userVal === "'s gone") isMatch = true;
+          if (correctVal === "have told" && userVal === "'ve told") isMatch = true;
+          if (correctVal === "haven't seen" && userVal === "have not seen") isMatch = true;
+          if (correctVal === "have forgotten" && userVal === "'ve forgotten") isMatch = true;
+          if (correctVal === "has invited" && userVal === "'s invited") isMatch = true;
+        }
+
+        if (isMatch) {
+          input.classList.add('correct');
+          input.classList.remove('incorrect');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+          score++;
+        } else {
+          input.classList.add('incorrect');
+          input.classList.remove('correct');
+          if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'inline';
+        }
+      });
+
+      const scoreBox = document.getElementById('score-box');
+      scoreBox.style.display = 'block';
+      scoreBox.style.background = score === inputs.length ? '#f0fdf4' : '#fef2f2';
+      scoreBox.style.color = score === inputs.length ? '#16a34a' : '#dc2626';
+      scoreBox.innerHTML = `Үр дүн: Нийт ${inputs.length}-аас ${score} зөв хариуллаа!`;
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll('.quiz-input').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'incorrect');
+        const hint = input.parentElement.querySelector('.inline-hint') || input.nextElementSibling;
+        if (hint && hint.classList.contains('inline-hint')) hint.style.display = 'none';
+      });
+      document.getElementById('score-box').style.display = 'none';
+    }
+  </script>
+
+  <script src="nav.js"></script>
+</body>
+</html>
