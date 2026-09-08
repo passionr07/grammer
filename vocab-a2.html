@@ -225,12 +225,11 @@
       items.forEach(item => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>
-            <div class="word-en">
-              ${item.w}
-              <span class="badge-cat">${item.c}</span>
-            </div>
-          </td>
+         <td>
+  <div class="word-en">
+    ${item.w}
+  </div>
+</td>
           <td>
             <span class="ipa">${item.ipa}</span>
             <span class="trans-mn">[${item.mn}]</span>
