@@ -181,6 +181,95 @@
     }
     .answer-box.show { display: block; }
     .answer-grammar { margin-top: 4px; font-size: 12px; color: #15803d; opacity: 0.9; }
+  /* ХОЛБОХ ҮГСИЙН КАРТУУДЫН ЗАГВАР */
+    .connectors-section {
+      margin: 0 20px 24px;
+      background: #ffffff;
+      border: 1.5px solid #e0e7ff;
+      border-radius: 12px;
+      padding: 20px 22px;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.04);
+    }
+    .connectors-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+    .connectors-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #312e81;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .connector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+    }
+    .conn-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .conn-card:hover {
+      background: #ffffff;
+      border-color: #6366f1;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+      transform: translateY(-2px);
+    }
+    .conn-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .conn-word {
+      font-size: 17px;
+      font-weight: 800;
+      color: #4338ca;
+      letter-spacing: -0.3px;
+    }
+    .conn-type {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    
+    /* Төрлөөр ялгасан өнгөнүүд */
+    .type-rel { background: #dbeafe; color: #1e40af; }     /* Тодотгогч */
+    .type-opp { background: #fee2e2; color: #991b1b; }     /* Эсрэгцэл */
+    .type-cause { background: #dcfce7; color: #166534; }   /* Шалтгаан */
+    .type-time { background: #fef3c7; color: #92400e; }    /* Цаг хугацаа */
+    .type-cond { background: #f3e8ff; color: #6b21a8; }    /* Нөхцөл */
+
+    .conn-meaning { font-size: 13px; font-weight: 700; color: #1e293b; }
+    .conn-signal {
+      font-size: 12px;
+      color: #475569;
+      background: #eef2ff;
+      border-left: 3px solid #6366f1;
+      padding: 4px 8px;
+      border-radius: 3px;
+      line-height: 1.4;
+    }
+    .conn-example {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .conn-example b { color: #0f172a; font-style: normal; }
   </style>
 </head>
 <body>
@@ -214,6 +303,151 @@
           <span class="step-num">4. Дуурайж хэл (Shadowing)</span>
           Өгүүлбэрийн 🔊 товчийг даран бүтнээр нь сонсож, яг тэр аялга хэмнэлээр нь амандаа чангаар давтан хэлээрэй.
         </div>
+      </div>
+    </div>
+    <!-- ХОЛБОХ ҮГСИЙН ЛОГИК ГАЗРЫН ЗУРАГ -->
+    <div class="connectors-section">
+      <div class="connectors-header">
+        <div class="connectors-title">
+          <span>🧭</span> Өгүүлбэрийн араг яс: Гол холбох үгс ба тархины дохио
+        </div>
+        <span style="font-size: 12px; color: #6366f1; font-weight: 600;">(Ном уншихад таарах түлхүүрүүд)</span>
+      </div>
+
+      <div class="connector-grid">
+
+        <!-- 1. WHO -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">who</span>
+            <span class="conn-type type-rel">Тодотгогч</span>
+          </div>
+          <div class="conn-meaning">Тэр хүн нь / Хийсэн хүн</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Өмнөх дурдсан ХҮНИЙ тухай дэлгэрэнгүй тайлбар араас нь орж ирнэ.</div>
+          <div class="conn-example">Жишээ: "The engineer <b>who</b> fixed the server..."</div>
+        </div>
+
+        <!-- 2. WHICH -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">which</span>
+            <span class="conn-type type-rel">Тодотгогч</span>
+          </div>
+          <div class="conn-meaning">Тэр зүйл нь / Энэ нь</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Хүн биш харин ТӨХӨӨРӨМЖ, СИСТЕМ, ЮМСЫН онцлог араас нь тайлбарлагдана.</div>
+          <div class="conn-example">Жишээ: "A device <b>which</b> saves battery..."</div>
+        </div>
+
+        <!-- 3. THAT -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">that</span>
+            <span class="conn-type type-rel">Тодотгогч / Баримт</span>
+          </div>
+          <div class="conn-meaning">-даг/-дэг зүйл / Гэж</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Хүн болон зүйлийг шууд заана, эсвэл мэдээллийн агуулгыг холбоно.</div>
+          <div class="conn-example">Жишээ: "The rules <b>that</b> we follow..."</div>
+        </div>
+
+        <!-- 4. BUT -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">but</span>
+            <span class="conn-type type-opp">Эсрэгцэл</span>
+          </div>
+          <div class="conn-meaning">Гэвч / Харин</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Өмнөх санаа 180° эргэнэ. (+) байсан бол (-) эсвэл саад бэрхшээл гарна.</div>
+          <div class="conn-example">Жишээ: "The program was fast, <b>but</b> had errors."</div>
+        </div>
+
+        <!-- 5. ALTHOUGH -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">although</span>
+            <span class="conn-type type-opp">Эсрэгцэл</span>
+          </div>
+          <div class="conn-meaning">Хэдийгээр ... боловч</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Саад бэрхшээлийг үл харгалзан гол үр дүн биелсэн болохыг заана.</div>
+          <div class="conn-example">Жишээ: "<b>Although</b> it rained, we went out."</div>
+        </div>
+
+        <!-- 6. WHEREAS / WHILE -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">whereas / while</span>
+            <span class="conn-type type-opp">Харьцуулалт</span>
+          </div>
+          <div class="conn-meaning">Байхад / Гэтэл харин</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Хоёр өөр зүйл эсрэг тэсрэг шинж чанартай байгааг зэрэгцүүлэн харуулна.</div>
+          <div class="conn-example">Жишээ: "A is cheap, <b>whereas</b> B is expensive."</div>
+        </div>
+
+        <!-- 7. BECAUSE / AS -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">because / as</span>
+            <span class="conn-type type-cause">Шалтгаан</span>
+          </div>
+          <div class="conn-meaning">Учир нь / Яагаад гэвэл</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Ямар шалтгаанаар өмнөх үйл явдал болсон хариулт гарч ирнэ.</div>
+          <div class="conn-example">Жишээ: "He stayed home <b>because</b> he was sick."</div>
+        </div>
+
+        <!-- 8. SO / THEREFORE -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">so / therefore</span>
+            <span class="conn-type type-cause">Үр дагавар</span>
+          </div>
+          <div class="conn-meaning">Тиймээс / Үүний улмаас</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Өмнөх үйлдлээс үүдэлтэй шууд үр дагаврыг илэрхийлнэ.</div>
+          <div class="conn-example">Жишээ: "It was cold, <b>so</b> I closed the window."</div>
+        </div>
+
+        <!-- 9. BY THE TIME -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">by the time</span>
+            <span class="conn-type type-time">Хугацаа</span>
+          </div>
+          <div class="conn-meaning">Тэр үед хэдийнээ</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Нэг үйл явдал болоход нөгөө үйлдэл нь аль хэдийнэ дуусчихсан байсан.</div>
+          <div class="conn-example">Жишээ: "<b>By the time</b> he came, we had left."</div>
+        </div>
+
+        <!-- 10. UNTIL -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">until</span>
+            <span class="conn-type type-time">Хугацаа</span>
+          </div>
+          <div class="conn-meaning">-х хүртэл</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Тухайн үйл явдал яг хэзээ зогсох заагийг заана.</div>
+          <div class="conn-example">Жишээ: "Please wait here <b>until</b> I call you."</div>
+        </div>
+
+        <!-- 11. OR / EITHER -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">or / either</span>
+            <span class="conn-type type-cond">Сонголт</span>
+          </div>
+          <div class="conn-meaning">Эсвэл / Аль нэг нь</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> Нэг бол А, үгүй бол Б гэсэн сонголт, эсрэг нөхцөлийг өгнө.</div>
+          <div class="conn-example">Жишээ: "You can call <b>or</b> send an email."</div>
+        </div>
+
+        <!-- 12. UNLESS -->
+        <div class="conn-card">
+          <div class="conn-top">
+            <span class="conn-word">unless</span>
+            <span class="conn-type type-cond">Нөхцөл</span>
+          </div>
+          <div class="conn-meaning">Хэрэв ...-гүй бол</div>
+          <div class="conn-signal">🧠 <b>Тархины дохио:</b> <i>If not</i> буюу уг нөхцөл биелэхгүй л бол сөрөг үр дүн гарна.</div>
+          <div class="conn-example">Жишээ: "Don't press it <b>unless</b> it is an emergency."</div>
+        </div>
+
       </div>
     </div>
 
