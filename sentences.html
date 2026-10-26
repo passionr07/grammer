@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentence Reading & Translation - Өгүүлбэр Уншиж Сурах </title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #f1f5f9; color: #1e293b; line-height: 1.6; padding: 20px 10px 80px; display: flex; justify-content: center; }
+
+    .app-frame {
+      width: 100%;
+      max-width: 900px;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e2e8f0;
+    }
+
+    header { background: #4338ca; color: white; padding: 28px 20px; text-align: center; }
+    header h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+    header p { font-size: 14px; opacity: 0.95; }
+
+    /* ЗААВАР ЗӨВЛӨГӨӨНИЙ ХЭСЭГ */
+    .guide-section {
+      background: #eef2ff;
+      border-left: 5px solid #6366f1;
+      padding: 20px 22px;
+      margin: 20px;
+      border-radius: 8px;
+    }
+    .guide-title { font-size: 16px; font-weight: 700; color: #312e81; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .guide-steps { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 12px; }
+    .step-item { background: white; padding: 12px 14px; border-radius: 8px; border: 1px solid #c7d2fe; font-size: 13px; }
+    .step-num { font-weight: 800; color: #4f46e5; font-size: 14px; margin-bottom: 4px; display: block; }
+
+    /* ДАСГАЛЫН ЖАГСААЛТ */
+    .exercise-container { padding: 10px 20px 30px; }
+    .exercise-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: all 0.2s;
+    }
+    .exercise-card:hover { border-color: #818cf8; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.08); }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .card-badge {
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* АУДИО ТОВЧЛУУР */
+    .btn-audio {
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      color: #4f46e5;
+      cursor: pointer;
+      font-size: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .btn-audio:hover { background: #4f46e5; color: white; transform: scale(1.08); }
+
+    /* ИНТЕРАКТИВ ҮГҮҮД БА TOOLTIP */
+    .sentence-box {
+      font-size: 16.5px;
+      line-height: 1.9;
+      color: #0f172a;
+      margin-bottom: 16px;
+      background: #f8fafc;
+      padding: 14px 16px;
+      border-radius: 8px;
+    }
+
+    .word {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      border-bottom: 1.5px dotted #6366f1;
+      padding: 0 2px;
+      border-radius: 3px;
+      transition: background 0.15s;
+    }
+    .word:hover { background: #e0e7ff; color: #312e81; font-weight: 600; }
+
+    /* ХӨВӨГЧ ПАЙЗ (TOOLTIP) */
+    .word .tooltip {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e1b4b;
+      color: #ffffff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 100;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      transition: opacity 0.2s, bottom 0.2s;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .word .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #1e1b4b transparent transparent transparent;
+    }
+    .word .tooltip-ipa { display: block; font-size: 11px; color: #a5b4fc; margin-bottom: 2px; }
+    .word:hover .tooltip { visibility: visible; opacity: 1; bottom: 120%; }
+
+    /* ХЭРЭГЛЭГЧИЙН ОРЧУУЛГА ХИЙХ ТАЛБАР */
+    .input-area {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      resize: vertical;
+      min-height: 48px;
+      transition: border-color 0.2s;
+      margin-bottom: 10px;
+    }
+    .input-area:focus { border-color: #4f46e5; background: #fafafa; }
+
+    .action-row { display: flex; justify-content: space-between; align-items: center; }
+    .btn-toggle {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-toggle:hover { background: #4338ca; color: white; border-color: #4338ca; }
+
+    /* НУУГДМАЛ ЗӨВ ОРЧУУЛГЫН ХЭСЭГ */
+    .answer-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      font-size: 13.5px;
+      color: #166534;
+      display: none;
+      line-height: 1.5;
+    }
+    .answer-box.show { display: block; }
+    .answer-grammar { margin-top: 4px; font-size: 12px; color: #15803d; opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+  <div class="app-frame">
+
+    <header>
+      <h1>Sentence Reading Lab</h1>
+      <p>Өгүүлбэр унших ухаан: Үг дээр ойртон дуудлага, утгыг нь харж, монголоор бичиж дасгалжаарай</p>
+    </header>
+
+    <!-- 1. ДЭЭД ТАЛЫН ЗААВАР ЗӨВЛӨГӨӨНИЙ ХЭСЭГ -->
+    <div class="guide-section">
+      <div class="guide-title">
+        <span>💡</span> Өгүүлбэрийг үг мэдэхгүй байсан ч ойлгож унших 4 алхам
+      </div>
+      <div class="guide-steps">
+        <div class="step-item">
+          <span class="step-num">1. Толь руу бүү яар</span>
+          Мэдэхгүй үг таарвал зогсолгүй өгүүлбэрийг дуустал нь гүйлгэж уншаад хам сэдвээр нь ерөнхий санааг нь тааварла.
+        </div>
+        <div class="step-item">
+          <span class="step-num">2. Гол араг ясаа ол</span>
+          Өгүүлбэрийн 70%-ийн утга ердөө <b>Хэн? (Subject)</b> + <b>Юу хийсэн бэ? (Verb)</b> гэсэн хоёрхон үндсэн дээр тогтдог.
+        </div>
+        <div class="step-item">
+          <span class="step-num">3. Багцалж унш (Chunking)</span>
+          Үг бүрийг ганц нэгээр нь салгаж бус, 2-3 үгтэй утгат бүтцээр нь (жишээ нь: <i>was repairing</i>, <i>when the lights went out</i>) нүдэл.
+        </div>
+        <div class="step-item">
+          <span class="step-num">4. Дуурайж хэл (Shadowing)</span>
+          Өгүүлбэрийн 🔊 товчийг даран бүтнээр нь сонсож, яг тэр аялга хэмнэлээр нь амандаа чангаар давтан хэлээрэй.
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. ДАСГАЛУУДЫГ ГЕНЕРАТОР ХИЙХ КОНТЕЙНЕР -->
+    <div class="exercise-container" id="exerciseList"></div>
+
+  </div>
+
+  <script>
+    // ДАСГАЛЫН ӨГҮҮЛБЭРҮҮДИЙН ӨГӨГДӨЛ (Үгийн tooltip, дуудлага, дүрэм ба орчуулга)
+    const SENTENCES_DATA = [
+      {
+        id: 1,
+        topic: "Unit 13-14 (Past Continuous) & Appliances",
+        fullEn: "Yesterday evening, I was repairing my broken laptop when the lights went out.",
+        fullMn: "Өчигдөр орой намайг эвдэрсэн зөөврийн компьютераа засаж байх үед гэрэл унтарчихсан.",
+        grammarTip: "Үйлдэл үргэлжилж байх үед (was repairing) гэнэт өөр үйлдэл болсон (went out).",
+        words: [
+          { en: "Yesterday", ipa: "/ˈjɛstərdeɪ/", mn: "Өчигдөр" },
+          { en: "evening,", ipa: "/ˈiːvnɪŋ/", mn: "орой," },
+          { en: "I", ipa: "/aɪ/", mn: "би" },
+          { en: "was", ipa: "/wʌz/", mn: "байсан" },
+          { en: "repairing", ipa: "/rɪˈpɛrɪŋ/", mn: "засварлаж" },
+          { en: "my", ipa: "/maɪ/", mn: "өөрийн" },
+          { en: "broken", ipa: "/ˈbroʊkən/", mn: "эвдэрсэн" },
+          { en: "laptop", ipa: "/ˈlæpˌtɑːp/", mn: "зөөврийн компьютерыг" },
+          { en: "when", ipa: "/wɛn/", mn: "үед" },
+          { en: "the", ipa: "/ðə/", mn: "тухайн" },
+          { en: "lights", ipa: "/laɪts/", mn: "гэрэл" },
+          { en: "went", ipa: "/wɛnt/", mn: "унтарсан (явсан)" },
+          { en: "out.", ipa: "/aʊt/", mn: "унтарсан." }
+        ]
+      },
+      {
+        id: 2,
+        topic: "Unit 15-16 (Present Perfect + Just) & Tourism",
+        fullEn: "She has just arrived at the international airport, but she cannot find her baggage.",
+        fullMn: "Тэр олон улсын нисэх онгоцны буудалд дөнгөж сая ирсэн боловч ачаа тээшээ олж чадахгүй байна.",
+        grammarTip: "has just arrived = саяхан болсон үйлдэл. cannot find = одоо олж чадахгүй байгаа үр дүн.",
+        words: [
+          { en: "She", ipa: "/ʃiː/", mn: "Тэр (эмэгтэй)" },
+          { en: "has", ipa: "/hæz/", mn: "(туслах үйл үг)" },
+          { en: "just", ipa: "/dʒʌst/", mn: "дөнгөж сая" },
+          { en: "arrived", ipa: "/əˈraɪvd/", mn: "хүрэлцэн ирсэн" },
+          { en: "at", ipa: "/æt/", mn: "-д, -т" },
+          { en: "the", ipa: "/ðə/", mn: "тухайн" },
+          { en: "international", ipa: "/ˌɪntərˈnæʃənəl/", mn: "олон улсын" },
+          { en: "airport,", ipa: "/ˈɛrˌpɔːrt/", mn: "нисэх буудалд," },
+          { en: "but", ipa: "/bʌt/", mn: "боловч" },
+          { en: "she", ipa: "/ʃiː/", mn: "тэр" },
+          { en: "cannot", ipa: "/ˈkænɑːt/", mn: "чадахгүй байна" },
+          { en: "find", ipa: "/faɪnd/", mn: "олох" },
+          { en: "her", ipa: "/hɜːr/", mn: "түүний" },
+          { en: "baggage.", ipa: "/ˈbæɡɪdʒ/", mn: "ачаа тээш." }
+        ]
+      },
+      {
+        id: 3,
+        topic: "Weather & Outdoor Activities",
+        fullEn: "Although the weather was awful and freezing, they decided to go for a walk.",
+        fullMn: "Цаг агаар тэсгэм хүйтэн, муухай байсан хэдий ч тэд салхинд алхахаар шийдсэн.",
+        grammarTip: "Although = хэдийгээр... боловч гэсэн эсрэгцүүлсэн холбоос үг.",
+        words: [
+          { en: "Although", ipa: "/ɔːlˈðoʊ/", mn: "Хэдийгээр... боловч" },
+          { en: "the", ipa: "/ðə/", mn: "тухайн" },
+          { en: "weather", ipa: "/ˈwɛðər/", mn: "цаг агаар" },
+          { en: "was", ipa: "/wʌz/", mn: "байсан" },
+          { en: "awful", ipa: "/ˈɔːfəl/", mn: "муухай" },
+          { en: "and", ipa: "/ænd/", mn: "бөгөөд" },
+          { en: "freezing,", ipa: "/ˈfriːzɪŋ/", mn: "тасхийм хүйтэн," },
+          { en: "they", ipa: "/ðeɪ/", mn: "тэд" },
+          { en: "decided", ipa: "/dɪˈsaɪdɪd/", mn: "шийдсэн" },
+          { en: "to", ipa: "/tuː/", mn: "-хаар/-хээр" },
+          { en: "go", ipa: "/ɡoʊ/", mn: "явах" },
+          { en: "for", ipa: "/fɔːr/", mn: "зориулж" },
+          { en: "a", ipa: "/ə/", mn: "нэг" },
+          { en: "walk.", ipa: "/wɔːk/", mn: "алхалт, зугаалга." }
+        ]
+      },
+      {
+        id: 4,
+        topic: "Unit 16 (Present Perfect + Already) & Education",
+        fullEn: "He has already finished his research project and received an excellent grade.",
+        fullMn: "Тэр судалгааны ажлаа аль хэдийн дуусгасан бөгөөд маш сайн дүн авсан.",
+        grammarTip: "has already finished = төлөвлөснөөс эрт дууссан үйлдэл.",
+        words: [
+          { en: "He", ipa: "/hiː/", mn: "Тэр (эрэгтэй)" },
+          { en: "has", ipa: "/hæz/", mn: "(туслах үйл үг)" },
+          { en: "already", ipa: "/ɔːlˈrɛdi/", mn: "аль хэдийн" },
+          { en: "finished", ipa: "/ˈfɪnɪʃt/", mn: "дууссан" },
+          { en: "his", ipa: "/hɪz/", mn: "өөрийн" },
+          { en: "research", ipa: "/rɪˈsɜːrtʃ/", mn: "судалгааны" },
+          { en: "project", ipa: "/ˈprɑːdʒɛkt/", mn: "төслийг" },
+          { en: "and", ipa: "/ænd/", mn: "ба" },
+          { en: "received", ipa: "/rɪˈsiːvd/", mn: "хүлээн авсан" },
+          { en: "an", ipa: "/æn/", mn: "нэгэн" },
+          { en: "excellent", ipa: "/ˈɛksələnt/", mn: "онцгой, онц" },
+          { en: "grade.", ipa: "/ɡreɪd/", mn: "дүн." }
+        ]
+      },
+      {
+        id: 5,
+        topic: "Unit 13-14 (While + Past Continuous) & Sports",
+        fullEn: "While the children were playing soccer outside, it suddenly started to rain.",
+        fullMn: "Хүүхдүүд гадаа хөлбөмбөг тоглож байх зуур гэнэт бороо орж эхэлсэн.",
+        grammarTip: "While = үйл үг үргэлжлэх явцад (were playing). suddenly started = гэнэт эхэлсэн.",
+        words: [
+          { en: "While", ipa: "/waɪl/", mn: "Тэр зуур, үед" },
+          { en: "the", ipa: "/ðə/", mn: "тухайн" },
+          { en: "children", ipa: "/ˈtʃɪldrən/", mn: "хүүхдүүд" },
+          { en: "were", ipa: "/wɜːr/", mn: "байсан" },
+          { en: "playing", ipa: "/ˈpleɪɪŋ/", mn: "тоглож" },
+          { en: "soccer", ipa: "/ˈsɑːkər/", mn: "хөлбөмбөг" },
+          { en: "outside,", ipa: "/ˌaʊtˈsaɪd/", mn: "гадаа," },
+          { en: "it", ipa: "/ɪt/", mn: "тэнгэр (цаг агаар)" },
+          { en: "suddenly", ipa: "/ˈsʌdənli/", mn: "гэнэт" },
+          { en: "started", ipa: "/ˈstɑːrtɪd/", mn: "эхэлсэн" },
+          { en: "to", ipa: "/tuː/", mn: "-х" },
+          { en: "rain.", ipa: "/reɪn/", mn: "бороо орох." }
+        ]
+      },
+      {
+        id: 6,
+        topic: "Unit 16 (Present Perfect + Yet) & Health",
+        fullEn: "I have not taken my medication yet because I haven't eaten breakfast.",
+        fullMn: "Би өглөөний цайгаа уугаагүй байгаа учраас эмээ хараахан уугаагүй байна.",
+        grammarTip: "haven't taken ... yet = одоохондоо уугаагүй байна гэсэн үгүйсгэл.",
+        words: [
+          { en: "I", ipa: "/aɪ/", mn: "Би" },
+          { en: "have", ipa: "/hæv/", mn: "(туслах)" },
+          { en: "not", ipa: "/nɑːt/", mn: "үгүй" },
+          { en: "taken", ipa: "/ˈteɪkən/", mn: "уусан, хэрэглэсэн" },
+          { en: "my", ipa: "/maɪ/", mn: "өөрийн" },
+          { en: "medication", ipa: "/ˌmɛdɪˈkeɪʃən/", mn: "эмийг" },
+          { en: "yet", ipa: "/jɛt/", mn: "хараахан" },
+          { en: "because", ipa: "/bɪˈkɔːz/", mn: "учир нь" },
+          { en: "I", ipa: "/aɪ/", mn: "би" },
+          { en: "haven't", ipa: "/ˈhævənt/", mn: "хараахан...-гүй" },
+          { en: "eaten", ipa: "/ˈiːtən/", mn: "идсэн" },
+          { en: "breakfast.", ipa: "/ˈbrɛkfəst/", mn: "өглөөний цай." }
+        ]
+      }
+    ];
+
+    // Өгүүлбэрүүдийг HTML болгон харуулах функц
+    function renderExercises() {
+      const container = document.getElementById('exerciseList');
+      container.innerHTML = '';
+
+      SENTENCES_DATA.forEach(item => {
+        // Үг тус бүрийг tooltip бүхий span болгох
+        const wordsHtml = item.words.map(wObj => `
+          <span class="word">
+            ${wObj.en}
+            <span class="tooltip">
+              <span class="tooltip-ipa">${wObj.ipa}</span>
+              ${wObj.mn}
+            </span>
+          </span>
+        `).join(' ');
+
+        const card = document.createElement('div');
+        card.className = 'exercise-card';
+        card.innerHTML = `
+          <div class="card-top">
+            <span class="card-badge">${item.topic}</span>
+            <button class="btn-audio" title="Өгүүлбэрийг бүхэлд нь сонсох" onclick="speakSentence('${item.fullEn.replace(/'/g, "\\'")}')">🔊</button>
+          </div>
+          <div class="sentence-box">
+            ${wordsHtml}
+          </div>
+          <textarea class="input-area" id="input-${item.id}" placeholder="Өгүүлбэрийн утгыг өөрийнхөөрөө монголоор бичээд үзээрэй..."></textarea>
+          <div class="action-row">
+            <span style="font-size: 12px; color: #64748b;">(Үгс дээр хулганаа аваачиж утгыг нь хараарай)</span>
+            <button class="btn-toggle" onclick="toggleAnswer(${item.id})">Зөв найруулга харах 👁️</button>
+          </div>
+          <div class="answer-box" id="ans-${item.id}">
+            <b>Монгол орчуулга:</b> ${item.fullMn}
+            <div class="answer-grammar">💡 <i>Дүрмийн зөвлөгөө: ${item.grammarTip}</i></div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Зөв орчуулгыг харуулах/нуух
+    function toggleAnswer(id) {
+      const ansBox = document.getElementById(`ans-${id}`);
+      ansBox.classList.toggle('show');
+    }
+
+    // Аудио унших функц
+    function speakSentence(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'en-US';
+        u.rate = 0.82;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', renderExercises);
+  </script>
+
+  <script src="nav.js"></script>
+</body>
+</html>
