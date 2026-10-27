@@ -270,6 +270,135 @@
       line-height: 1.4;
     }
     .conn-example b { color: #0f172a; font-style: normal; }
+    /* ӨНГӨӨР ЯЛГАХ ЗАГВАРУУД */
+    .anatomy-section {
+      background: #ffffff;
+      border: 1.5px solid #c7d2fe;
+      border-radius: 12px;
+      padding: 22px;
+      margin: 0 20px 24px;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.05);
+    }
+    .anatomy-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #1e1b4b;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .anatomy-subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+
+    /* Өнгөний тайлбар (Legend) */
+    .color-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px 14px;
+      background: #f8fafc;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 18px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Текст доторх өнгийн хайрцгууд */
+    .hl-subj {
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .hl-verb {
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .hl-conn {
+      background: #fef3c7;
+      color: #b45309;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 800;
+      border-bottom: 2px solid #f59e0b;
+    }
+    .hl-detail {
+      background: #dcfce7;
+      color: #15803d;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* 5 өгүүлбэрийн картууд */
+    .anatomy-card {
+      background: #fbfcfe;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+      transition: all 0.2s;
+    }
+    .anatomy-card:hover {
+      background: #ffffff;
+      border-color: #818cf8;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+    }
+    .card-rule-tag {
+      font-size: 11px;
+      font-weight: 800;
+      color: #4f46e5;
+      background: #eef2ff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .anatomy-en {
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .anatomy-mn {
+      font-size: 13.5px;
+      color: #334155;
+      font-weight: 600;
+      margin-bottom: 10px;
+      padding-left: 8px;
+      border-left: 3px solid #cbd5e1;
+    }
+    .reading-logic {
+      background: #ffffff;
+      border: 1px solid #e0e7ff;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      color: #475569;
+      line-height: 1.5;
+    }
+    .reading-logic b { color: #1e1b4b; }
   </style>
 </head>
 <body>
@@ -286,6 +415,130 @@
       <div class="guide-title">
         <span>💡</span> Өгүүлбэрийг үг мэдэхгүй байсан ч ойлгож унших 4 алхам
       </div>
+      <!-- ӨНГӨӨР ЯЛГАХ ЗААВАР БА 5 ӨГҮҮЛБЭРИЙН ЗАДАРГАА -->
+    <div class="anatomy-section">
+      <div class="anatomy-title">
+        <span>🔬</span> Өгүүлбэрийг өнгөөр ялгаж тайлах мастер заавар
+      </div>
+      <p class="anatomy-subtitle">
+        Англи өгүүлбэрийг зүүнээс баруун тийш үгчлэн орчуулах гэж бүү яар. Эхлээд эдгээр 4 өнгийн бүтцээр нь нүдэлж сурвал ном унших хурд 3 дахин нэмэгдэнэ.
+      </p>
+
+      <!-- Өнгөний тайлбар пайз -->
+      <div class="color-legend">
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #dbeafe; border: 1px solid #3b82f6;"></span>
+          <span style="color: #1d4ed8;">Эзэн бие (Хэн? Юу?)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #fee2e2; border: 1px solid #ef4444;"></span>
+          <span style="color: #b91c1c;">Гол үйлдэл (Яасан?)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #fef3c7; border: 1px solid #f59e0b;"></span>
+          <span style="color: #b45309;">Холбоос үг (Учир шалтгаан/Цаг)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #dcfce7; border: 1px solid #22c55e;"></span>
+          <span style="color: #15803d;">Нэмэлт мэдээлэл (Юуг? Хаана?)</span>
+        </div>
+      </div>
+
+      <!-- 1-р ӨГҮҮЛБЭР: Тодотголыг салгаж харах (WHICH) -->
+      <div class="anatomy-card">
+        <span class="card-rule-tag">Загвар 1: Тодотголыг түр алгасаж унших дүрэм (Which)</span>
+        <div class="anatomy-en">
+          <span class="hl-subj">The laptop</span> 
+          <span class="hl-conn">[which</span> was repaired <span class="hl-detail">yesterday]</span> 
+          <span class="hl-verb">works</span> 
+          <span class="hl-detail">perfectly</span>.
+        </div>
+        <div class="anatomy-mn">
+          Өчигдөр засагдсан тэр зөөврийн компьютер төгс ажиллаж байна.
+        </div>
+        <div class="reading-logic">
+          👁️ <b>Унших ухаан:</b> <code>which ... yesterday</code> гэсэн хэсгийг нүдээрээ шууд хаалтанд хийж түр алгас. Үлдсэн гол араг яс нь ердөө: <b>The laptop</b> (Эзэн) + <b>works</b> (Үйлдэл). Араг ясаа ойлгосны дараа ямар зөөврийн компьютер болохыг нь хаалт дотроос нөхөж харна.
+        </div>
+      </div>
+
+      <!-- 2-р ӨГҮҮЛБЭР: Эсрэгцэлтэй эхлэл (ALTHOUGH) -->
+      <div class="anatomy-card">
+        <span class="card-rule-tag">Загвар 2: Эсрэгцэлтэй эхлэлийг тайлах дүрэм (Although)</span>
+        <div class="anatomy-en">
+          <span class="hl-conn">Although</span> 
+          <span class="hl-subj">the system</span> 
+          <span class="hl-verb">was</span> 
+          <span class="hl-detail">expensive</span>, 
+          <span class="hl-subj">the company</span> 
+          <span class="hl-verb">decided</span> 
+          <span class="hl-detail">to buy it</span>.
+        </div>
+        <div class="anatomy-mn">
+          Хэдийгээр систем үнэтэй байсан боловч тухайн компани түүнийг худалдаж авахаар шийдсэн.
+        </div>
+        <div class="reading-logic">
+          👁️ <b>Унших ухаан:</b> <code>Although</code>-аар эхэлсэн бол таслал хүртэлх хэсэг нь ердөө "саад бэрхшээл" буюу арын дэвсгэр мэдээлэл. Таслалын ард байрлах <b>the company decided to buy it</b> гэсэн хэсэг л зохиогчийн хүргэх гэсэн бодит гол үр дүн юм.
+        </div>
+      </div>
+
+      <!-- 3-р ӨГҮҮЛБЭР: Дундуур нь тасалсан үйлдэл (WHILE ... PAST CONTINUOUS) -->
+      <div class="anatomy-card">
+        <span class="card-rule-tag">Загвар 3: Үргэлжилж буй процессыг таслах дүрэм (While / When)</span>
+        <div class="anatomy-en">
+          <span class="hl-conn">While</span> 
+          <span class="hl-subj">the engineer</span> 
+          <span class="hl-verb">was testing</span> 
+          <span class="hl-detail">the code</span>, 
+          <span class="hl-subj">the power</span> 
+          <span class="hl-verb">went</span> 
+          <span class="hl-detail">out</span>.
+        </div>
+        <div class="anatomy-mn">
+          Инженерийг код шалгаж байх хооронд тог тасарчихсан.
+        </div>
+        <div class="reading-logic">
+          👁️ <b>Унших ухаан:</b> <code>was testing</code> (урт хугацааны үргэлжилсэн үйлдэл) явагдаж байтал дундуур нь <code>went out</code> (богино, гэнэтийн үйл явдал) орж ирж тасалсныг тархиндаа кино зураглал шиг шууд төсөөлж буулгана.
+        </div>
+      </div>
+
+      <!-- 4-р ӨГҮҮЛБЭР: Шалтгаан ба Үр дагавар (SO / BECAUSE) -->
+      <div class="anatomy-card">
+        <span class="card-rule-tag">Загвар 4: Шалтгаан-Үр дагаврын логик гинж (So / Therefore)</span>
+        <div class="anatomy-en">
+          <span class="hl-subj">The traffic</span> 
+          <span class="hl-verb">was</span> 
+          <span class="hl-detail">terrible</span>, 
+          <span class="hl-conn">so</span> 
+          <span class="hl-subj">they</span> 
+          <span class="hl-verb">missed</span> 
+          <span class="hl-detail">their morning flight</span>.
+        </div>
+        <div class="anatomy-mn">
+          Замын түгжрэл аймшигтай байсан, тиймээс тэд өглөөний нислэгээсээ хоцорчихсон.
+        </div>
+        <div class="reading-logic">
+          👁️ <b>Унших ухаан:</b> <code>so</code> гэсэн үг нь урагш гүйлгэж унших ногоон гэрэл болдог. "Тиймээс" гэсэн үгийн ард өмнөх бүх нөхцөл байдлын эцсийн үр дүн шууд гарч ирдэг тул өгүүлбэрийн төгсгөлд анхаарлаа төвлөрүүлнэ.
+        </div>
+      </div>
+
+      <!-- 5-р ӨГҮҮЛБЭР: Хүн тодотгох ба Төгссөн цаг (WHO + PRESENT PERFECT) -->
+      <div class="anatomy-card">
+        <span class="card-rule-tag">Загвар 5: Хүнийг тодотгож үр дүнд хүрэх дүрэм (Who + Have/Has done)</span>
+        <div class="anatomy-en">
+          <span class="hl-subj">The researcher</span> 
+          <span class="hl-conn">[who</span> led <span class="hl-detail">the medical project]</span> 
+          <span class="hl-verb">has received</span> 
+          <span class="hl-detail">an important award</span>.
+        </div>
+        <div class="anatomy-mn">
+          Эрүүл мэндийн төслийг удирдсан тэр судлаач чухал шагнал хүртээд байна.
+        </div>
+        <div class="reading-logic">
+          👁️ <b>Унших ухаан:</b> <code>The researcher</code> гэсэн эзэн биеийн араас <code>who ... project</code> хүртэлх тодотголыг түр хаалтанд хийвэл: <b>The researcher has received an award</b> (Судлаач шагнал хүртжээ) гэсэн үндсэн үр дүн шууд тодорно.
+        </div>
+      </div>
+
+    </div>
       <div class="guide-steps">
         <div class="step-item">
           <span class="step-num">1. Толь руу бүү яар</span>
